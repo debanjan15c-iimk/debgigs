@@ -82,19 +82,11 @@
 
         /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.7);
             box-shadow: 0 10px 30px rgba(74, 141, 168, 0.08);
-        }
-
-        .glass-card-hover {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(74, 141, 168, 0.14);
         }
 
         /* Custom Scrollbar */
@@ -153,7 +145,7 @@
             
             <nav class="flex items-center space-x-4 md:space-x-8 text-xs md:text-sm font-medium text-gray-700 uppercase tracking-wider">
                 <a href="#countdown" class="hover:text-seaBlue transition-colors">Countdown</a>
-                <a href="#journal" class="hover:text-seaBlue transition-colors">Our Journal</a>
+                <a href="#journal" class="hover:text-seaBlue transition-colors">Our Story</a>
                 <a href="#videos" class="hover:text-seaBlue transition-colors">Videos</a>
                 <a href="#gallery" class="hover:text-seaBlue transition-colors">Gallery</a>
             </nav>
@@ -161,12 +153,10 @@
 
         <!-- Hero Section -->
         <section class="max-w-5xl mx-auto px-6 py-10 md:py-16 text-center space-y-6">
-            
             <div class="inline-block px-5 py-2 rounded-full bg-white/80 border border-roseGold/30 text-roseGold text-xs md:text-sm tracking-widest uppercase font-semibold shadow-sm">
                 ♥ The Magic Moment: Debanjan and Gargi ♥
             </div>
             
-            <!-- Main Hero Heading -->
             <h1 class="text-5xl md:text-7xl font-cursive font-normal text-gray-900 leading-tight">
                 Debanjan and Gargi
             </h1>
@@ -201,10 +191,10 @@
                 </div>
             </div>
 
-            <!-- Hero Action Buttons -->
+            <!-- Hero Buttons -->
             <div class="pt-8 flex flex-wrap gap-4 justify-center">
                 <a href="#journal" class="px-8 py-3.5 rounded-full bg-roseGold text-white font-medium hover:bg-roseGold/90 transition-all shadow-lg shadow-roseGold/20 flex items-center gap-2 text-sm">
-                    <span>Read Our Memory Book</span>
+                    <span>Read Our Love Story</span>
                     <i class="fa-solid fa-book-heart"></i>
                 </a>
                 <a href="#gallery" class="px-8 py-3.5 rounded-full bg-white/90 text-gray-700 font-medium hover:bg-white transition-all border border-gray-200 flex items-center gap-2 text-sm shadow-sm">
@@ -212,45 +202,34 @@
                     <i class="fa-regular fa-image"></i>
                 </a>
             </div>
-
         </section>
 
-        <!-- Our Story Memory Journal (5 Pages) -->
+        <!-- Our Story Memory Journal (Updated with How We Met Story) -->
         <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
             <div class="text-center space-y-3 mb-10">
-                <span class="font-cursive text-3xl text-roseGold">Our Memories</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The Memory Journal</h2>
+                <span class="font-cursive text-3xl text-roseGold">How We Met ❤️</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The Beginning of My Favourite Forever</h2>
             </div>
 
-            <!-- Memory Book Reader Card -->
-            <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl relative border border-white">
+            <div class="glass-card rounded-3xl p-6 md:p-12 shadow-xl relative border border-white space-y-6">
                 
-                <div class="flex justify-between items-center pb-6 border-b border-gray-200/80">
-                    <div>
-                        <span id="journalPageIndicator" class="text-xs uppercase tracking-widest text-roseGold font-semibold block">Page 1 of 5</span>
-                        <h3 id="journalTitle" class="text-xl md:text-2xl font-serif font-bold text-gray-800">Chapter 1: How We Met</h3>
-                    </div>
-                    <button id="editJournalBtn" class="px-4 py-2 rounded-full text-xs font-medium bg-skySoft text-seaBlue hover:bg-seaBlue hover:text-white transition-all flex items-center gap-1.5">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <span>Edit Page</span>
-                    </button>
+                <div class="border-b border-gray-200/80 pb-4 flex justify-between items-center">
+                    <span id="journalPageIndicator" class="text-xs uppercase tracking-widest text-roseGold font-semibold">Chapter 1 of 5</span>
+                    <span class="text-xs text-gray-400 italic">#DebGigs Love Story</span>
                 </div>
 
-                <div class="py-8 min-h-[200px] flex flex-col justify-between">
-                    <p id="journalText" class="text-gray-700 font-serif text-lg md:text-xl leading-relaxed italic">
-                        "It all began with a simple hello that changed everything. Across the room, amidst the noise of the everyday world, our eyes met, and instantly there was a sense of quiet familiarity—as if we had known each other forever."
-                    </p>
-                    
-                    <div class="mt-6 flex justify-between items-center pt-4 text-xs text-gray-400 border-t border-gray-100">
-                        <span>#DebGigs Chapter Notes</span>
-                        <span>Recorded with love</span>
+                <!-- Story Paragraphs Container -->
+                <div class="py-2 min-h-[260px] flex flex-col justify-between">
+                    <div id="journalTextContainer" class="text-gray-700 font-serif text-lg md:text-xl leading-relaxed space-y-4">
+                        <!-- Rendered via JS -->
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center pt-4">
+                <!-- Page Navigation Controls -->
+                <div class="flex justify-between items-center pt-6 border-t border-gray-100">
                     <button id="prevPageBtn" class="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm font-medium flex items-center gap-2">
                         <i class="fa-solid fa-chevron-left text-xs"></i>
-                        <span>Previous</span>
+                        <span>Previous Chapter</span>
                     </button>
 
                     <div id="pageDots" class="flex space-x-2">
@@ -262,11 +241,10 @@
                     </div>
 
                     <button id="nextPageBtn" class="px-5 py-2.5 rounded-full bg-roseGold text-white hover:bg-roseGold/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm font-medium flex items-center gap-2">
-                        <span>Next</span>
+                        <span>Next Chapter</span>
                         <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                 </div>
-
             </div>
         </section>
 
@@ -279,13 +257,10 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Video Slot 1 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-lg border border-white">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center">
                         <video id="videoPlayer1" controls class="w-full h-full object-cover">
                             <source src="" type="video/mp4">
-                            Your browser does not support HTML5 video.
                         </video>
                     </div>
                     <div class="pt-4 px-2 space-y-3">
@@ -302,12 +277,10 @@
                     </div>
                 </div>
 
-                <!-- Video Slot 2 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-lg border border-white">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center">
                         <video id="videoPlayer2" controls class="w-full h-full object-cover">
                             <source src="" type="video/mp4">
-                            Your browser does not support HTML5 video.
                         </video>
                     </div>
                     <div class="pt-4 px-2 space-y-3">
@@ -323,18 +296,16 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Photo Slideshow Section -->
+        <!-- PHOTO SLIDESHOW SECTION (39 PRE-UPLOADED PHOTOS, UNCROPPED) -->
         <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-gray-200/60">
             <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-3xl text-roseGold">Precious Memories</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Beautiful Memories</h2>
                 <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">watch our favorite captured moments</p>
                 
-                <!-- Upload Photos Button -->
                 <div class="pt-2">
                     <input type="file" id="photoUploadInput" accept="image/*" multiple class="hidden">
                     <button onclick="document.getElementById('photoUploadInput').click()" class="px-6 py-2.5 rounded-full bg-roseGold text-white text-xs font-medium hover:bg-roseGold/90 shadow-md transition-all inline-flex items-center gap-2">
@@ -344,39 +315,36 @@
             </div>
 
             <!-- Slideshow Container -->
-            <!-- Slideshow Container -->
-            <!-- Slideshow Container -->
-            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl relative border border-white max-w-4xl mx-auto">
-                <!-- Removed fixed height constraint and added flex padding so full photos fit naturally -->
-                <div class="relative w-full rounded-2xl overflow-hidden bg-[#1E2028] flex items-center justify-center p-2 md:p-4 min-h-[450px] md:min-h-[580px]">
+            <div class="glass-card rounded-3xl p-3 md:p-5 shadow-2xl relative border border-white max-w-4xl mx-auto">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-[#181920] flex items-center justify-center p-3 md:p-6 min-h-[380px] md:min-h-[520px]">
                     
-                    <!-- Slide Image: object-contain guarantees NO cutting/cropping -->
-                    <img id="slideshowImg" src="" alt="Debanjan & Gargi Memory" class="max-h-[480px] md:max-h-[540px] w-auto max-w-full object-contain rounded-xl transition-opacity duration-300 ease-in-out shadow-lg">
+                    <!-- Slide Image -->
+                    <img id="slideshowImg" src="" alt="Debanjan & Gargi Memory" class="max-h-[65vh] w-auto max-w-full object-contain rounded-lg transition-opacity duration-300 ease-in-out shadow-2xl">
                     
                     <!-- Text Overlay -->
-                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 pb-5 px-6 text-white text-center">
-                        <h3 id="slideshowTitle" class="font-serif text-2xl md:text-3xl font-bold tracking-wide drop-shadow-md"></h3>
-                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold/90 font-medium mt-1"></p>
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-12 pb-4 px-6 text-white text-center">
+                        <h3 id="slideshowTitle" class="font-serif text-xl md:text-3xl font-bold tracking-wide drop-shadow-md"></h3>
+                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold/90 font-medium mt-0.5"></p>
                     </div>
 
                     <!-- Previous Button -->
-                    <button id="prevSlideBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm z-10">
-                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    <button id="prevSlideBtn" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm z-10">
+                        <i class="fa-solid fa-chevron-left text-sm md:text-base"></i>
                     </button>
 
                     <!-- Next Button -->
-                    <button id="nextSlideBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm z-10">
-                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    <button id="nextSlideBtn" class="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm z-10">
+                        <i class="fa-solid fa-chevron-right text-sm md:text-base"></i>
                     </button>
 
-                    <!-- Auto Play / Pause Toggle Button -->
-                    <button id="toggleSlidePlayBtn" class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/50 text-white text-xs font-medium backdrop-blur-sm hover:bg-black/70 transition-all flex items-center gap-1.5 z-10">
+                    <!-- Pause/Play Toggle Button -->
+                    <button id="toggleSlidePlayBtn" class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/60 text-white text-xs font-medium backdrop-blur-sm hover:bg-black/80 transition-all flex items-center gap-1.5 z-10 border border-white/20">
                         <i id="slidePlayIcon" class="fa-solid fa-pause text-[10px]"></i>
                         <span id="slidePlayStatus">Pause</span>
                     </button>
                 </div>
 
-                <!-- Slide Dots & Indicator -->
+                <!-- Slide Navigation Footer -->
                 <div class="flex justify-between items-center pt-4 px-2">
                     <span id="slideCounter" class="text-xs text-gray-500 font-medium">Memory 1 of 39</span>
                     <div id="slideDots" class="flex space-x-1.5 items-center"></div>
@@ -391,10 +359,9 @@
             <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">#DebGigs • The Vow to a Lifetime Together</p>
             <p class="text-xs text-gray-400">Crafted with love for our special day.</p>
         </footer>
-
     </div>
 
-    <!-- Music Player (Floating Bottom Right) -->
+    <!-- Floating Music Player -->
     <div class="fixed bottom-6 right-6 z-50">
         <div class="glass-card p-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-white pr-4">
             <button id="playAudioBtn" class="w-11 h-11 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
@@ -403,7 +370,6 @@
             <div class="text-left">
                 <p class="text-xs font-semibold text-gray-800 line-clamp-1">Destiny</p>
                 <p class="text-[10px] text-gray-500 line-clamp-1">Jim Brickman ft. Jordan Hill & Billy Porter</p>
-                <!-- Optional Local Song Upload -->
                 <input type="file" id="songFileInput" accept="audio/*" class="hidden">
                 <button onclick="document.getElementById('songFileInput').click()" class="text-[9px] text-roseGold underline mt-0.5 block">Select "Destiny.mp3"</button>
             </div>
@@ -416,41 +382,13 @@
         </div>
     </div>
 
-    <!-- Edit Memory Journal Modal -->
-    <div id="journalModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-4 shadow-2xl">
-            <div class="flex justify-between items-center pb-3 border-b">
-                <h3 class="text-xl font-serif font-bold text-gray-800">Edit Page <span id="modalPageNum">1</span></h3>
-                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Chapter Title</label>
-                    <input type="text" id="modalChapterTitle" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-roseGold/40 text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Memory Text</label>
-                    <textarea id="modalChapterText" rows="6" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-roseGold/40 text-sm font-serif leading-relaxed"></textarea>
-                </div>
-            </div>
-
-            <div class="flex justify-end gap-3 pt-3">
-                <button id="cancelModalBtn" class="px-5 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
-                <button id="saveModalBtn" class="px-6 py-2 rounded-full bg-roseGold text-white text-sm font-medium hover:bg-roseGold/90 shadow-md">Save Page</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Permanent Background Audio Tag -->
+    <!-- Audio Element -->
     <audio id="bgSong" loop preload="auto">
         <source src="Jim_Brickman_feat._Jordan_Hill_Billy_Porter_-_Destiny_(mp3.pm).mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // 1. COUNTDOWN TIMER (Target: Sunday, November 15, 2026, 1:30 PM IST)
+        // 1. COUNTDOWN TIMER
         const targetDate = new Date("November 15, 2026 13:30:00").getTime();
 
         function updateCountdown() {
@@ -478,69 +416,82 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. MULTI-PAGE MEMORY JOURNAL
-        const defaultPages = [
-            { title: "Chapter 1: How We Met", text: "It all began with a simple hello that changed everything. Across the room, amidst the noise of the everyday world, our eyes met, and instantly there was a sense of quiet familiarity—as if we had known each other forever." },
-            { title: "Chapter 2: First Coffee & Late Night Talks", text: "One hour turned into four. Over hot coffee and endless smiles, we talked about everything—from childhood dreams and secret ambitions to our shared love for long walks by the coast." },
-            { title: "Chapter 3: Unforgettable Trips & Shared Smiles", text: "From quiet sunrises by the sea to walking hand in hand along historical pathways, every journey took us closer. We learned that home isn't a place, but a person." },
-            { title: "Chapter 4: The Proposal & Forever Yes", text: "Under the golden light of sunset, with the gentle sea breeze whispering promises, the question was asked. The answer was an instant, heartfelt 'Yes' filled with happy tears." },
-            { title: "Chapter 5: Counting Down to Sunday", text: "And now, here we stand at the threshold of a lifetime of togetherness. With our loved ones by our side, we cannot wait to say 'I do' and begin our happily ever after as #DebGigs." }
+        // 2. LOVE STORY CHAPTERS ("HOW WE MET")
+        const storyPages = [
+            {
+                title: "Chapter 1: The First Message",
+                text: [
+                    "Gigs, sometimes I wonder how two people, who were complete strangers one day, can slowly become such an inseparable part of each other's lives. How someone who was once just a name and a phone number can become the first person you want to talk to in the morning, the last person you want to speak to at night, and the person you miss even when you've just said goodbye.",
+                    "If I had known that a simple message on Jeevansathi would bring me you, I would have looked forward to 20th April even more than I do now.",
+                    "It all started with a simple message from me: \"Hi, Debanjan here. Got your number from our parents.\" Nothing fancy, nothing extraordinary. Just two people who were about to get to know each other. But today, when I look back, I realise that was probably one of the most beautiful messages I've ever sent."
+                ]
+            },
+            {
+                title: "Chapter 2: Oyester & Meeting Gigs",
+                text: [
+                    "We met for the first time on 3rd May at Oyester. I still remember how naturally our conversations flowed. There was no awkwardness, no need to pretend to be someone else. It just felt right.",
+                    "On 6th May, I gave her a name that would soon become so close to my heart — Gigs."
+                ]
+            },
+            {
+                title: "Chapter 3: Church Street & The Little YES",
+                text: [
+                    "On 10th May, during our second date at Church Street, I gathered the courage to tell her, \"I like you. Can we tell our parents about us?\" And she said YES. That little YES meant so much more than she probably realised.",
+                    "Then came 14th May. When the clock struck 12:22, I told her, \"I love you.\" We celebrated our little milestone with a virtual milkshake date. Even though we weren't sitting beside each other, it felt incredibly special.",
+                    "And then, on 15th May, at exactly 8:56 PM, she said those three words back to me — \"I love you.\" I don't think I can ever explain how happy that moment made me. It was one of those moments I wished I could pause and live in forever."
+                ]
+            },
+            {
+                title: "Chapter 4: Indiranagar & Weekend Traditions",
+                text: [
+                    "And then began our favourite little tradition — weekends together! Touchwood, there hasn't been a single weekend when we haven't met, except when we are both in our hometowns. That's how much we have grown used to having each other around.",
+                    "There were even days when I supposedly left for office but somehow never made it inside. Instead, I would find my way to meet her. My office colleagues started teasing me, saying, \"Debanjan's favourite place is Indiranagar!\" And honestly, they weren't wrong. Somewhere along the way, Indiranagar stopped being just a place on the map and became my favourite place because she was there."
+                ]
+            },
+            {
+                title: "Chapter 5: Our Families & Forever",
+                text: [
+                    "On 29th June, we visited her home with my parents. I was so caught up in the moment that I forgot to click even one photograph. Maybe I was too busy living the moment! On 2nd July, her parents visited our hometown, and everything turned into a beautiful YES.",
+                    "Looking back, I realise that I didn't just find someone through Jeevansathi. I found someone whose absence I feel, whose presence makes an ordinary day special, and with whom even a weekend feels incomplete if we don't meet.",
+                    "Gigs, if I could go back to 20th April, knowing everything I know today, I would still send that same message. Not because I knew what was waiting for me, but because I know now that it was the beginning of the most beautiful decision of my life.",
+                    "And if I had to choose all over again, I'd still choose you. Every single time. ❤️"
+                ]
+            }
         ];
 
-        let journalPages = JSON.parse(localStorage.getItem('debgigs_journal')) || defaultPages;
-        let currentPageIndex = 0;
-
+        let currentStoryIndex = 0;
         const journalTitle = document.getElementById('journalTitle');
-        const journalText = document.getElementById('journalText');
+        const journalTextContainer = document.getElementById('journalTextContainer');
         const journalPageIndicator = document.getElementById('journalPageIndicator');
         const prevPageBtn = document.getElementById('prevPageBtn');
         const nextPageBtn = document.getElementById('nextPageBtn');
         const pageDots = document.getElementById('pageDots').children;
 
-        function renderJournalPage() {
-            const page = journalPages[currentPageIndex];
+        function renderStoryPage() {
+            const page = storyPages[currentStoryIndex];
             journalTitle.innerText = page.title;
-            journalText.innerText = `"${page.text}"`;
-            journalPageIndicator.innerText = `Page ${currentPageIndex + 1} of ${journalPages.length}`;
+            journalPageIndicator.innerText = `Chapter ${currentStoryIndex + 1} of ${storyPages.length}`;
 
-            prevPageBtn.disabled = currentPageIndex === 0;
-            nextPageBtn.disabled = currentPageIndex === journalPages.length - 1;
+            journalTextContainer.innerHTML = '';
+            page.text.forEach(paragraph => {
+                const p = document.createElement('p');
+                p.className = "italic leading-relaxed text-gray-700";
+                p.innerText = paragraph;
+                journalTextContainer.appendChild(p);
+            });
+
+            prevPageBtn.disabled = currentStoryIndex === 0;
+            nextPageBtn.disabled = currentStoryIndex === storyPages.length - 1;
 
             Array.from(pageDots).forEach((dot, idx) => {
-                dot.className = (idx === currentPageIndex) ? "w-2.5 h-2.5 rounded-full bg-roseGold transition-all scale-125" : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
+                dot.className = (idx === currentStoryIndex) ? "w-2.5 h-2.5 rounded-full bg-roseGold transition-all scale-125" : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
             });
         }
 
-        prevPageBtn.addEventListener('click', () => { if (currentPageIndex > 0) { currentPageIndex--; renderJournalPage(); } });
-        nextPageBtn.addEventListener('click', () => { if (currentPageIndex < journalPages.length - 1) { currentPageIndex++; renderJournalPage(); } });
+        prevPageBtn.addEventListener('click', () => { if (currentStoryIndex > 0) { currentStoryIndex--; renderStoryPage(); } });
+        nextPageBtn.addEventListener('click', () => { if (currentStoryIndex < storyPages.length - 1) { currentStoryIndex++; renderStoryPage(); } });
 
-        // Modal Editing System
-        const journalModal = document.getElementById('journalModal');
-        const editJournalBtn = document.getElementById('editJournalBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const cancelModalBtn = document.getElementById('cancelModalBtn');
-        const saveModalBtn = document.getElementById('saveModalBtn');
-
-        editJournalBtn.addEventListener('click', () => {
-            document.getElementById('modalPageNum').innerText = currentPageIndex + 1;
-            document.getElementById('modalChapterTitle').value = journalPages[currentPageIndex].title;
-            document.getElementById('modalChapterText').value = journalPages[currentPageIndex].text;
-            journalModal.classList.remove('hidden');
-        });
-
-        function hideModal() { journalModal.classList.add('hidden'); }
-        closeModalBtn.addEventListener('click', hideModal);
-        cancelModalBtn.addEventListener('click', hideModal);
-
-        saveModalBtn.addEventListener('click', () => {
-            journalPages[currentPageIndex].title = document.getElementById('modalChapterTitle').value;
-            journalPages[currentPageIndex].text = document.getElementById('modalChapterText').value;
-            localStorage.setItem('debgigs_journal', JSON.stringify(journalPages));
-            renderJournalPage();
-            hideModal();
-        });
-
-        renderJournalPage();
+        renderStoryPage();
 
         // 3. VIDEO UPLOAD HANDLERS
         function handleVideoUpload(inputId, videoId) {
@@ -557,7 +508,7 @@
         handleVideoUpload('videoFileInput1', 'videoPlayer1');
         handleVideoUpload('videoFileInput2', 'videoPlayer2');
 
-        // 4. FULL 39 PRE-UPLOADED PHOTOS SLIDESHOW LOGIC
+        // 4. ALL 39 PRE-UPLOADED PHOTOS SLIDESHOW
         const preUploadedPhotos = [
             { src: "PHOTO-2026-10-05-09-42-03.jpg", title: "Beautiful Memory", subtitle: "#DebGigs Moments" },
             { src: "PHOTO-2026-10-04-09-50-00.jpg", title: "Together Always", subtitle: "#DebGigs Moments" },
@@ -613,23 +564,33 @@
         const slidePlayIcon = document.getElementById('slidePlayIcon');
         const slidePlayStatus = document.getElementById('slidePlayStatus');
 
+        function preloadImage(url) {
+            if (url) {
+                const img = new Image();
+                img.src = url;
+            }
+        }
+
         function renderSlide(index) {
             if (galleryPhotos.length === 0) return;
             currentSlideIndex = (index + galleryPhotos.length) % galleryPhotos.length;
             const current = galleryPhotos[currentSlideIndex];
 
-            // Smooth image transition
-            slideshowImg.style.opacity = '0.3';
-            setTimeout(() => {
-                slideshowImg.src = current.src;
-                slideshowTitle.innerText = current.title;
-                slideshowSubtitle.innerText = current.subtitle;
-                slideshowImg.style.opacity = '1';
-            }, 200);
-
+            slideshowTitle.innerText = current.title;
+            slideshowSubtitle.innerText = current.subtitle;
             slideCounter.innerText = `Memory ${currentSlideIndex + 1} of ${galleryPhotos.length}`;
 
-            // Dynamic dot rendering centered on current index
+            slideshowImg.style.opacity = '0.3';
+            slideshowImg.src = current.src;
+            slideshowImg.onload = () => {
+                slideshowImg.style.opacity = '1';
+            };
+
+            const nextIdx = (currentSlideIndex + 1) % galleryPhotos.length;
+            if (galleryPhotos[nextIdx]) {
+                preloadImage(galleryPhotos[nextIdx].src);
+            }
+
             slideDots.innerHTML = '';
             const maxDots = 7;
             let startDot = Math.max(0, currentSlideIndex - Math.floor(maxDots / 2));
@@ -689,7 +650,6 @@
             }
         });
 
-        // Dynamic photo upload support
         document.getElementById('photoUploadInput').addEventListener('change', function(e) {
             const files = e.target.files;
             if (files && files.length > 0) {
@@ -709,11 +669,10 @@
             }
         });
 
-        // Initialize Slideshow
         renderSlide(0);
         startSlideTimer();
 
-        // 5. MUSIC PLAYER LOGIC
+        // 5. MUSIC PLAYER
         const bgSong = document.getElementById('bgSong');
         const playAudioBtn = document.getElementById('playAudioBtn');
         const playIcon = document.getElementById('playIcon');
@@ -731,23 +690,11 @@
                     playIcon.className = "fa-solid fa-pause text-sm";
                     visualizer.classList.remove('paused');
                     isPlaying = true;
-                }).catch(err => { console.log("Click interaction needed:", err); });
+                }).catch(err => { console.log("Click required:", err); });
             }
         });
 
-        document.getElementById('songFileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const audioURL = URL.createObjectURL(file);
-                bgSong.src = audioURL;
-                bgSong.play();
-                playIcon.className = "fa-solid fa-pause text-sm";
-                visualizer.classList.remove('paused');
-                isPlaying = true;
-            }
-        });
-
-        // 6. FLOATING SPARKLE & HEART PARTICLES
+        // 6. SPARKLE ANIMATION
         const canvas = document.getElementById('sparkleCanvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
