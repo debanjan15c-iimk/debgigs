@@ -51,7 +51,6 @@
         }
 
         /* 1. SOFT PHOTO BACKGROUND LAYER */
-/* 1. SOFT PHOTO BACKGROUND LAYER */
         body::before {
             content: "";
             position: fixed;
@@ -209,7 +208,7 @@
                     <i class="fa-solid fa-book-heart"></i>
                 </a>
                 <a href="#gallery" class="px-8 py-3.5 rounded-full bg-white/90 text-gray-700 font-medium hover:bg-white transition-all border border-gray-200 flex items-center gap-2 text-sm shadow-sm">
-                    <span>View Captured Moments</span>
+                    <span>View Beautiful Memories</span>
                     <i class="fa-regular fa-image"></i>
                 </a>
             </div>
@@ -328,14 +327,14 @@
             </div>
         </section>
 
-        <!-- Photo Gallery Section -->
-        <section id="gallery" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200/60">
-            <div class="text-center space-y-3 mb-12">
+        <!-- Photo Slideshow Section -->
+        <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-gray-200/60">
+            <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-3xl text-roseGold">Precious Memories</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Beautiful Memories</h2>
                 <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">watch our favorite captured moments</p>
                 
-                <!-- Upload New Photos Button -->
+                <!-- Upload Photos Button -->
                 <div class="pt-2">
                     <input type="file" id="photoUploadInput" accept="image/*" multiple class="hidden">
                     <button onclick="document.getElementById('photoUploadInput').click()" class="px-6 py-2.5 rounded-full bg-roseGold text-white text-xs font-medium hover:bg-roseGold/90 shadow-md transition-all inline-flex items-center gap-2">
@@ -344,9 +343,42 @@
                 </div>
             </div>
 
-            <!-- Photos Grid (Dynamic + Default) -->
-            <div id="photoGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Default Photos will render here via JavaScript -->
+            <!-- Slideshow Container -->
+            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl relative border border-white max-w-4xl mx-auto">
+                <div class="relative h-[380px] md:h-[500px] w-full rounded-2xl overflow-hidden bg-black/5">
+                    
+                    <!-- Slide Image -->
+                    <img id="slideshowImg" src="" alt="Debanjan & Gargi Memory" class="w-full h-full object-cover transition-all duration-700 ease-in-out">
+                    
+                    <!-- Text Overlay -->
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 text-white text-center">
+                        <h3 id="slideshowTitle" class="font-serif text-2xl md:text-3xl font-bold tracking-wide"></h3>
+                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-gray-200 font-light mt-1"></p>
+                    </div>
+
+                    <!-- Previous Button -->
+                    <button id="prevSlideBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/80 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm">
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button id="nextSlideBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/80 text-gray-800 flex items-center justify-center hover:bg-white transition-all shadow-md backdrop-blur-sm">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+
+                    <!-- Auto Play / Pause Toggle Button -->
+                    <button id="toggleSlidePlayBtn" class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/40 text-white text-xs font-medium backdrop-blur-sm hover:bg-black/60 transition-all flex items-center gap-1.5">
+                        <i id="slidePlayIcon" class="fa-solid fa-pause text-[10px]"></i>
+                        <span id="slidePlayStatus">Pause</span>
+                    </button>
+                </div>
+
+                <!-- Slide Dots & Indicator -->
+                <div class="flex justify-between items-center pt-4 px-2">
+                    <span id="slideCounter" class="text-xs text-gray-500 font-medium">Memory 1 of 1</span>
+                    <div id="slideDots" class="flex space-x-1.5 items-center"></div>
+                    <span class="text-xs text-roseGold font-semibold">#DebGigs</span>
+                </div>
             </div>
         </section>
 
@@ -409,11 +441,10 @@
         </div>
     </div>
 
-   
     <!-- Permanent Background Audio Tag -->
-<audio id="bgSong" loop preload="auto">
-    <source src="Jim_Brickman_feat._Jordan_Hill_Billy_Porter_-_Destiny_(mp3.pm).mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgSong" loop preload="auto">
+        <source src="Jim_Brickman_feat._Jordan_Hill_Billy_Porter_-_Destiny_(mp3.pm).mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         // 1. COUNTDOWN TIMER (Target: Sunday, November 15, 2026, 1:30 PM IST)
@@ -523,7 +554,126 @@
         handleVideoUpload('videoFileInput1', 'videoPlayer1');
         handleVideoUpload('videoFileInput2', 'videoPlayer2');
 
-        // 4. MUSIC PLAYER LOGIC
+        // 4. PRE-UPLOADED PHOTOS SLIDESHOW LOGIC (Supports 20-25+ Photos)
+        const preUploadedPhotos = [
+            { src: "IMG_9363.jpg", title: "Seaside Romance", subtitle: "Gateway of India Promenade #DebGigs" },
+            // Add your other pre-uploaded photos here (e.g., photo1.jpg, photo2.jpg, etc.)
+        ];
+
+        let galleryPhotos = JSON.parse(localStorage.getItem('debgigs_gallery')) || preUploadedPhotos;
+        let currentSlideIndex = 0;
+        let slideInterval = null;
+        let isSlidePlaying = true;
+
+        const slideshowImg = document.getElementById('slideshowImg');
+        const slideshowTitle = document.getElementById('slideshowTitle');
+        const slideshowSubtitle = document.getElementById('slideshowSubtitle');
+        const slideCounter = document.getElementById('slideCounter');
+        const slideDots = document.getElementById('slideDots');
+        const slidePlayIcon = document.getElementById('slidePlayIcon');
+        const slidePlayStatus = document.getElementById('slidePlayStatus');
+
+        function renderSlide(index) {
+            if (galleryPhotos.length === 0) return;
+            currentSlideIndex = (index + galleryPhotos.length) % galleryPhotos.length;
+            const current = galleryPhotos[currentSlideIndex];
+
+            // Smooth image transition
+            slideshowImg.style.opacity = '0.3';
+            setTimeout(() => {
+                slideshowImg.src = current.src;
+                slideshowTitle.innerText = current.title;
+                slideshowSubtitle.innerText = current.subtitle;
+                slideshowImg.style.opacity = '1';
+            }, 200);
+
+            slideCounter.innerText = `Memory ${currentSlideIndex + 1} of ${galleryPhotos.length}`;
+
+            // Clean dot rendering optimized for 20-25+ photos
+            slideDots.innerHTML = '';
+            const maxDots = 7;
+            let startDot = Math.max(0, currentSlideIndex - Math.floor(maxDots / 2));
+            let endDot = Math.min(galleryPhotos.length, startDot + maxDots);
+            if (endDot - startDot < maxDots) {
+                startDot = Math.max(0, endDot - maxDots);
+            }
+
+            for (let idx = startDot; idx < endDot; idx++) {
+                const dot = document.createElement('button');
+                dot.className = idx === currentSlideIndex 
+                    ? "w-2.5 h-2.5 rounded-full bg-roseGold transition-all scale-125" 
+                    : "w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all opacity-70";
+                dot.addEventListener('click', () => {
+                    renderSlide(idx);
+                    resetSlideTimer();
+                });
+                slideDots.appendChild(dot);
+            }
+        }
+
+        function nextSlide() { renderSlide(currentSlideIndex + 1); }
+        function prevSlide() { renderSlide(currentSlideIndex - 1); }
+
+        function startSlideTimer() {
+            if (!slideInterval) {
+                slideInterval = setInterval(nextSlide, 4000); // Rotates every 4 seconds
+            }
+        }
+
+        function stopSlideTimer() {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
+
+        function resetSlideTimer() {
+            if (isSlidePlaying) {
+                stopSlideTimer();
+                startSlideTimer();
+            }
+        }
+
+        document.getElementById('prevSlideBtn').addEventListener('click', () => { prevSlide(); resetSlideTimer(); });
+        document.getElementById('nextSlideBtn').addEventListener('click', () => { nextSlide(); resetSlideTimer(); });
+
+        document.getElementById('toggleSlidePlayBtn').addEventListener('click', () => {
+            if (isSlidePlaying) {
+                stopSlideTimer();
+                isSlidePlaying = false;
+                slidePlayIcon.className = "fa-solid fa-play text-[10px]";
+                slidePlayStatus.innerText = "Play";
+            } else {
+                startSlideTimer();
+                isSlidePlaying = true;
+                slidePlayIcon.className = "fa-solid fa-pause text-[10px]";
+                slidePlayStatus.innerText = "Pause";
+            }
+        });
+
+        // Dynamic photo upload support
+        document.getElementById('photoUploadInput').addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                Array.from(files).forEach((file) => {
+                    const reader = new FileReader();
+                    reader.onload = function(uploadEvent) {
+                        galleryPhotos.push({
+                            src: uploadEvent.target.result,
+                            title: `Memory #${galleryPhotos.length + 1}`,
+                            subtitle: "Uploaded Moment #DebGigs"
+                        });
+                        localStorage.setItem('debgigs_gallery', JSON.stringify(galleryPhotos));
+                        renderSlide(galleryPhotos.length - 1);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Initialize Slideshow
+        renderSlide(0);
+        startSlideTimer();
+
+        // 5. MUSIC PLAYER LOGIC
         const bgSong = document.getElementById('bgSong');
         const playAudioBtn = document.getElementById('playAudioBtn');
         const playIcon = document.getElementById('playIcon');
@@ -557,7 +707,7 @@
             }
         });
 
-        // 5. FLOATING SPARKLE & HEART PARTICLES
+        // 6. FLOATING SPARKLE & HEART PARTICLES
         const canvas = document.getElementById('sparkleCanvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
