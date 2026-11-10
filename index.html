@@ -44,9 +44,10 @@
         body { background-color: #FAF7F2; color: #2B2D42; min-height: 100vh; position: relative; overflow-x: hidden; }
 
         /* 1. SOFT PHOTO BACKGROUND LAYER (Positioned higher up) */
+     /* 1. SOFT PHOTO BACKGROUND LAYER (Optimized for visibility) */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(rgba(250, 247, 242, 0.72), rgba(250, 247, 242, 0.82)), url('IMG_9363.jpg');
+            background-image: linear-gradient(rgba(250, 247, 242, 0.35), rgba(250, 247, 242, 0.45)), url('IMG_9363.jpg');
             background-size: cover; background-position: center 20%; background-repeat: no-repeat; z-index: 0; pointer-events: none;
         }
 
