@@ -6,120 +6,84 @@
     <meta name="theme-color" content="#FAF7F2">
     <meta name="description" content="The love story of Debanjan and Gargi — #DebGigs.">
     <title>Debanjan and Gargi — The Magic Moment</title>
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cream: '#FAF7F2',
-                        skySoft: '#E8F1F5',
-                        seaBlue: '#4A8DA8',
-                        roseGold: '#B76E79',
-                        goldAccent: '#C59B27',
-                        charcoal: '#2B2D42'
-                    },
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Montserrat', 'sans-serif'],
-                        cursive: ['Great Vibes', 'cursive']
-                    }
+                    colors: { cream:'#FAF7F2', skySoft:'#E8F1F5', seaBlue:'#4A8DA8', roseGold:'#B76E79', goldAccent:'#C59B27', charcoal:'#2B2D42' },
+                    fontFamily: { serif:['Cormorant Garamond','serif'], sans:['Montserrat','sans-serif'], cursive:['Great Vibes','cursive'] }
                 }
             }
         }
     </script>
-    
-   <style>
+
+<style>
         html { scroll-behavior: smooth; }
-        body { 
-            background-color: #FAF7F2; 
-            color: #2B2D42; 
-            min-height: 100vh; 
-            position: relative; 
-            overflow-x: hidden; 
+        body { background-color:#FAF7F2; color:#2B2D42; min-height:100vh; position:relative; overflow-x:hidden; }
+
+        /* 1. LIGHT PHOTO BACKGROUND (a real element, image is attached by script with fallbacks) */
+        #bgPhoto {
+            position:fixed; inset:0; width:100vw; height:100vh; z-index:0; pointer-events:none;
+            background-color:#FAF7F2;
+            background-image: radial-gradient(circle at 20% 15%, rgba(232,241,245,.9), transparent 55%), radial-gradient(circle at 85% 85%, rgba(183,110,121,.12), transparent 50%);
+            background-size:cover; background-position:center 15%; background-repeat:no-repeat;
+        }
+        #bgPhoto::after { /* soft cream veil keeps the photo light */
+            content:""; position:absolute; inset:0;
+            background:linear-gradient(rgba(250,247,242,.38), rgba(250,247,242,.50));
         }
 
-        /* 1. SOFT PHOTO BACKGROUND LAYER */
-        body::before {
-            content: ""; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh;
-            background-image: linear-gradient(rgba(250, 247, 242, 0.25), rgba(250, 247, 242, 0.35)), url('IMG_9363.jpg');
-            background-size: cover; 
-            background-position: center 15%; 
-            background-repeat: no-repeat; 
-            z-index: 0; 
-            pointer-events: none;
-        }
-
-        /* 2. REPEATING #DEBGIGS WATERMARK PATTERN LAYER */
+        /* 2. REPEATING #DEBGIGS WATERMARK */
         body::after {
-            content: ""; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='220' viewBox='0 0 340 220'%3E%3Ctext x='40' y='120' fill='rgba(183, 110, 121, 0.15)' font-family='Great Vibes, cursive' font-size='34' font-weight='bold' transform='rotate(-22 170 110)'%3E%23DebGigs%3C/text%3E%3C/svg%3E");
-            background-repeat: repeat; 
-            z-index: 0; 
-            pointer-events: none;
+            content:""; position:fixed; top:0; left:0; width:100vw; height:100vh;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='220' viewBox='0 0 340 220'%3E%3Ctext x='40' y='120' fill='rgba(183, 110, 121, 0.15)' font-family='Great Vibes, cursive' font-size='34' font-weight='bold' transform='rotate(-22 170 110)'%3E%23DebGigs%3C/text%3E%3C/svg%3E");
+            background-repeat:repeat; z-index:0; pointer-events:none;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(183, 110, 121, 0.3);
-            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.15);
-        }
+        .glass-card { background:rgba(255,255,255,.75); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1.5px solid rgba(183,110,121,.3); box-shadow:0 20px 40px rgba(183,110,121,.15); }
+        .decorative-border { border:double 4px rgba(183,110,121,.4); }
+        ::-webkit-scrollbar { width:8px; } ::-webkit-scrollbar-track { background:#FAF7F2; } ::-webkit-scrollbar-thumb { background:#B76E79; border-radius:4px; }
 
-        .decorative-border {
-            border: double 4px rgba(183, 110, 121, 0.4);
-        }
+        .bar { width:3px; height:100%; background-color:#B76E79; border-radius:3px; animation:bounce 1.2s ease-in-out infinite alternate; }
+        .bar:nth-child(1){animation-delay:.1s;height:35%} .bar:nth-child(2){animation-delay:.3s;height:75%} .bar:nth-child(3){animation-delay:.2s;height:100%} .bar:nth-child(4){animation-delay:.4s;height:50%}
+        @keyframes bounce { 0%{transform:scaleY(.3)} 100%{transform:scaleY(1)} }
+        .paused .bar { animation-play-state:paused !important; transform:scaleY(.2) !important; }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FAF7F2; }
-        ::-webkit-scrollbar-thumb { background: #B76E79; border-radius: 4px; }
-
-        .bar { width: 3px; height: 100%; background-color: #B76E79; border-radius: 3px; animation: bounce 1.2s ease-in-out infinite alternate; }
-        .bar:nth-child(1) { animation-delay: 0.1s; height: 35%; }
-        .bar:nth-child(2) { animation-delay: 0.3s; height: 75%; }
-        .bar:nth-child(3) { animation-delay: 0.2s; height: 100%; }
-        .bar:nth-child(4) { animation-delay: 0.4s; height: 50%; }
-
-        @keyframes bounce { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
-        .paused .bar { animation-play-state: paused !important; transform: scaleY(0.2) !important; }
-
-        * { -webkit-tap-highlight-color: transparent; }
-        img { max-width: 100%; }
+        * { -webkit-tap-highlight-color:transparent; }
+        img { max-width:100%; }
         .hero-kicker { letter-spacing:.22em; box-shadow:0 8px 24px rgba(183,110,121,.12); }
         .hero-love-note { max-width:720px; margin:0 auto; color:#5f5960; font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; line-height:1.5; }
         .photo-frame { border:1px solid rgba(183,110,121,.32); box-shadow:0 18px 55px rgba(95,72,76,.16), inset 0 0 0 7px rgba(255,255,255,.45); }
         .photo-caption { background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,250,247,.96) 32%); color:#443b42; text-shadow:none; }
         .photo-caption h3 { color:#9f5967; }
         .photo-stage { min-height:420px; }
-        .photo-stage img { filter:drop-shadow(0 10px 22px rgba(65,48,52,.18)); }
+        .photo-stage img { filter:drop-shadow(0 10px 22px rgba(65,48,52,.18)); transition:opacity .5s ease; }
+        .photo-stage img.is-loading { opacity:.35; }
+
+        /* Romantic extras */
+        .shimmer-name { background:linear-gradient(100deg,#7a3f4b 0%,#B76E79 30%,#C59B27 50%,#B76E79 70%,#7a3f4b 100%); background-size:220% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 7s linear infinite; }
+        @keyframes shimmer { to { background-position:220% center; } }
+        .ornament { display:flex; align-items:center; justify-content:center; gap:12px; color:#C59B27; }
+        .ornament::before, .ornament::after { content:""; height:1px; width:70px; background:linear-gradient(90deg,transparent,#C59B27,transparent); }
+        .whisper { transition:opacity .9s ease; }
+        .whisper.fade { opacity:0; }
+        .vow-line { border-left:3px solid #B76E79; background:linear-gradient(90deg,rgba(183,110,121,.10),transparent); }
+        .petal { position:fixed; top:-30px; z-index:11; pointer-events:none; color:rgba(183,110,121,.45); animation:petalFall linear infinite; }
+        @keyframes petalFall { 0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:0} 10%{opacity:.85} 100%{transform:translate3d(60px,108vh,0) rotate(340deg);opacity:0} }
         .floating-heart { position:fixed; z-index:11; pointer-events:none; color:rgba(183,110,121,.38); animation:heartDrift 13s linear infinite; }
         .floating-heart.one { left:4%; bottom:-30px; font-size:18px; }
         .floating-heart.two { right:6%; bottom:-30px; font-size:13px; animation-delay:5s; }
         @keyframes heartDrift { 0%{transform:translateY(0) rotate(-12deg);opacity:0} 15%{opacity:.8} 85%{opacity:.55} 100%{transform:translateY(-105vh) rotate(18deg);opacity:0} }
 
-        @media (max-width: 640px) {
-            body::before { background-position:center 10%; }
+        @media (max-width:640px) {
+            #bgPhoto { background-position:center 10%; }
             header { flex-direction:column; gap:14px; padding-top:18px !important; padding-bottom:16px !important; }
             header > div:first-child { justify-content:center; flex-wrap:wrap; }
             header nav { width:100%; justify-content:center; flex-wrap:wrap; gap:10px 16px !important; font-size:10px !important; }
@@ -130,49 +94,48 @@
             #pageDots { gap:5px; }
             .music-player-mobile { right:10px !important; bottom:10px !important; transform:scale(.88); transform-origin:bottom right; }
             #journal { padding-top:42px; padding-bottom:42px; }
-            #videos, #gallery { padding-top:44px; padding-bottom:44px; }
+            #videos, #gallery, #vows { padding-top:44px; padding-bottom:44px; }
+            .ornament::before, .ornament::after { width:40px; }
         }
-
-        @media (prefers-reduced-motion: reduce) {
+        @media (prefers-reduced-motion:reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
         }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-roseGold selection:text-white">
 
+    <div id="bgPhoto" aria-hidden="true"></div>
     <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
     <span class="floating-heart one" aria-hidden="true">♥</span><span class="floating-heart two" aria-hidden="true">♡</span>
+    <div id="petals" aria-hidden="true"></div>
 
     <div class="relative z-20">
 
-        <!-- Navigation Header -->
         <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto border-b border-roseGold/25 mb-6">
             <div class="flex items-center space-x-2">
                 <span class="font-cursive text-3xl md:text-4xl text-roseGold tracking-wide">Debanjan & Gargi</span>
                 <span class="text-roseGold/70 font-light text-xs tracking-widest uppercase">| #DebGigs</span>
             </div>
-            
             <nav class="flex items-center space-x-4 md:space-x-8 text-xs md:text-sm font-medium text-gray-700 uppercase tracking-wider">
                 <a href="#countdown" class="hover:text-roseGold transition-colors font-semibold">Countdown</a>
                 <a href="#journal" class="hover:text-roseGold transition-colors font-semibold">Our Story</a>
+                <a href="#vows" class="hover:text-roseGold transition-colors font-semibold">My Promises</a>
                 <a href="#videos" class="hover:text-roseGold transition-colors font-semibold">Videos</a>
                 <a href="#gallery" class="hover:text-roseGold transition-colors font-semibold">Gallery</a>
             </nav>
         </header>
 
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="max-w-5xl mx-auto px-6 py-8 md:py-12 text-center space-y-6">
             <div class="hero-kicker inline-block px-6 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-bold shadow-md">
                 ✨ ✦ Forever & Always: Debanjan & Gargi ✦ ✨
             </div>
-            
-            <h1 class="text-6xl md:text-8xl font-cursive font-normal text-gray-900 leading-tight drop-shadow-sm">
-                Debanjan & Gargi
-            </h1>
-            
-            <p class="text-roseGold font-serif italic text-2xl md:text-4xl tracking-wide">
-                #DebGigs — The Vow to a Lifetime Together
-            </p>
+
+            <h1 class="shimmer-name text-6xl md:text-8xl font-cursive font-normal leading-tight py-2">Debanjan & Gargi</h1>
+
+            <p class="text-roseGold font-serif italic text-2xl md:text-4xl tracking-wide">#DebGigs — The Vow to a Lifetime Together</p>
+
+            <p class="hero-love-note">Out of all the stories the universe could have written, I'm so grateful it wrote me into yours.</p>
 
             <div class="pt-2">
                 <span class="text-roseGold text-sm">✦ ✧ ✦</span>
@@ -180,7 +143,6 @@
                 <span class="text-roseGold text-sm">✦ ✧ ✦</span>
             </div>
 
-            <!-- Countdown Timer -->
             <div id="countdown" class="pt-6 max-w-xl mx-auto">
                 <div class="grid grid-cols-4 gap-3 md:gap-6 text-center">
                     <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
@@ -200,43 +162,31 @@
                         <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Seconds</span>
                     </div>
                 </div>
+                <p id="whisper" class="whisper font-serif italic text-lg md:text-xl text-gray-700 mt-6 min-h-[2.5rem]">Every second brings me closer to calling you my wife.</p>
             </div>
         </section>
 
-        <!-- OUR STORY SECTION -->
+        <!-- OUR STORY -->
         <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
             <div class="text-center space-y-3 mb-10">
-                <span class="font-cursive text-5xl text-roseGold soft-glow">Our Love Story ❤️</span>
+                <span class="font-cursive text-5xl text-roseGold">Our Love Story ❤️</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">From a Little Hello to Forever</h2>
-                <div class="flex items-center justify-center space-x-3 text-roseGold pt-2">
-                    <span class="h-px w-20 bg-roseGold/50"></span>
-                    <i class="fa-solid fa-heart text-xs"></i>
-                    <span class="h-px w-20 bg-roseGold/50"></span>
-                </div>
+                <div class="ornament pt-2"><i class="fa-solid fa-heart text-xs"></i></div>
             </div>
 
             <div class="glass-card chapter-frame rounded-3xl p-6 md:p-12 shadow-2xl relative decorative-border space-y-6">
-                
                 <div class="border-b-2 border-roseGold/30 pb-4 flex flex-wrap justify-between items-center gap-2">
-                    <div>
-                        <h3 id="journalTitle" class="text-2xl md:text-3xl font-serif font-bold text-roseGold">Chapter 1</h3>
-                    </div>
+                    <div><h3 id="journalTitle" class="text-2xl md:text-3xl font-serif font-bold text-roseGold">Chapter 1</h3></div>
                     <span id="journalPageIndicator" class="text-xs uppercase tracking-widest bg-roseGold/15 px-4 py-1.5 rounded-full text-roseGold font-bold border border-roseGold/40 shadow-sm">Chapter 1 of 5</span>
                 </div>
-
                 <div class="py-2 min-h-[260px]">
-                    <div id="journalTextContainer" class="text-gray-900 font-serif text-lg md:text-xl leading-relaxed space-y-5 italic">
-                        <!-- Content injected via JavaScript -->
-                    </div>
+                    <div id="journalTextContainer" class="text-gray-900 font-serif text-lg md:text-xl leading-relaxed space-y-5 italic"></div>
                 </div>
-
                 <div class="flex justify-between items-center pt-6 border-t-2 border-roseGold/30">
                     <button id="prevPageBtn" onclick="changeChapter(-1)" class="px-6 py-3 rounded-full border-2 border-roseGold/50 text-roseGold hover:bg-roseGold hover:text-white disabled:opacity-30 transition-all text-sm font-bold flex items-center gap-2 shadow-sm">
                         <i class="fa-solid fa-chevron-left text-xs"></i> Previous Chapter
                     </button>
-
                     <div id="pageDots" class="flex space-x-2.5"></div>
-
                     <button id="nextPageBtn" onclick="changeChapter(1)" class="px-6 py-3 rounded-full bg-roseGold text-white hover:bg-roseGold/90 disabled:opacity-30 transition-all text-sm font-bold flex items-center gap-2 shadow-md">
                         Next Chapter <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
@@ -244,20 +194,31 @@
             </div>
         </section>
 
-        <!-- VIDEOS SECTION (GitHub Connected & Cleaned up) -->
+        <!-- MY PROMISES (new) -->
+        <section id="vows" class="max-w-3xl mx-auto px-6 py-16 border-t border-roseGold/30">
+            <div class="text-center space-y-3 mb-10">
+                <span class="font-cursive text-5xl text-roseGold">My Promises to You</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Written in my heart, long before today</h2>
+                <div class="ornament pt-2"><i class="fa-solid fa-ring text-xs"></i></div>
+            </div>
+            <div class="glass-card rounded-3xl p-6 md:p-10 space-y-4 font-serif text-lg md:text-xl italic text-gray-800 leading-relaxed">
+                <p class="vow-line pl-5 py-3 rounded-r-xl">I promise to be your calm on the loudest days, and your laughter on the quiet ones.</p>
+                <p class="vow-line pl-5 py-3 rounded-r-xl">I promise to keep finding my way to you, whether it's Indiranagar or any corner of this world.</p>
+                <p class="vow-line pl-5 py-3 rounded-r-xl">I promise to choose you in the easy moments, and love you even more in the hard ones.</p>
+                <p class="vow-line pl-5 py-3 rounded-r-xl">I promise to hold your hand through every new city, every new chapter, every new dream.</p>
+                <p class="vow-line pl-5 py-3 rounded-r-xl">I promise that when we are old and grey, I will still look at you the way I did on 3rd May.</p>
+                <p class="text-center not-italic font-cursive text-4xl text-roseGold pt-4">Forever yours, Gigs ♡</p>
+            </div>
+        </section>
+
+        <!-- VIDEOS -->
         <section id="videos" class="max-w-6xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-12">
                 <span class="font-cursive text-4xl text-roseGold">Special Highlights</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Video Moments</h2>
-                <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
-                    <span class="h-px w-16 bg-roseGold/50"></span>
-                    <i class="fa-solid fa-film text-xs"></i>
-                    <span class="h-px w-16 bg-roseGold/50"></span>
-                </div>
+                <div class="ornament pt-1"><i class="fa-solid fa-film text-xs"></i></div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Video 1 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
                         <video controls preload="metadata" class="w-full h-full object-cover">
@@ -267,10 +228,9 @@
                     </div>
                     <div class="pt-4 px-2 space-y-2">
                         <h3 class="font-serif font-bold text-xl text-gray-900">Where Time Stands Still With You ✨</h3>
+                        <p class="font-serif italic text-gray-600">Because with you, a moment feels like forever.</p>
                     </div>
                 </div>
-
-                <!-- Video 2 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
                         <video controls preload="metadata" class="w-full h-full object-cover">
@@ -280,43 +240,31 @@
                     </div>
                     <div class="pt-4 px-2 space-y-2">
                         <h3 class="font-serif font-bold text-xl text-gray-900">Every Frame, a Favorite Page 📖</h3>
+                        <p class="font-serif italic text-gray-600">Every page of my life is lovelier with you in it.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PHOTO SLIDESHOW SECTION -->
+        <!-- GALLERY -->
         <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-5xl text-roseGold">A Little Forever, Captured</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Every Picture Holds a Piece of Us</h2>
                 <p class="font-serif italic text-lg md:text-xl text-gray-600">“I could look at you a thousand times and still find a new reason to fall in love.”</p>
-                <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
-                    <span class="h-px w-16 bg-roseGold/50"></span>
-                    <i class="fa-solid fa-camera text-xs"></i>
-                    <span class="h-px w-16 bg-roseGold/50"></span>
-                </div>
+                <div class="ornament pt-1"><i class="fa-solid fa-camera text-xs"></i></div>
             </div>
 
             <div class="glass-card photo-frame rounded-3xl p-4 md:p-6 shadow-2xl relative max-w-4xl mx-auto">
                 <div class="photo-stage relative w-full rounded-2xl overflow-hidden flex items-center justify-center p-2 md:p-4 min-h-[380px] md:min-h-[520px] shadow-inner select-none">
-                    
                     <img id="slideshowImg" src="" alt="Debanjan & Gargi memory" decoding="async" fetchpriority="high" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-lg">
-                    
                     <div class="photo-caption absolute bottom-0 inset-x-0 pt-14 pb-5 px-6 text-center pointer-events-none">
                         <h3 id="slideshowTitle" class="font-serif text-xl md:text-2xl font-bold tracking-wide">A thousand little reasons to smile</h3>
                         <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold font-semibold mt-0.5">A memory with you is always my favourite</p>
                     </div>
-
-                    <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold active:scale-95 touch-manipulation">
-                        <i class="fa-solid fa-chevron-left text-sm"></i>
-                    </button>
-
-                    <button onclick="nextSlide()" aria-label="Next Slide" class="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold active:scale-95 touch-manipulation">
-                        <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </button>
+                    <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold active:scale-95 touch-manipulation"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+                    <button onclick="nextSlide()" aria-label="Next Slide" class="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold active:scale-95 touch-manipulation"><i class="fa-solid fa-chevron-right text-sm"></i></button>
                 </div>
-
                 <div class="flex justify-between items-center pt-4 px-2">
                     <span id="slideCounter" class="text-xs text-roseGold font-extrabold uppercase tracking-widest">Memory 1 of 39</span>
                     <span class="text-xs text-gray-700 font-bold tracking-widest">#DEBGIGS FOREVER ❤️</span>
@@ -328,11 +276,11 @@
             <div class="glass-card rounded-3xl px-6 py-8 md:px-12 md:py-10">
                 <div class="font-cursive text-4xl md:text-5xl text-roseGold mb-3">To my favourite person</div>
                 <p class="font-serif italic text-xl md:text-2xl leading-relaxed text-gray-700">“If life gives me a thousand lifetimes, I hope every one of them begins with finding you.”</p>
+                <p class="font-serif italic text-lg md:text-xl leading-relaxed text-gray-600 mt-4">You are my sunrise, my sanctuary, and my forever. Thank you for saying yes to me, again and again.</p>
                 <p class="text-xs uppercase tracking-[.25em] text-roseGold font-semibold mt-5">Always yours · Debanjan</p>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-600 border-t border-roseGold/30">
             <p class="font-cursive text-5xl text-roseGold mb-2">Debanjan & Gargi</p>
             <p class="text-xs uppercase tracking-widest text-gray-600 mb-3 font-bold">#DebGigs • The Vow to a Lifetime Together</p>
@@ -341,10 +289,10 @@
         </footer>
     </div>
 
-    <!-- Floating Music Player (Upload Button Removed) -->
+    <!-- Music Player -->
     <div class="music-player-mobile fixed bottom-6 right-6 z-50">
         <div class="glass-card p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border-2 border-roseGold/50 pr-5">
-            <button id="playAudioBtn" onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
+            <button id="playAudioBtn" onclick="toggleAudio()" aria-label="Play or pause music" class="w-12 h-12 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
                 <i id="playIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
             </button>
             <div class="text-left">
@@ -352,10 +300,7 @@
                 <p class="text-[10px] text-roseGold font-bold line-clamp-1">Jim Brickman ft. Jordan Hill</p>
             </div>
             <div id="visualizer" class="flex items-end space-x-1 h-4 ml-2 paused">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
             </div>
         </div>
     </div>
@@ -365,64 +310,79 @@
     </audio>
 
     <script>
-        // 1. COUNTDOWN TIMER
+        // 0. BACKGROUND PHOTO (tries several names/locations until one loads)
+        (function () {
+            const bg = document.getElementById('bgPhoto');
+            const candidates = [
+                './IMG_9363.jpg', './IMG_9363.JPG', './IMG_9363.jpeg', './IMG_9363.png',
+                'https://raw.githubusercontent.com/debanjan15c-iimk/debgigs/main/IMG_9363.jpg'
+            ];
+            (function tryNext(i) {
+                if (i >= candidates.length) return;
+                const im = new Image();
+                im.onload = () => { bg.style.backgroundImage = `url("${candidates[i]}")`; };
+                im.onerror = () => tryNext(i + 1);
+                im.src = candidates[i];
+            })(0);
+        })();
+
+        // 1. COUNTDOWN
         const targetDate = new Date("November 15, 2026 13:30:00").getTime();
         function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
+            const diff = targetDate - new Date().getTime();
             if (diff > 0) {
-                document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+                document.getElementById("days").innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                document.getElementById("hours").innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
             }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. OUR STORY DATA
+        // 1b. ROTATING LOVE WHISPERS
+        const whispers = [
+            "Every second brings me closer to calling you my wife.",
+            "My heart found its home the day I found you.",
+            "Soon, 'your place' and 'my place' will simply be 'ours'.",
+            "I'd wait a thousand more days, because you are worth every one of them.",
+            "With you, forever doesn't feel long enough."
+        ];
+        let wi = 0;
+        const whisperEl = document.getElementById('whisper');
+        setInterval(() => {
+            whisperEl.classList.add('fade');
+            setTimeout(() => { wi = (wi + 1) % whispers.length; whisperEl.textContent = whispers[wi]; whisperEl.classList.remove('fade'); }, 900);
+        }, 6000);
+
+        // 2. OUR STORY
         const chapters = [
-            {
-                title: "Chapter 1 – The Message That Changed Everything",
-                text: [
-                    "Gigs, sometimes I wonder how two people, who were complete strangers one day, can slowly become such an inseparable part of each other's lives. How someone who was once just a name and a phone number can become the first person you want to talk to in the morning, the last person you want to speak to at night, and the person you miss even when you've just said goodbye.",
-                    "If I had known that a simple message on Jeevansathi would bring me you, I would have looked forward to 20th April even more than I do now.",
-                    "It all started with a simple message from me: \"Hi, Debanjan here. Got your number from our parents.\" Nothing fancy, nothing extraordinary. Just two people who were about to get to know each other. But today, when I look back, I realise that was probably one of the most beautiful messages I've ever sent.",
-                    "We met for the first time on 3rd May at Oyester. I still remember how naturally our conversations flowed. There was no awkwardness, no need to pretend to be someone else. It just felt right."
-                ]
-            },
-            {
-                title: "Chapter 2 – Somewhere Between Hello and I Love You",
-                text: [
-                    "On 6th May, I gave her a name that would soon become so close to my heart — Gigs.",
-                    "On 10th May, during our second date at Church Street, I gathered the courage to tell her, \"I like you. Can we tell our parents about us?\" And she said YES. That little YES meant so much more than she probably realised.",
-                    "Then came 14th May. When the clock struck 12:22, I told her, \"I love you.\" We celebrated our little milestone with a virtual milkshake date. Even though we weren't sitting beside each other, it felt incredibly special.",
-                    "And then, on 15th May, at exactly 8:56 PM, she said those three words back to me — \"I love you.\" I don't think I can ever explain how happy that moment made me. It was one of those moments I wished I could pause and live in forever."
-                ]
-            },
-            {
-                title: "Chapter 3 – Indiranagar Became My Favourite Place",
-                text: [
-                    "And then began our favourite little tradition — weekends together! Touchwood, there hasn't been a single weekend when we haven't met, except when we are both in our hometowns. That's how much we have grown used to having each other around.",
-                    "There were even days when I supposedly left for office but somehow never made it inside. Instead, I would find my way to meet her. My office colleagues started teasing me, saying, \"Debanjan's favourite place is Indiranagar!\" And honestly, they weren't wrong. Somewhere along the way, Indiranagar stopped being just a place on the map and became my favourite place because she was there."
-                ]
-            },
-            {
-                title: "Chapter 4 – Two Families, One Beautiful YES",
-                text: [
-                    "On 29th June, we visited her home with my parents. I was so caught up in the moment that I forgot to click even one photograph. Maybe I was too busy living the moment!",
-                    "On 2nd July, her parents visited our hometown, and everything turned into a beautiful YES.",
-                    "Looking back, I realise that I didn't just find someone through Jeevansathi. I found someone whose absence I feel, whose presence makes an ordinary day special, and with whom even a weekend feels incomplete if we don't meet."
-                ]
-            },
-            {
-                title: "Chapter 5 – If I Had to Choose Again, I'd Choose You",
-                text: [
-                    "Gigs, if I could go back to 20th April, knowing everything I know today, I would still send that same message. Not because I knew what was waiting for me, but because I know now that it was the beginning of the most beautiful decision of my life.",
-                    "And if I had to choose all over again, I'd still choose you. Every single time. ❤️",
-                    "\"We started as two strangers, became each other's favourite people, and now, Gigs, I cannot wait to spend the rest of my life making memories with you. The first few pages are behind us. The best chapters are yet to come. ❤️\""
-                ]
-            }
+            { title: "Chapter 1 – The Message That Changed Everything", text: [
+                "Gigs, sometimes I wonder how two people, who were complete strangers one day, can slowly become such an inseparable part of each other's lives. How someone who was once just a name and a phone number can become the first person you want to talk to in the morning, the last person you want to speak to at night, and the person you miss even when you've just said goodbye.",
+                "If I had known that a simple message on Jeevansathi would bring me you, I would have looked forward to 20th April even more than I do now.",
+                "It all started with a simple message from me: \"Hi, Debanjan here. Got your number from our parents.\" Nothing fancy, nothing extraordinary. Just two people who were about to get to know each other. But today, when I look back, I realise that was probably one of the most beautiful messages I've ever sent.",
+                "We met for the first time on 3rd May at Oyester. I still remember how naturally our conversations flowed. There was no awkwardness, no need to pretend to be someone else. It just felt right."
+            ]},
+            { title: "Chapter 2 – Somewhere Between Hello and I Love You", text: [
+                "On 6th May, I gave her a name that would soon become so close to my heart — Gigs.",
+                "On 10th May, during our second date at Church Street, I gathered the courage to tell her, \"I like you. Can we tell our parents about us?\" And she said YES. That little YES meant so much more than she probably realised.",
+                "Then came 14th May. When the clock struck 12:22, I told her, \"I love you.\" We celebrated our little milestone with a virtual milkshake date. Even though we weren't sitting beside each other, it felt incredibly special.",
+                "And then, on 15th May, at exactly 8:56 PM, she said those three words back to me — \"I love you.\" I don't think I can ever explain how happy that moment made me. It was one of those moments I wished I could pause and live in forever."
+            ]},
+            { title: "Chapter 3 – Indiranagar Became My Favourite Place", text: [
+                "And then began our favourite little tradition — weekends together! Touchwood, there hasn't been a single weekend when we haven't met, except when we are both in our hometowns. That's how much we have grown used to having each other around.",
+                "There were even days when I supposedly left for office but somehow never made it inside. Instead, I would find my way to meet her. My office colleagues started teasing me, saying, \"Debanjan's favourite place is Indiranagar!\" And honestly, they weren't wrong. Somewhere along the way, Indiranagar stopped being just a place on the map and became my favourite place because she was there."
+            ]},
+            { title: "Chapter 4 – Two Families, One Beautiful YES", text: [
+                "On 29th June, we visited her home with my parents. I was so caught up in the moment that I forgot to click even one photograph. Maybe I was too busy living the moment!",
+                "On 2nd July, her parents visited our hometown, and everything turned into a beautiful YES.",
+                "Looking back, I realise that I didn't just find someone through Jeevansathi. I found someone whose absence I feel, whose presence makes an ordinary day special, and with whom even a weekend feels incomplete if we don't meet."
+            ]},
+            { title: "Chapter 5 – If I Had to Choose Again, I'd Choose You", text: [
+                "Gigs, if I could go back to 20th April, knowing everything I know today, I would still send that same message. Not because I knew what was waiting for me, but because I know now that it was the beginning of the most beautiful decision of my life.",
+                "And if I had to choose all over again, I'd still choose you. Every single time. ❤️",
+                "\"We started as two strangers, became each other's favourite people, and now, Gigs, I cannot wait to spend the rest of my life making memories with you. The first few pages are behind us. The best chapters are yet to come. ❤️\""
+            ]}
         ];
 
         let currentChap = 0;
@@ -430,7 +390,6 @@
             const chap = chapters[currentChap];
             document.getElementById('journalTitle').innerText = chap.title;
             document.getElementById('journalPageIndicator').innerText = `Chapter ${currentChap + 1} of ${chapters.length}`;
-            
             const container = document.getElementById('journalTextContainer');
             container.innerHTML = '';
             chap.text.forEach((t, i) => {
@@ -441,10 +400,8 @@
                 p.innerText = t;
                 container.appendChild(p);
             });
-
             document.getElementById('prevPageBtn').disabled = currentChap === 0;
             document.getElementById('nextPageBtn').disabled = currentChap === chapters.length - 1;
-
             const dots = document.getElementById('pageDots');
             dots.innerHTML = '';
             chapters.forEach((_, idx) => {
@@ -453,10 +410,7 @@
                 dots.appendChild(d);
             });
         }
-        function changeChapter(dir) {
-            currentChap += dir;
-            renderChapter();
-        }
+        function changeChapter(dir) { currentChap += dir; renderChapter(); }
         renderChapter();
 
         // 4. PHOTO SLIDESHOW
@@ -476,10 +430,7 @@
             "PHOTO-2026-08-17-15-37-21", "PHOTO-2026-09-04-12-53-31", "PHOTO-2026-09-13-17-08-46"
         ];
 
-        let slideIdx = 0;
-        let slideTimer = null;
-        let galleryVisible = false;
-        let slideRequest = 0;
+        let slideIdx = 0, slideTimer = null, galleryVisible = false, slideRequest = 0;
         const imageCache = new Map();
         const photoPath = (index) => {
             const name = photoNames[(index + photoNames.length) % photoNames.length];
@@ -504,21 +455,26 @@
             return image;
         }
 
+        const captions = [
+            ["My favourite view will always be you", "In every crowd, my eyes will find you."],
+            ["A little moment, a lifetime of love", "The simplest days become special with you."],
+            ["You make ordinary feel magical", "Every memory is better when it has you in it."],
+            ["My today, my tomorrow, my always", "Here's to all the beautiful days still waiting for us."],
+            ["Home is wherever you are", "No matter where we go, my heart knows its way to you."],
+            ["One smile. A thousand butterflies.", "I still get that same happy feeling looking at you."],
+            ["The beginning of forever", "And I would choose this story, every single time."],
+            ["You are my favourite hello", "And my hardest goodbye."],
+            ["Your hand in mine, the world feels right", "I never want to let go."],
+            ["Love looks beautiful on us", "Some stories are simply written in the stars."],
+            ["With you, every day is a celebration", "Even the quiet ones feel like a festival."],
+            ["You are the reason I believe in forever", "Gigs, you are my greatest blessing."]
+        ];
+
         function updateSlide() {
             const img = document.getElementById('slideshowImg');
-            const counter = document.getElementById('slideCounter');
             const requestId = ++slideRequest;
             const path = photoPath(slideIdx);
-            counter.innerText = `Memory ${slideIdx + 1} of ${photoNames.length}`;
-            const captions = [
-                ["My favourite view will always be you", "In every crowd, my eyes will find you."],
-                ["A little moment, a lifetime of love", "The simplest days become special with you."],
-                ["You make ordinary feel magical", "Every memory is better when it has you in it."],
-                ["My today, my tomorrow, my always", "Here's to all the beautiful days still waiting for us."],
-                ["Home is wherever you are", "No matter where we go, my heart knows its way to you."],
-                ["One smile. A thousand butterflies.", "I still get that same happy feeling looking at you."],
-                ["The beginning of forever", "And I would choose this story, every single time."]
-            ];
+            document.getElementById('slideCounter').innerText = `Memory ${slideIdx + 1} of ${photoNames.length}`;
             const caption = captions[slideIdx % captions.length];
             document.getElementById('slideshowTitle').textContent = caption[0];
             document.getElementById('slideshowSubtitle').textContent = caption[1];
@@ -531,66 +487,29 @@
                 img.classList.remove('is-loading');
                 warmPhoto(slideIdx + 1);
             };
-
             if (candidate.complete && candidate.naturalWidth > 0) {
-                if (candidate.decode) {
-                    candidate.decode().catch(() => {}).then(showImage);
-                } else {
-                    showImage();
-                }
+                if (candidate.decode) candidate.decode().catch(() => {}).then(showImage); else showImage();
             } else {
-                candidate.onload = () => {
-                    if (candidate.decode) candidate.decode().catch(() => {}).then(showImage);
-                    else showImage();
-                };
-                candidate.onerror = () => {
-                    if (requestId === slideRequest) {
-                        img.classList.remove('is-loading');
-                    }
-                };
+                candidate.onload = () => { if (candidate.decode) candidate.decode().catch(() => {}).then(showImage); else showImage(); };
+                candidate.onerror = () => { if (requestId === slideRequest) img.classList.remove('is-loading'); };
             }
         }
-
-        function nextSlide() {
-            slideIdx = (slideIdx + 1) % photoNames.length;
-            updateSlide();
-        }
-        function prevSlide() {
-            slideIdx = (slideIdx - 1 + photoNames.length) % photoNames.length;
-            updateSlide();
-        }
-
-        function startSlideshow() {
-            stopSlideshow();
-            if (galleryVisible && !document.hidden) {
-                slideTimer = window.setInterval(nextSlide, 6000);
-            }
-        }
-        function stopSlideshow() {
-            if (slideTimer) window.clearInterval(slideTimer);
-            slideTimer = null;
-        }
+        function nextSlide() { slideIdx = (slideIdx + 1) % photoNames.length; updateSlide(); }
+        function prevSlide() { slideIdx = (slideIdx - 1 + photoNames.length) % photoNames.length; updateSlide(); }
+        function startSlideshow() { stopSlideshow(); if (galleryVisible && !document.hidden) slideTimer = window.setInterval(nextSlide, 6000); }
+        function stopSlideshow() { if (slideTimer) window.clearInterval(slideTimer); slideTimer = null; }
 
         const gallerySection = document.getElementById('gallery');
         if ('IntersectionObserver' in window) {
-            const galleryObserver = new IntersectionObserver((entries) => {
-                galleryVisible = entries.some(entry => entry.isIntersecting);
-                if (galleryVisible) startSlideshow();
-                else stopSlideshow();
-            }, { threshold: 0.15 });
-            galleryObserver.observe(gallerySection);
-        } else {
-            galleryVisible = true;
-            startSlideshow();
-        }
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) stopSlideshow();
-            else startSlideshow();
-        });
-
+            new IntersectionObserver((entries) => {
+                galleryVisible = entries.some(e => e.isIntersecting);
+                if (galleryVisible) startSlideshow(); else stopSlideshow();
+            }, { threshold: 0.15 }).observe(gallerySection);
+        } else { galleryVisible = true; startSlideshow(); }
+        document.addEventListener('visibilitychange', () => { if (document.hidden) stopSlideshow(); else startSlideshow(); });
         updateSlide();
 
-        // 5. MUSIC PLAYER LOGIC
+        // 5. MUSIC
         const audio = document.getElementById('bgSong');
         let playing = false;
         function toggleAudio() {
@@ -604,18 +523,15 @@
                     document.getElementById('playIcon').className = "fa-solid fa-pause text-sm";
                     document.getElementById('visualizer').classList.remove('paused');
                     playing = true;
-                }).catch(() => {
-                    alert("Audio playback was blocked or audio file not found.");
-                });
+                }).catch(() => { alert("Audio playback was blocked or audio file not found."); });
             }
         }
 
-        // 6. SPARKLE ANIMATION
+        // 6. SPARKLE HEARTS
         const canvas = document.getElementById('sparkleCanvas');
         const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let sparkleFrame = null;
-        let sparkleParts = [];
+        let sparkleFrame = null, sparkleParts = [];
         function resizeSparkles() {
             if (!canvas || !ctx) return;
             const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -626,17 +542,12 @@
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             const count = window.innerWidth < 700 ? 7 : 16;
             sparkleParts = Array.from({ length: count }, () => ({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                size: Math.random() * 7 + 5,
-                speed: Math.random() * 0.35 + 0.12
+                x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight,
+                size: Math.random() * 7 + 5, speed: Math.random() * 0.35 + 0.12
             }));
         }
         function drawSparkles() {
-            if (!ctx || document.hidden || reduceMotion) {
-                sparkleFrame = null;
-                return;
-            }
+            if (!ctx || document.hidden || reduceMotion) { sparkleFrame = null; return; }
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
             ctx.fillStyle = 'rgba(183,110,121,.55)';
             sparkleParts.forEach(p => {
@@ -647,25 +558,29 @@
             });
             sparkleFrame = requestAnimationFrame(drawSparkles);
         }
-        function startSparkles() {
-            if (!reduceMotion && !document.hidden && sparkleFrame === null) {
-                sparkleFrame = requestAnimationFrame(drawSparkles);
-            }
-        }
-        function stopSparkles() {
-            if (sparkleFrame !== null) cancelAnimationFrame(sparkleFrame);
-            sparkleFrame = null;
-        }
+        function startSparkles() { if (!reduceMotion && !document.hidden && sparkleFrame === null) sparkleFrame = requestAnimationFrame(drawSparkles); }
+        function stopSparkles() { if (sparkleFrame !== null) cancelAnimationFrame(sparkleFrame); sparkleFrame = null; }
         if (canvas && ctx && !reduceMotion) {
             resizeSparkles();
             window.addEventListener('resize', resizeSparkles, { passive: true });
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) stopSparkles();
-                else startSparkles();
-            });
+            document.addEventListener('visibilitychange', () => { if (document.hidden) stopSparkles(); else startSparkles(); });
             startSparkles();
-        } else if (canvas) {
-            canvas.style.display = 'none';
+        } else if (canvas) { canvas.style.display = 'none'; }
+
+        // 7. FALLING ROSE PETALS
+        if (!reduceMotion) {
+            const box = document.getElementById('petals');
+            const n = window.innerWidth < 700 ? 6 : 12;
+            for (let i = 0; i < n; i++) {
+                const s = document.createElement('span');
+                s.className = 'petal';
+                s.textContent = i % 3 === 0 ? '❀' : '❤';
+                s.style.left = (Math.random() * 100) + 'vw';
+                s.style.fontSize = (10 + Math.random() * 10) + 'px';
+                s.style.animationDuration = (14 + Math.random() * 12) + 's';
+                s.style.animationDelay = (-Math.random() * 20) + 's';
+                box.appendChild(s);
+            }
         }
     </script>
 </body>
