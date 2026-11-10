@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debanjan & Gargi — Registry Countdown (#DebGigs)</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roseGold: '#B76E79',
+            champagne: '#F7E7CE',
+            burgundy: '#58111A',
+            deepCrimson: '#800020',
+            blush: '#FFF0F5',
+            warmGold: '#D4AF37',
+            charcoal: '#2C2C2C'
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            cursive: ['Great Vibes', 'cursive'],
+            sans: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Canvas styling */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .glass-dark {
+      background: rgba(44, 16, 25, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Shimmer effect for buttons */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .btn-shimmer {
+      background: linear-gradient(90deg, #800020 0%, #B76E79 50%, #800020 100%);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF0F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #B76E79;
+      border-radius: 4px;
+    }
+
+    /* Wave visualizer animation */
+    .bar {
+      transition: height 0.15s ease;
+    }
+  </style>
+</head>
+<body class="bg-blush text-charcoal font-sans antialiased overflow-x-hidden selection:bg-roseGold selection:text-white">
+
+  <!-- Background Animated Hearts & Petals Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-card transition-all duration-300 shadow-sm border-b border-roseGold/20">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="font-cursive text-3xl md:text-4xl text-burgundy font-bold tracking-wide hover:opacity-90 transition">
+        Debanjan & Gargi
+      </a>
+      <div class="hidden md:flex space-x-6 text-xs font-semibold tracking-wider text-burgundy uppercase">
+        <a href="#countdown" class="hover:text-roseGold transition">Countdown</a>
+        <a href="#journal" class="hover:text-roseGold transition">Our Journal 📖</a>
+        <a href="#story" class="hover:text-roseGold transition">AI Story</a>
+        <a href="#gallery" class="hover:text-roseGold transition">Gallery</a>
+        <a href="#details" class="hover:text-roseGold transition">Registry Details</a>
+      </div>
+      <span class="bg-roseGold/15 text-burgundy text-xs px-3.5 py-1.5 rounded-full font-bold border border-roseGold/30 shadow-sm">
+        #DebGigs
+      </span>
+    </div>
+  </nav>
+
+  <!-- Main Hero & Countdown Section -->
+  <section id="countdown" class="relative min-h-screen pt-28 pb-16 flex flex-col justify-center items-center text-center px-4 z-10 overflow-hidden">
+    <!-- Glow Effects -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-roseGold/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-warmGold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Subtitle Banner -->
+    <div class="inline-flex items-center space-x-2 bg-white/90 border border-roseGold/40 px-5 py-2 rounded-full text-burgundy text-xs md:text-sm font-semibold tracking-widest uppercase mb-6 shadow-sm">
+      <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
+      <span>We Are Registering Our Marriage!</span>
+      <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
+    </div>
+
+    <!-- Main Couple Names -->
+    <h1 class="font-cursive text-6xl sm:text-7xl md:text-9xl text-burgundy font-normal mb-2 drop-shadow-sm leading-none">
+      Debanjan & Gargi
+    </h1>
+    <p class="font-serif italic text-xl md:text-2xl text-roseGold font-semibold mb-8 tracking-wider">
+      #DebGigs — The Official Registry Beginning
+    </p>
+
+    <!-- Date & Time Subtitle -->
+    <div class="bg-white/70 backdrop-blur-md px-6 py-3 rounded-2xl border border-roseGold/30 text-burgundy text-sm md:text-base font-medium tracking-wide uppercase mb-10 shadow-sm">
+      <i class="fa-regular fa-calendar-heart mr-2 text-roseGold text-lg"></i>
+      Sunday, November 15, 2026 &bull; 1:30 PM IST
+    </div>
+
+    <!-- COUNTDOWN TIMER DISPLAY -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 w-full max-w-3xl px-2 mb-12">
+      <!-- Days -->
+      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
+        <span id="days" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
+        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Days</span>
+      </div>
+      <!-- Hours -->
+      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
+        <span id="hours" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
+        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Hours</span>
+      </div>
+      <!-- Minutes -->
+      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
+        <span id="minutes" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
+        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Minutes</span>
+      </div>
+      <!-- Seconds -->
+      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
+        <span id="seconds" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
+        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+      <a href="#journal" class="btn-shimmer text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-book-heart"></i>
+        <span>Our 5-Page Memory Book</span>
+      </a>
+      <a href="#story" class="bg-white/90 text-burgundy border border-roseGold/50 px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-white hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>AI Story Generator</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MULTI-PAGE STORY JOURNAL & MEMORY BOOK SECTION -->
+  <section id="journal" class="py-20 px-4 z-10 max-w-5xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Journey Together</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
+        Debanjan & Gargi's Memory Book
+      </h2>
+      <p class="text-charcoal/70 text-sm md:text-base mt-2 max-w-lg mx-auto">
+        A 5-page story of our meetings, date nights, late night calls, and moments leading to our Sunday registry.
+      </p>
+
+      <!-- Action Buttons for Journal -->
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <button onclick="openStoryEditorModal()" class="btn-shimmer text-white text-xs font-semibold px-6 py-2.5 rounded-full shadow-md hover:scale-105 transition flex items-center space-x-2">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span>Write / Edit Our Story Pages</span>
+        </button>
+        <button onclick="exportStoryAsText()" class="bg-white border border-roseGold/50 text-burgundy text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm hover:bg-blush hover:scale-105 transition flex items-center space-x-2">
+          <i class="fa-solid fa-file-arrow-down text-roseGold"></i>
+          <span>Export Story (.txt)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Book Frame -->
+    <div class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl border border-roseGold/40 relative overflow-hidden">
+      <!-- Book Header & Page Indicator -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-b border-roseGold/20 pb-4 mb-6 gap-3">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-book-open-cover text-roseGold text-xl"></i>
+          <span class="font-serif font-bold text-burgundy text-lg" id="book-chapter-title">Chapter 1: How We Met</span>
+        </div>
+        <div class="flex items-center space-x-2 text-xs font-semibold text-roseGold bg-blush px-3.5 py-1.5 rounded-full border border-roseGold/30">
+          <span>Page <span id="current-page-num">1</span> of 5</span>
+        </div>
+      </div>
+
+      <!-- Book Page Content Layout (Text + Photo) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[380px]">
+        <!-- Page Image -->
+        <div class="md:col-span-5 relative group overflow-hidden rounded-2xl border border-roseGold/30 shadow-md aspect-[4/3] md:aspect-square">
+          <img id="book-page-img" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Page Memory" class="w-full h-full object-cover transition duration-500">
+          <div class="absolute bottom-2 right-2 bg-burgundy/80 text-champagne text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">
+            #DebGigs Memory
+          </div>
+        </div>
+
+        <!-- Page Text -->
+        <div class="md:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-widest text-roseGold block mb-1" id="book-page-date">The Beginning</span>
+            <h3 class="font-serif text-2xl md:text-3xl font-bold text-burgundy mb-4" id="book-page-subtitle">When Path Crossed</h3>
+            <p id="book-page-text" class="text-charcoal/85 leading-relaxed font-sans text-sm md:text-base whitespace-pre-line italic">
+              It all started with a simple hello that blossomed into endless conversations. From the very first glance, there was an unmistakable spark between Debanjan and Gargi. We spent hours talking about our dreams, favorite songs, and little everyday moments, completely losing track of time.
+            </p>
+          </div>
+
+          <!-- Page Navigation Controls -->
+          <div class="pt-6 border-t border-roseGold/15 flex items-center justify-between">
+            <button id="prev-page-btn" onclick="changeJournalPage(-1)" class="bg-white text-burgundy border border-roseGold/40 px-4 py-2 rounded-full text-xs font-semibold hover:bg-blush transition flex items-center space-x-1.5 disabled:opacity-40 disabled:cursor-not-allowed">
+              <i class="fa-solid fa-chevron-left"></i>
+              <span>Previous Page</span>
+            </button>
+            <div class="flex space-x-1.5" id="page-dots">
+              <!-- Dots rendered dynamically -->
+            </div>
+            <button id="next-page-btn" onclick="changeJournalPage(1)" class="bg-burgundy text-champagne px-4 py-2 rounded-full text-xs font-semibold hover:bg-burgundy/90 transition flex items-center space-x-1.5">
+              <span>Next Page</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MULTI-PAGE STORY EDITOR MODAL -->
+  <div id="story-editor-modal" class="fixed inset-0 bg-burgundy/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-card max-w-3xl w-full rounded-3xl p-6 md:p-8 shadow-2xl border border-warmGold/40 my-8 relative text-left">
+      <button onclick="closeStoryEditorModal()" class="absolute top-5 right-5 text-burgundy hover:text-roseGold text-2xl transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center space-x-3 mb-4">
+        <i class="fa-solid fa-feather text-roseGold text-2xl"></i>
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-burgundy">Edit Our 5-Page Memory Journal</h3>
+          <p class="text-xs text-charcoal/70">Write story details, dates, and upload photos for each page.</p>
+        </div>
+      </div>
+
+      <!-- Page Selector Tabs -->
+      <div class="flex space-x-2 border-b border-roseGold/20 pb-3 mb-6 overflow-x-auto" id="editor-page-tabs">
+        <!-- Tabs generated dynamically -->
+      </div>
+
+      <!-- Editor Form -->
+      <form id="page-editor-form" onsubmit="saveJournalPage(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Chapter Title</label>
+          <input type="text" id="edit-title" required class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Date / Tagline</label>
+            <input type="text" id="edit-date" required placeholder="e.g. November 2024" class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Subtitle</label>
+            <input type="text" id="edit-subtitle" required placeholder="e.g. First Coffee Date" class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Story & Memories (4-5 Paragraphs or detailed text)</label>
+          <textarea id="edit-text" rows="6" required placeholder="Write details about your meetings, conversations, special dates..." class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold leading-relaxed"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Photo</label>
+          <div class="flex items-center space-x-4">
+            <input type="file" id="edit-photo-input" accept="image/*" onchange="handleEditorPhotoUpload(event)" class="text-xs text-charcoal/80 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-roseGold/20 file:text-burgundy hover:file:bg-roseGold/30">
+            <input type="text" id="edit-photo-url" placeholder="Or paste image URL" class="flex-1 px-4 py-2 rounded-xl border border-roseGold/40 bg-white/90 text-xs">
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-roseGold/20 flex justify-between items-center">
+          <button type="button" onclick="closeStoryEditorModal()" class="px-5 py-2.5 rounded-full border border-gray-300 text-xs font-semibold text-charcoal/80 hover:bg-gray-100">Cancel</button>
+          <button type="submit" class="btn-shimmer text-white px-8 py-2.5 rounded-full text-xs font-semibold shadow-md hover:scale-105 transition">
+            Save Page & Memories
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AI STORY GENERATOR SECTION -->
+  <section id="story" class="relative py-20 px-4 z-10 bg-white/60 border-y border-roseGold/20">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Magical Journey</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2 mb-4">
+        The Tale of Debanjan & Gargi
+      </h2>
+      <p class="text-charcoal/70 max-w-xl mx-auto mb-8 text-sm md:text-base">
+        Click below to unveil a heartwarming story of love, laughter, and forever. Powered by AI creativity for #DebGigs!
+      </p>
+
+      <!-- Story Display Card -->
+      <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border border-roseGold/30 relative overflow-hidden text-left">
+        <div class="absolute -top-4 -right-4 text-9xl text-roseGold/10 font-serif pointer-events-none select-none">“</div>
+        
+        <div id="story-container" class="min-h-[200px] flex flex-col justify-center items-center text-center transition-all duration-500">
+          <i id="story-icon" class="fa-solid fa-feather-pointed text-4xl text-roseGold mb-4 animate-bounce"></i>
+          <p id="story-text" class="font-serif text-lg md:text-xl text-burgundy/90 leading-relaxed italic max-w-2xl">
+            "Once upon a time, amidst shared laughter and endless conversations, two hearts found their rhythm. Debanjan's warmth matched Gargi's radiant smile, weaving a story destined for forever. Today, as their registry approaches, #DebGigs marks the sweet beginning of their greatest adventure."
+          </p>
+          <div id="story-author" class="mt-4 text-xs font-semibold text-roseGold uppercase tracking-widest">
+            — Chapter 1: The Cosmic Spark —
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="mt-8 pt-6 border-t border-roseGold/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-charcoal/60 flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Gemini AI Connected & Ready</span>
+          </div>
+          <button id="generate-story-btn" onclick="generateLoveStory()" class="w-full sm:w-auto btn-shimmer text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>✨ Reveal / Generate Our Story</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY SECTION -->
+  <section id="gallery" class="py-20 px-4 z-10 max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Capturing Love</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
+        #DebGigs Photo Gallery
+      </h2>
+      <p class="text-charcoal/70 text-sm md:text-base mt-2 max-w-lg mx-auto">
+        Click on any photo to open in full screen, or upload your favorite couple memories!
+      </p>
+
+      <!-- Custom Upload Button -->
+      <div class="mt-6 flex justify-center">
+        <label class="cursor-pointer bg-white border border-roseGold/50 text-burgundy text-xs font-semibold px-6 py-2.5 rounded-full shadow-sm hover:bg-blush hover:scale-105 transition flex items-center space-x-2">
+          <i class="fa-solid fa-cloud-arrow-up text-roseGold text-sm"></i>
+          <span>Add Custom Photo</span>
+          <input type="file" id="photo-upload" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
+        </label>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Photo 1 -->
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80', 'Debanjan & Gargi — A Promise of Forever')">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Debanjan and Gargi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Debanjan+%26+Gargi'">
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
+          <span class="font-serif text-lg font-semibold">Together Forever</span>
+          <span class="text-xs text-champagne/80">#DebGigs Registry</span>
+        </div>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80', 'Golden Hours — Debanjan & Gargi')">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Sunset Love" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Golden+Hours'">
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
+          <span class="font-serif text-lg font-semibold">Golden Sunset Glow</span>
+          <span class="text-xs text-champagne/80">Counting down to Sunday</span>
+        </div>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80', 'Pure Joy — Debanjan & Gargi')">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Joyful Moments" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Pure+Joy'">
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
+          <span class="font-serif text-lg font-semibold">Pure Joy & Laughter</span>
+          <span class="text-xs text-champagne/80">The countdown begins</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS SECTION -->
+  <section id="details" class="py-16 px-4 z-10 bg-white/40 border-t border-roseGold/20">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Mark Your Calendar</span>
+      <h2 class="font-serif text-4xl text-burgundy font-bold mt-2 mb-10">
+        Registry Event Details
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <!-- Card 1 -->
+        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
+          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
+            <i class="fa-solid fa-calendar-day text-xl"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-burgundy">The Date</h3>
+          <p class="text-charcoal/80 text-sm mt-1">Sunday, November 15, 2026</p>
+          <p class="text-xs text-roseGold font-medium mt-2">Registration Day</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
+          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
+            <i class="fa-solid fa-clock text-xl"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-burgundy">The Time</h3>
+          <p class="text-charcoal/80 text-sm mt-1">1:30 PM IST</p>
+          <p class="text-xs text-roseGold font-medium mt-2">Punctual arrival requested</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
+          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
+            <i class="fa-solid fa-hashtag text-xl"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-burgundy">Official Hashtag</h3>
+          <p class="text-charcoal/80 text-sm mt-1">#DebGigs</p>
+          <p class="text-xs text-roseGold font-medium mt-2">Share your wishes & photos!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 bg-burgundy/90 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-warmGold transition">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="Enlarged Photo" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-warmGold/40 object-contain">
+    <p id="lightbox-caption" class="text-champagne font-serif text-lg mt-4 text-center"></p>
+  </div>
+
+  <!-- MUSIC PLAYER WIDGET (Bottom Right) -->
+  <div class="fixed bottom-6 right-6 z-40">
+    <div class="glass-dark text-white p-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 border border-warmGold/40 max-w-xs">
+      <!-- Play/Pause Button -->
+      <button id="music-toggle-btn" onclick="toggleMusic()" class="w-10 h-10 rounded-full bg-warmGold text-burgundy font-bold flex items-center justify-center shadow-md hover:scale-105 transition">
+        <i id="music-icon" class="fa-solid fa-play"></i>
+      </button>
+
+      <!-- Track Info & Visualizer -->
+      <div class="flex-1 overflow-hidden">
+        <div class="text-xs font-semibold text-champagne truncate">Romantic Melody</div>
+        <div class="text-[10px] text-champagne/70 truncate">Debanjan & Gargi's Tune</div>
+        <!-- Audio Spectrum Bars -->
+        <div class="flex items-end space-x-1 h-3 mt-1" id="audio-wave">
+          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
+          <span class="w-1 bg-warmGold/70 rounded-full bar h-2"></span>
+          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
+          <span class="w-1 bg-warmGold/70 rounded-full bar h-3"></span>
+          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-8 bg-burgundy text-champagne text-center text-xs border-t border-roseGold/30 relative z-10">
+    <p class="font-cursive text-2xl text-warmGold mb-1">Debanjan & Gargi</p>
+    <p class="opacity-80">Made with ❤️ for #DebGigs Registry &bull; Sunday 1:30 PM</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // -------------------------------------------------------------
+    // 0. MULTI-PAGE STORY & JOURNAL MANAGEMENT
+    // -------------------------------------------------------------
+    let defaultJournalPages = [
+      {
+        page: 1,
+        title: "Chapter 1: How We Met",
+        date: "The First Spark",
+        subtitle: "A Simple Hello That Changed Everything",
+        text: "It all started with a simple hello that blossomed into endless conversations. From the very first moment Debanjan and Gargi connected, there was an unmistakable spark. We spent hours talking about our favorite music, food cravings, and little everyday stories, completely losing track of time.",
+        image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        page: 2,
+        title: "Chapter 2: First Date & Late Night Talks",
+        date: "Coffee & Long Walks",
+        subtitle: "Laughter Over Warm Cups",
+        text: "Our first official meeting felt like reuniting with a lifelong friend. We ordered coffee, shared desserts, and walked through quiet avenues as hours melted away. Late-night phone calls became our favorite routine, sharing secrets, dreams, and endless laughs under the midnight sky.",
+        image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        page: 3,
+        title: "Chapter 3: Unforgettable Trips",
+        date: "Shared Adventures",
+        subtitle: "Making Memories Across Miles",
+        text: "From weekend getaways to exploring hidden cafes in the city, every journey together added a golden page to our book. Gargi's infectious laughter and Debanjan's thoughtful care turned even the simplest moments into unforgettable adventures.",
+        image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        page: 4,
+        title: "Chapter 4: The Proposal & Forever Yes",
+        date: "A Promise of Lifetime",
+        subtitle: "Two Hearts, One Rhythm",
+        text: "With hearts full of love and eyes shining with happiness, we made the choice to hold hands for a lifetime. Surrounded by warm smiles and blessings, saying 'Yes' was the easiest and most beautiful decision we ever made.",
+        image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        page: 5,
+        title: "Chapter 5: Counting Down to Forever",
+        date: "This Sunday at 1:30 PM",
+        subtitle: "#DebGigs Marriage Registry",
+        text: "Now, here we are! Counting down every second until Sunday at 1:30 PM, when we officially sign our registry and begin our new chapter as husband and wife. Thank you for being a part of our magical journey!",
+        image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    // Load from localStorage if available
+    let journalPages = JSON.parse(localStorage.getItem("debGigs_journalPages")) || defaultJournalPages;
+    let currentJournalPageIndex = 0;
+    let activeEditingPageIndex = 0;
+
+    function renderJournalPage() {
+      const pageData = journalPages[currentJournalPageIndex];
+      document.getElementById("book-chapter-title").innerText = pageData.title;
+      document.getElementById("current-page-num").innerText = pageData.page;
+      document.getElementById("book-page-date").innerText = pageData.date;
+      document.getElementById("book-page-subtitle").innerText = pageData.subtitle;
+      document.getElementById("book-page-text").innerText = pageData.text;
+      document.getElementById("book-page-img").src = pageData.image;
+
+      // Update Buttons
+      document.getElementById("prev-page-btn").disabled = currentJournalPageIndex === 0;
+      document.getElementById("next-page-btn").disabled = currentJournalPageIndex === journalPages.length - 1;
+
+      // Render Dots
+      const dotsContainer = document.getElementById("page-dots");
+      dotsContainer.innerHTML = "";
+      journalPages.forEach((_, idx) => {
+        const dot = document.createElement("span");
+        dot.className = `w-2.5 h-2.5 rounded-full cursor-pointer transition ${idx === currentJournalPageIndex ? 'bg-burgundy scale-125' : 'bg-roseGold/40 hover:bg-roseGold'}`;
+        dot.onclick = () => {
+          currentJournalPageIndex = idx;
+          renderJournalPage();
+        };
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function changeJournalPage(direction) {
+      const newIndex = currentJournalPageIndex + direction;
+      if (newIndex >= 0 && newIndex < journalPages.length) {
+        currentJournalPageIndex = newIndex;
+        renderJournalPage();
+      }
+    }
+
+    // Modal & Editor Logic
+    function openStoryEditorModal() {
+      activeEditingPageIndex = currentJournalPageIndex;
+      renderEditorTabs();
+      loadPageIntoEditor(activeEditingPageIndex);
+      document.getElementById("story-editor-modal").classList.remove("hidden");
+    }
+
+    function closeStoryEditorModal() {
+      document.getElementById("story-editor-modal").classList.add("hidden");
+    }
+
+    function renderEditorTabs() {
+      const container = document.getElementById("editor-page-tabs");
+      container.innerHTML = "";
+      journalPages.forEach((p, idx) => {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.className = `px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${idx === activeEditingPageIndex ? 'bg-burgundy text-champagne' : 'bg-blush text-burgundy border border-roseGold/30 hover:bg-roseGold/20'}`;
+        tab.innerText = `Page ${p.page}`;
+        tab.onclick = () => {
+          activeEditingPageIndex = idx;
+          renderEditorTabs();
+          loadPageIntoEditor(idx);
+        };
+        container.appendChild(tab);
+      });
+    }
+
+    function loadPageIntoEditor(index) {
+      const page = journalPages[index];
+      document.getElementById("edit-title").value = page.title;
+      document.getElementById("edit-date").value = page.date;
+      document.getElementById("edit-subtitle").value = page.subtitle;
+      document.getElementById("edit-text").value = page.text;
+      document.getElementById("edit-photo-url").value = page.image;
+    }
+
+    function handleEditorPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("edit-photo-url").value = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveJournalPage(event) {
+      event.preventDefault();
+      const updatedPage = {
+        page: activeEditingPageIndex + 1,
+        title: document.getElementById("edit-title").value,
+        date: document.getElementById("edit-date").value,
+        subtitle: document.getElementById("edit-subtitle").value,
+        text: document.getElementById("edit-text").value,
+        image: document.getElementById("edit-photo-url").value || "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+      };
+
+      journalPages[activeEditingPageIndex] = updatedPage;
+      localStorage.setItem("debGigs_journalPages", JSON.stringify(journalPages));
+      currentJournalPageIndex = activeEditingPageIndex;
+      renderJournalPage();
+      closeStoryEditorModal();
+    }
+
+    function exportStoryAsText() {
+      let fullStoryText = "=========================================\n";
+      fullStoryText += "   DEBANJAN & GARGI (#DebGigs) MEMORY BOOK\n";
+      fullStoryText += "=========================================\n\n";
+
+      journalPages.forEach(p => {
+        fullStoryText += `PAGE ${p.page}: ${p.title.toUpperCase()}\n`;
+        fullStoryText += `Date/Tagline: ${p.date}\n`;
+        fullStoryText += `Subtitle: ${p.subtitle}\n`;
+        fullStoryText += `-----------------------------------------\n`;
+        fullStoryText += `${p.text}\n\n\n`;
+      });
+
+      const blob = new Blob([fullStoryText], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "DebGigs_Love_Story_Book.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Initialize Journal on Load
+    renderJournalPage();
+
+    // -------------------------------------------------------------
+    // 1. COUNTDOWN TIMER LOGIC
+    // Target: Sunday, November 15, 2026 at 1:30 PM (13:30 IST)
+    // -------------------------------------------------------------
+    const targetDate = new Date("November 15, 2026 13:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // -------------------------------------------------------------
+    // 2. AI & FALLBACK LOVE STORY GENERATOR
+    // -------------------------------------------------------------
+    let storyChapterCount = 1;
+    const fallbackStories = [
+      {
+        title: "The Cosmic Spark",
+        text: "Once upon a time, amidst shared laughter and endless conversations, two hearts found their rhythm. Debanjan's warmth matched Gargi's radiant smile, weaving a story destined for forever. Today, as their registry approaches, #DebGigs marks the sweet beginning of their greatest adventure."
+      },
+      {
+        title: "The Melodic Promise",
+        text: "Like a song composed by fate, Debanjan and Gargi found harmony in every quiet moment and grand dream. From starry late-night talks to plans for the future, every note played led them right to this upcoming Sunday at 1:30 PM — the official registration of their eternal melody."
+      },
+      {
+        title: "A Tapestry of Dreams",
+        text: "Every grand romance has a magical turning point. For Debanjan and Gargi, it was realizing that home wasn't a place, but a person. Hand in hand, with laughter in their eyes and love in their souls, they step forward into #DebGigs with hearts full of promise."
+      },
+      {
+        title: "The Forever Chapter",
+        text: "With signatures and smiles, Sunday at 1:30 PM becomes a date etched in golden light. Gargi brings the sparkle, Debanjan brings the steady strength, and together they create a warmth that lights up every room. Here’s to a life of endless love!"
+      }
+    ];
+
+    async function generateLoveStory() {
+      const btn = document.getElementById("generate-story-btn");
+      const textContainer = document.getElementById("story-text");
+      const authorContainer = document.getElementById("story-chapter-num");
+      const icon = document.getElementById("story-icon");
+
+      // UI Loading state
+      btn.disabled = true;
+      btn.classList.add("opacity-75");
+      icon.className = "fa-solid fa-spinner text-4xl text-roseGold mb-4 animate-spin";
+      textContainer.innerText = "Consulting the stars and writing a beautiful new chapter for Debanjan & Gargi...";
+
+      const prompt = "Write a very short, ultra-romantic, poetic 3-sentence love story snippet about Debanjan and Gargi getting registered this Sunday at 1:30 PM. Include the hashtag #DebGigs and emphasize warmth, eternal togetherness, and joy.";
+      const apiKey = ""; // Canvas runtime environment automatically provides key
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        });
+
+        const result = await response.json();
+        const candidate = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        storyChapterCount++;
+        if (candidate) {
+          textContainer.innerText = `"${candidate.trim()}"`;
+          document.getElementById("story-author").innerHTML = `— Chapter ${storyChapterCount}: Generated with AI —`;
+        } else {
+          useFallbackStory();
+        }
+      } catch (err) {
+        useFallbackStory();
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove("opacity-75");
+        icon.className = "fa-solid fa-feather-pointed text-4xl text-roseGold mb-4 animate-bounce";
+      }
+    }
+
+    function useFallbackStory() {
+      storyChapterCount++;
+      const storyIndex = (storyChapterCount - 1) % fallbackStories.length;
+      const story = fallbackStories[storyIndex];
+      document.getElementById("story-text").innerText = `"${story.text}"`;
+      document.getElementById("story-author").innerHTML = `— Chapter ${storyChapterCount}: ${story.title} —`;
+    }
+
+    // -------------------------------------------------------------
+    // 3. PHOTO GALLERY & LIGHTBOX
+    // -------------------------------------------------------------
+    function openLightbox(src, caption) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox-caption").innerText = caption;
+      document.getElementById("lightbox").classList.remove("hidden");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.add("hidden");
+    }
+
+    function handlePhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById("gallery-grid");
+        const newCard = document.createElement("div");
+        newCard.className = "group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer";
+        newCard.onclick = () => openLightbox(e.target.result, "Special Moment — Debanjan & Gargi");
+        newCard.innerHTML = `
+          <img src="${e.target.result}" alt="Uploaded Photo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="font-serif text-lg font-semibold">User Uploaded Memory</span>
+            <span class="text-xs text-champagne/80">#DebGigs</span>
+          </div>
+        `;
+        grid.prepend(newCard);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // -------------------------------------------------------------
+    // 4. ROMANTIC AUDIO SYNTHESIZER (Web Audio API)
+    // -------------------------------------------------------------
+    let audioCtx = null;
+    let isPlaying = false;
+    let waveInterval = null;
+
+    function toggleMusic() {
+      const btnIcon = document.getElementById("music-icon");
+      
+      if (!isPlaying) {
+        startPianoMelody();
+        btnIcon.className = "fa-solid fa-pause";
+        startWaveVisualizer();
+        isPlaying = true;
+      } else {
+        stopPianoMelody();
+        btnIcon.className = "fa-solid fa-play";
+        stopWaveVisualizer();
+        isPlaying = false;
+      }
+    }
+
+    let melodyInterval = null;
+    function startPianoMelody() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      // Soft romantic pentatonic notes
+      const notes = [261.63, 329.63, 392.00, 493.88, 523.25, 659.25]; // C4, E4, G4, B4, C5, E5
+      let step = 0;
+
+      melodyInterval = setInterval(() => {
+        if (!isPlaying) return;
+        const note = notes[Math.floor(Math.random() * notes.length)];
+        playTone(note, 1.2);
+        step++;
+      }, 700);
+    }
+
+    function playTone(freq, duration) {
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        // Soft envelope
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function stopPianoMelody() {
+      if (melodyInterval) clearInterval(melodyInterval);
+    }
+
+    function startWaveVisualizer() {
+      const bars = document.querySelectorAll("#audio-wave .bar");
+      waveInterval = setInterval(() => {
+        bars.forEach(bar => {
+          const h = Math.floor(Math.random() * 12) + 4;
+          bar.style.height = `${h}px`;
+        });
+      }, 150);
+    }
+
+    function stopWaveVisualizer() {
+      if (waveInterval) clearInterval(waveInterval);
+      const bars = document.querySelectorAll("#audio-wave .bar");
+      bars.forEach(bar => bar.style.height = '4px');
+    }
+
+    // -------------------------------------------------------------
+    // 5. FLOATING PARTICLES & HEARTS CANVAS
+    // -------------------------------------------------------------
+    const canvas = document.getElementById("particles-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 100;
+        this.size = Math.random() * 14 + 8;
+        this.speedY = Math.random() * 1 + 0.5;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.type = Math.random() > 0.4 ? 'heart' : 'sparkle';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        if (this.y < -20) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        if (this.type === 'heart') {
+          ctx.fillStyle = '#B76E79';
+          ctx.font = `${this.size}px serif`;
+          ctx.fillText('♥', this.x, this.y);
+        } else {
+          ctx.fillStyle = '#D4AF37';
+          ctx.font = `${this.size * 0.7}px serif`;
+          ctx.fillText('✨', this.x, this.y);
+        }
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 35; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+</body>
+</html>
