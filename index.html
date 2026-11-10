@@ -1,952 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debanjan & Gargi — Registry Countdown (#DebGigs)</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            roseGold: '#B76E79',
-            champagne: '#F7E7CE',
-            burgundy: '#58111A',
-            deepCrimson: '#800020',
-            blush: '#FAECEB',
-            warmGold: '#D4AF37',
-            charcoal: '#2C2C2C',
-            pastelBlue: '#E0F2FE'
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            cursive: ['Great Vibes', 'cursive'],
-            sans: ['Montserrat', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    /* Fixed background image combined with a crisp SVG repeating #DebGigs watermark overlay */
-    body {
-      background-color: #FAF5F5;
-      background-image: 
-        linear-gradient(rgba(253, 248, 246, 0.88), rgba(253, 248, 246, 0.88)),
-        url("data:image/svg+xml,%3Csvg width='240' height='120' viewBox='0 0 240 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-18 120 60)'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23B76E79' fill-opacity='0.20' font-family='Playfair Display, Georgia, serif' font-weight='700' font-size='24'%3E%23DebGigs%3C/text%3E%3C/g%3E%3C/svg%3E"),
-        url("image_c8f596.jpg"),
-        url("image_c88154.jpg");
-      background-repeat: repeat, repeat, no-repeat, no-repeat;
-      background-position: center center, top left, center center, center center;
-      background-size: auto, 240px 120px, cover, cover;
-      background-attachment: fixed, fixed, fixed, fixed;
-    }
-
-    /* Distinct background watermark pattern inside interactive cards */
-    .watermark-card-bg {
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-        url("data:image/svg+xml,%3Csvg width='160' height='80' viewBox='0 0 160 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2358111A' fill-opacity='0.14' font-family='Great Vibes, cursive' font-size='24'%3Edebgigs%3C/text%3E%3C/svg%3E");
-    }
-
-    /* Canvas styling */
-    #particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Glassmorphism */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debanjan and Gargi — The Magic Moment</title>
     
-    .glass-dark {
-      background: rgba(88, 17, 26, 0.90);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-    }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF7F2',
+                        skySoft: '#E8F1F5',
+                        seaBlue: '#4A8DA8',
+                        roseGold: '#B76E79',
+                        goldAccent: '#C59B27',
+                        charcoal: '#2B2D42'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        cursive: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Shimmer effect for buttons */
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    .btn-shimmer {
-      background: linear-gradient(90deg, #800020 0%, #B76E79 50%, #800020 100%);
-      background-size: 200% 100%;
-      animation: shimmer 4s infinite linear;
-    }
+        body {
+            background-color: #FAF7F2;
+            color: #2B2D42;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #FFF0F5;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #B76E79;
-      border-radius: 4px;
-    }
+        /* 1. SOFT PHOTO BACKGROUND LAYER */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Ensure the image file name below matches your exact uploaded filename on GitHub */
+            background-image: url('IMG_9363.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.22;
+            z-index: -2;
+            pointer-events: none;
+        }
 
-    /* Wave visualizer animation */
-    .bar {
-      transition: height 0.15s ease;
-    }
-  </style>
+        /* 2. REPEATING #DEBGIGS WATERMARK PATTERN LAYER */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='200' viewBox='0 0 320 200'%3E%3Ctext x='40' y='110' fill='rgba(183, 110, 121, 0.28)' font-family='Great Vibes, cursive' font-size='28' font-weight='bold' transform='rotate(-22 160 100)'%3E%23DebGigs%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 30px rgba(74, 141, 168, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(74, 141, 168, 0.14);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4A8DA8;
+        }
+
+        /* Music Visualizer Bars */
+        .bar {
+            width: 3px;
+            height: 100%;
+            background-color: #B76E79;
+            border-radius: 3px;
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        .bar:nth-child(1) { animation-delay: 0.1s; height: 35%; }
+        .bar:nth-child(2) { animation-delay: 0.3s; height: 75%; }
+        .bar:nth-child(3) { animation-delay: 0.2s; height: 100%; }
+        .bar:nth-child(4) { animation-delay: 0.4s; height: 50%; }
+
+        @keyframes bounce {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1); }
+        }
+
+        .paused .bar {
+            animation-play-state: paused !important;
+            transform: scaleY(0.2) !important;
+        }
+    </style>
 </head>
-<body class="text-charcoal font-sans antialiased overflow-x-hidden selection:bg-roseGold selection:text-white">
+<body class="font-sans antialiased selection:bg-roseGold selection:text-white">
 
-  <!-- Background Animated Hearts & Petals Canvas -->
-  <canvas id="particles-canvas"></canvas>
+    <!-- Interactive Sparkle & Heart Canvas -->
+    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 w-full z-50 glass-card transition-all duration-300 shadow-sm border-b border-roseGold/20">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="font-cursive text-3xl md:text-4xl text-burgundy font-bold tracking-wide hover:opacity-90 transition">
-        Debanjan & Gargi
-      </a>
-      <div class="hidden md:flex space-x-6 text-xs font-semibold tracking-wider text-burgundy uppercase">
-        <a href="#countdown" class="hover:text-roseGold transition">Countdown</a>
-        <a href="#journal" class="hover:text-roseGold transition">Our Journal 📖</a>
-        <a href="#videos" class="hover:text-roseGold transition">Videos 🎥</a>
-        <a href="#gallery" class="hover:text-roseGold transition">Gallery</a>
-      </div>
-      <span class="bg-roseGold/15 text-burgundy text-xs px-3.5 py-1.5 rounded-full font-bold border border-roseGold/30 shadow-sm">
-        #DebGigs
-      </span>
-    </div>
-  </nav>
+    <!-- Main Wrapper -->
+    <div class="relative z-10">
 
-  <!-- Main Hero & Countdown Section -->
-  <section id="countdown" class="relative min-h-screen pt-28 pb-16 flex flex-col justify-center items-center text-center px-4 z-10 overflow-hidden">
-    <!-- Glow Effects -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-roseGold/15 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-warmGold/15 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Navigation Header -->
+        <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto">
+            <div class="flex items-center space-x-2">
+                <span class="font-cursive text-3xl md:text-4xl text-roseGold tracking-wide">Debanjan & Gargi</span>
+                <span class="text-gray-400 font-light text-xs tracking-widest uppercase">| #DebGigs</span>
+            </div>
+            
+            <nav class="flex items-center space-x-4 md:space-x-8 text-xs md:text-sm font-medium text-gray-700 uppercase tracking-wider">
+                <a href="#countdown" class="hover:text-seaBlue transition-colors">Countdown</a>
+                <a href="#journal" class="hover:text-seaBlue transition-colors">Our Journal</a>
+                <a href="#videos" class="hover:text-seaBlue transition-colors">Videos</a>
+                <a href="#gallery" class="hover:text-seaBlue transition-colors">Gallery</a>
+            </nav>
+        </header>
 
-    <!-- Subtitle Banner -->
-    <div class="inline-flex items-center space-x-2 bg-white/95 border border-roseGold/40 px-5 py-2 rounded-full text-burgundy text-xs md:text-sm font-semibold tracking-widest uppercase mb-6 shadow-sm">
-      <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
-      <span>The Magic Moment: Debanjan and Gargi</span>
-      <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
-    </div>
-
-    <!-- Main Couple Names -->
-    <h1 class="font-cursive text-6xl sm:text-7xl md:text-9xl text-burgundy font-normal mb-2 drop-shadow-sm leading-none">
-      Debanjan and Gargi
-    </h1>
-    <p class="font-serif italic text-xl md:text-2xl text-roseGold font-semibold mb-8 tracking-wider">
-      #DebGigs -- The Vow to a Lifetime Together
-    </p>
-
-    <!-- Date & Time Subtitle -->
-    <div class="bg-white/85 backdrop-blur-md px-6 py-3 rounded-2xl border border-roseGold/30 text-burgundy text-sm md:text-base font-medium tracking-wide uppercase mb-10 shadow-sm">
-      <i class="fa-regular fa-calendar-heart mr-2 text-roseGold text-lg"></i>
-      Sunday, November 15, 2026 &bull; 1:30 PM IST
-    </div>
-
-    <!-- COUNTDOWN TIMER DISPLAY -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 w-full max-w-3xl px-2 mb-12">
-      <!-- Days -->
-      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
-        <span id="days" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
-        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Days</span>
-      </div>
-      <!-- Hours -->
-      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
-        <span id="hours" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
-        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Hours</span>
-      </div>
-      <!-- Minutes -->
-      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
-        <span id="minutes" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
-        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Minutes</span>
-      </div>
-      <!-- Seconds -->
-      <div class="glass-card p-4 md:p-6 rounded-2xl shadow-lg border border-roseGold/30 transform hover:-translate-y-1 transition duration-300">
-        <span id="seconds" class="block font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-burgundy">00</span>
-        <span class="text-xs md:text-sm font-semibold text-roseGold uppercase tracking-widest mt-1 block">Seconds</span>
-      </div>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-      <a href="#journal" class="btn-shimmer text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-        <i class="fa-solid fa-book-heart"></i>
-        <span>Our 5-Page Memory Book</span>
-      </a>
-      <a href="#gallery" class="bg-white/90 text-burgundy border border-roseGold/50 px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-white hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-        <i class="fa-solid fa-images"></i>
-        <span>Photo Gallery</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- MULTI-PAGE STORY JOURNAL & MEMORY BOOK SECTION -->
-  <section id="journal" class="py-20 px-4 z-10 max-w-5xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Journey Together</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
-        Debanjan & Gargi's Memory Book
-      </h2>
-      <p class="text-charcoal/70 text-sm md:text-base mt-2 max-w-lg mx-auto">
-        A 5-page story of our meetings, date nights, late night calls, and moments leading to our Sunday registry.
-      </p>
-
-      <!-- Action Buttons for Journal -->
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <button onclick="openStoryEditorModal()" class="btn-shimmer text-white text-xs font-semibold px-6 py-2.5 rounded-full shadow-md hover:scale-105 transition flex items-center space-x-2">
-          <i class="fa-solid fa-pen-to-square"></i>
-          <span>Write / Edit Our Story Pages</span>
-        </button>
-        <button onclick="exportStoryAsText()" class="bg-white border border-roseGold/50 text-burgundy text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm hover:bg-blush hover:scale-105 transition flex items-center space-x-2">
-          <i class="fa-solid fa-file-arrow-down text-roseGold"></i>
-          <span>Export Story (.txt)</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Interactive Book Frame with Visible Card Watermark -->
-    <div class="glass-card watermark-card-bg rounded-3xl p-6 md:p-10 shadow-2xl border border-roseGold/40 relative overflow-hidden">
-      <!-- Book Header & Page Indicator -->
-      <div class="flex flex-col sm:flex-row justify-between items-center border-b border-roseGold/20 pb-4 mb-6 gap-3">
-        <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-book-open-cover text-roseGold text-xl"></i>
-          <span class="font-serif font-bold text-burgundy text-lg" id="book-chapter-title">Chapter 1: How We Met</span>
-        </div>
-        <div class="flex items-center space-x-2 text-xs font-semibold text-roseGold bg-blush px-3.5 py-1.5 rounded-full border border-roseGold/30">
-          <span>Page <span id="current-page-num">1</span> of 5</span>
-        </div>
-      </div>
-
-      <!-- Book Page Content Layout (Text + Photo) -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[380px]">
-        <!-- Page Image -->
-        <div class="md:col-span-5 relative group overflow-hidden rounded-2xl border border-roseGold/30 shadow-md aspect-[4/3] md:aspect-square">
-          <img id="book-page-img" src="DSC00183.jpg" alt="Page Memory" class="w-full h-full object-cover transition duration-500">
-          <div class="absolute bottom-2 right-2 bg-burgundy/80 text-champagne text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">
-            #DebGigs Memory
-          </div>
-        </div>
-
-        <!-- Page Text -->
-        <div class="md:col-span-7 flex flex-col justify-between h-full space-y-4">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-widest text-roseGold block mb-1" id="book-page-date">The Beginning</span>
-            <h3 class="font-serif text-2xl md:text-3xl font-bold text-burgundy mb-4" id="book-page-subtitle">When Path Crossed</h3>
-            <p id="book-page-text" class="text-charcoal/85 leading-relaxed font-sans text-sm md:text-base whitespace-pre-line italic">
-              It all started with a simple hello that blossomed into endless conversations. From the very first glance, there was an unmistakable spark between Debanjan and Gargi. We spent hours talking about our dreams, favorite songs, and little everyday moments, completely losing track of time.
+        <!-- Hero Section -->
+        <section class="max-w-5xl mx-auto px-6 py-10 md:py-16 text-center space-y-6">
+            
+            <div class="inline-block px-5 py-2 rounded-full bg-white/80 border border-roseGold/30 text-roseGold text-xs md:text-sm tracking-widest uppercase font-semibold shadow-sm">
+                ♥ The Magic Moment: Debanjan and Gargi ♥
+            </div>
+            
+            <!-- Main Hero Heading -->
+            <h1 class="text-5xl md:text-7xl font-cursive font-normal text-gray-900 leading-tight">
+                Debanjan and Gargi
+            </h1>
+            
+            <p class="text-roseGold font-serif italic text-xl md:text-3xl tracking-wide">
+                #DebGigs -- The Vow to a Lifetime Together
             </p>
-          </div>
 
-          <!-- Page Navigation Controls -->
-          <div class="pt-6 border-t border-roseGold/15 flex items-center justify-between">
-            <button id="prev-page-btn" onclick="changeJournalPage(-1)" class="bg-white text-burgundy border border-roseGold/40 px-4 py-2 rounded-full text-xs font-semibold hover:bg-blush transition flex items-center space-x-1.5 disabled:opacity-40 disabled:cursor-not-allowed">
-              <i class="fa-solid fa-chevron-left"></i>
-              <span>Previous Page</span>
+            <div class="pt-2">
+                <p class="text-gray-500 uppercase tracking-widest text-xs md:text-sm font-medium">Sunday, November 15, 2026 • 1:30 PM IST</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div id="countdown" class="pt-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-4 gap-3 md:gap-6 text-center">
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-white">
+                        <span id="days" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-medium mt-1 block">Days</span>
+                    </div>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-white">
+                        <span id="hours" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-medium mt-1 block">Hours</span>
+                    </div>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-white">
+                        <span id="minutes" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-medium mt-1 block">Minutes</span>
+                    </div>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-white">
+                        <span id="seconds" class="block text-3xl md:text-5xl font-serif font-bold text-roseGold">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-medium mt-1 block">Seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="pt-8 flex flex-wrap gap-4 justify-center">
+                <a href="#journal" class="px-8 py-3.5 rounded-full bg-roseGold text-white font-medium hover:bg-roseGold/90 transition-all shadow-lg shadow-roseGold/20 flex items-center gap-2 text-sm">
+                    <span>Read Our Memory Book</span>
+                    <i class="fa-solid fa-book-heart"></i>
+                </a>
+                <a href="#gallery" class="px-8 py-3.5 rounded-full bg-white/90 text-gray-700 font-medium hover:bg-white transition-all border border-gray-200 flex items-center gap-2 text-sm shadow-sm">
+                    <span>View Captured Moments</span>
+                    <i class="fa-regular fa-image"></i>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Our Story Memory Journal (5 Pages) -->
+        <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
+            <div class="text-center space-y-3 mb-10">
+                <span class="font-cursive text-3xl text-roseGold">Our Memories</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The Memory Journal</h2>
+            </div>
+
+            <!-- Memory Book Reader Card -->
+            <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl relative border border-white">
+                
+                <div class="flex justify-between items-center pb-6 border-b border-gray-200/80">
+                    <div>
+                        <span id="journalPageIndicator" class="text-xs uppercase tracking-widest text-roseGold font-semibold block">Page 1 of 5</span>
+                        <h3 id="journalTitle" class="text-xl md:text-2xl font-serif font-bold text-gray-800">Chapter 1: How We Met</h3>
+                    </div>
+                    <button id="editJournalBtn" class="px-4 py-2 rounded-full text-xs font-medium bg-skySoft text-seaBlue hover:bg-seaBlue hover:text-white transition-all flex items-center gap-1.5">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <span>Edit Page</span>
+                    </button>
+                </div>
+
+                <div class="py-8 min-h-[200px] flex flex-col justify-between">
+                    <p id="journalText" class="text-gray-700 font-serif text-lg md:text-xl leading-relaxed italic">
+                        "It all began with a simple hello that changed everything. Across the room, amidst the noise of the everyday world, our eyes met, and instantly there was a sense of quiet familiarity—as if we had known each other forever."
+                    </p>
+                    
+                    <div class="mt-6 flex justify-between items-center pt-4 text-xs text-gray-400 border-t border-gray-100">
+                        <span>#DebGigs Chapter Notes</span>
+                        <span>Recorded with love</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4">
+                    <button id="prevPageBtn" class="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm font-medium flex items-center gap-2">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                        <span>Previous</span>
+                    </button>
+
+                    <div id="pageDots" class="flex space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-roseGold transition-all"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
+                    </div>
+
+                    <button id="nextPageBtn" class="px-5 py-2.5 rounded-full bg-roseGold text-white hover:bg-roseGold/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm font-medium flex items-center gap-2">
+                        <span>Next</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200/60">
+            <div class="text-center space-y-3 mb-12">
+                <span class="font-cursive text-3xl text-roseGold">Special Highlights</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Video Moments</h2>
+                <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">watch our favorite captured moments</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Video Slot 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-lg border border-white">
+                    <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center">
+                        <video id="videoPlayer1" controls class="w-full h-full object-cover">
+                            <source src="" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="pt-4 px-2 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-serif font-bold text-xl text-gray-800">#DebGigs Highlight Reel 1</h3>
+                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/10 text-roseGold font-medium">Video 1</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="file" id="videoFileInput1" accept="video/*" class="hidden">
+                            <button onclick="document.getElementById('videoFileInput1').click()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-upload"></i> Upload Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Slot 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-lg border border-white">
+                    <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center">
+                        <video id="videoPlayer2" controls class="w-full h-full object-cover">
+                            <source src="" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="pt-4 px-2 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-serif font-bold text-xl text-gray-800">#DebGigs Highlight Reel 2</h3>
+                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/10 text-roseGold font-medium">Video 2</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="file" id="videoFileInput2" accept="video/*" class="hidden">
+                            <button onclick="document.getElementById('videoFileInput2').click()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-upload"></i> Upload Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200/60">
+            <div class="text-center space-y-3 mb-12">
+                <span class="font-cursive text-3xl text-roseGold">Precious Memories</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Captured Moments</h2>
+                <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">watch our favorite captured moments</p>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Image 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden p-3 glass-card-hover group border border-white">
+                    <div class="relative h-80 rounded-xl overflow-hidden">
+                        <img src="DSC00183.jpg" alt="Debanjan & Gargi - Embrace by the Sea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="pt-3 pb-1 text-center">
+                        <h3 class="font-serif font-semibold text-lg text-gray-800">Warm Embrace</h3>
+                        <p class="text-xs text-gray-500">Gateway of India Promenade</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden p-3 glass-card-hover group border border-white">
+                    <div class="relative h-80 rounded-xl overflow-hidden">
+                        <img src="image_c8f596.jpg" alt="Debanjan & Gargi - Sitting by the Sea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="pt-3 pb-1 text-center">
+                        <h3 class="font-serif font-semibold text-lg text-gray-800">By the Horizon</h3>
+                        <p class="text-xs text-gray-500">Seaside Reflections</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden p-3 glass-card-hover group border border-white">
+                    <div class="relative h-80 rounded-xl overflow-hidden">
+                        <img src="image_c8f557.jpg" alt="Debanjan & Gargi - Heritage White Door" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="pt-3 pb-1 text-center">
+                        <h3 class="font-serif font-semibold text-lg text-gray-800">The White Portal</h3>
+                        <p class="text-xs text-gray-500">Heritage Architecture</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 border-t border-gray-200/60">
+            <p class="font-cursive text-3xl text-roseGold mb-2">Debanjan & Gargi</p>
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">#DebGigs • The Vow to a Lifetime Together</p>
+            <p class="text-xs text-gray-400">Crafted with love for our special day.</p>
+        </footer>
+
+    </div>
+
+    <!-- Music Player (Floating Bottom Right) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="glass-card p-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-white pr-4">
+            <button id="playAudioBtn" class="w-11 h-11 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
+                <i id="playIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
             </button>
-            <div class="flex space-x-1.5" id="page-dots">
-              <!-- Dots rendered dynamically -->
+            <div class="text-left">
+                <p class="text-xs font-semibold text-gray-800 line-clamp-1">Destiny</p>
+                <p class="text-[10px] text-gray-500 line-clamp-1">Jim Brickman ft. Jordan Hill & Billy Porter</p>
+                <!-- Optional Local Song Upload -->
+                <input type="file" id="songFileInput" accept="audio/*" class="hidden">
+                <button onclick="document.getElementById('songFileInput').click()" class="text-[9px] text-roseGold underline mt-0.5 block">Select "Destiny.mp3"</button>
             </div>
-            <button id="next-page-btn" onclick="changeJournalPage(1)" class="bg-burgundy text-champagne px-4 py-2 rounded-full text-xs font-semibold hover:bg-burgundy/90 transition flex items-center space-x-1.5">
-              <span>Next Page</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MULTI-PAGE STORY EDITOR MODAL -->
-  <div id="story-editor-modal" class="fixed inset-0 bg-burgundy/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-    <!-- ... existing story editor content ... -->
-  </div>
-
-  <!-- VIDEO GALLERY SECTION -->
-  <section id="videos" class="py-16 px-4 z-10 max-w-6xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Video Keepsakes</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
-        Special Moments in Motion
-      </h2>
-      <p class="text-charcoal/80 text-sm md:text-base mt-2 max-w-lg mx-auto font-medium">
-        watch our favorite captured moments
-      </p>
-    </div>
-
-    <!-- 2 Videos Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Video 1 Card -->
-      <div class="glass-card watermark-card-bg rounded-3xl p-5 shadow-xl border border-roseGold/30 flex flex-col justify-between">
-        <div>
-          <div class="relative overflow-hidden rounded-2xl bg-black aspect-video shadow-md mb-4 border border-roseGold/20 group">
-            <video id="video-element-1" controls class="w-full h-full object-cover">
-              <source id="video-source-1" src="https://assets.mixkit.co/videos/preview/mixkit-couple-walking-hand-in-hand-on-the-beach-41484-large.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="absolute top-3 left-3 bg-burgundy/80 text-champagne text-[10px] px-3 py-1 rounded-full backdrop-blur-sm font-semibold tracking-wider">
-              #DebGigs Reel 1
+            <div id="visualizer" class="flex items-end space-x-1 h-4 ml-2 paused">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-          </div>
-          <h3 class="font-serif text-xl font-bold text-burgundy" id="video-title-1">Our Journey in Motion</h3>
-          <p class="text-xs text-charcoal/75 mt-1" id="video-desc-1">Hand-in-hand moments leading to our registry day.</p>
         </div>
-        
-        <!-- Video 1 Options -->
-        <div class="mt-4 pt-3 border-t border-roseGold/20 flex flex-col sm:flex-row items-center gap-2">
-          <label class="w-full sm:w-auto cursor-pointer bg-white text-burgundy border border-roseGold/40 text-[11px] font-semibold px-4 py-2 rounded-full hover:bg-blush transition text-center flex items-center justify-center space-x-1.5 shadow-sm">
-            <i class="fa-solid fa-file-video text-roseGold"></i>
-            <span>Upload Video 1</span>
-            <input type="file" accept="video/*" class="hidden" onchange="handleVideoUpload(event, 1)">
-          </label>
-          <input type="text" id="video-url-1" placeholder="Or paste MP4 / video link" class="w-full text-xs px-3 py-1.5 rounded-full border border-roseGold/30 bg-white/80 focus:outline-none focus:ring-1 focus:ring-roseGold" onchange="updateVideoFromUrl(1)">
-        </div>
-      </div>
+    </div>
 
-      <!-- Video 2 Card -->
-      <div class="glass-card watermark-card-bg rounded-3xl p-5 shadow-xl border border-roseGold/30 flex flex-col justify-between">
-        <div>
-          <div class="relative overflow-hidden rounded-2xl bg-black aspect-video shadow-md mb-4 border border-roseGold/20 group">
-            <video id="video-element-2" controls class="w-full h-full object-cover">
-              <source id="video-source-2" src="https://assets.mixkit.co/videos/preview/mixkit-young-couple-in-love-enjoying-the-sunset-41480-large.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="absolute top-3 left-3 bg-burgundy/80 text-champagne text-[10px] px-3 py-1 rounded-full backdrop-blur-sm font-semibold tracking-wider">
-              #DebGigs Reel 2
+    <!-- Edit Memory Journal Modal -->
+    <div id="journalModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center pb-3 border-b">
+                <h3 class="text-xl font-serif font-bold text-gray-800">Edit Page <span id="modalPageNum">1</span></h3>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
             </div>
-          </div>
-          <h3 class="font-serif text-xl font-bold text-burgundy" id="video-title-2">Sunset & Whispers</h3>
-          <p class="text-xs text-charcoal/75 mt-1" id="video-desc-2">Special romantic highlights of Debanjan & Gargi.</p>
-        </div>
-        
-        <!-- Video 2 Options -->
-        <div class="mt-4 pt-3 border-t border-roseGold/20 flex flex-col sm:flex-row items-center gap-2">
-          <label class="w-full sm:w-auto cursor-pointer bg-white text-burgundy border border-roseGold/40 text-[11px] font-semibold px-4 py-2 rounded-full hover:bg-blush transition text-center flex items-center justify-center space-x-1.5 shadow-sm">
-            <i class="fa-solid fa-file-video text-roseGold"></i>
-            <span>Upload Video 2</span>
-            <input type="file" accept="video/*" class="hidden" onchange="handleVideoUpload(event, 2)">
-          </label>
-          <input type="text" id="video-url-2" placeholder="Or paste MP4 / video link" class="w-full text-xs px-3 py-1.5 rounded-full border border-roseGold/30 bg-white/80 focus:outline-none focus:ring-1 focus:ring-roseGold" onchange="updateVideoFromUrl(2)">
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PHOTO GALLERY SECTION -->
-  <section id="gallery" class="py-20 px-4 z-10 max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Capturing Love</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
-        #DebGigs Photo Gallery
-      </h2>
-      <p class="text-charcoal/80 text-sm md:text-base mt-2 max-w-lg mx-auto font-medium">
-        watch our favorite captured moments
-      </p>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-medium text-gray-600 mb-1">Chapter Title</label>
+                    <input type="text" id="modalChapterTitle" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-roseGold/40 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-600 mb-1">Memory Text</label>
+                    <textarea id="modalChapterText" rows="6" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-roseGold/40 text-sm font-serif leading-relaxed"></textarea>
+                </div>
+            </div>
 
-      <!-- Custom Upload Button -->
-      <div class="mt-6 flex justify-center">
-        <label class="cursor-pointer bg-white border border-roseGold/50 text-burgundy text-xs font-semibold px-6 py-2.5 rounded-full shadow-sm hover:bg-blush hover:scale-105 transition flex items-center space-x-2">
-          <i class="fa-solid fa-cloud-arrow-up text-roseGold text-sm"></i>
-          <span>Add Custom Photo</span>
-          <input type="file" id="photo-upload" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
-        </label>
-      </div>
+            <div class="flex justify-end gap-3 pt-3">
+                <button id="cancelModalBtn" class="px-5 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
+                <button id="saveModalBtn" class="px-6 py-2 rounded-full bg-roseGold text-white text-sm font-medium hover:bg-roseGold/90 shadow-md">Save Page</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Gallery Grid -->
-    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <!-- Photo 1 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('DSC00183.jpg', 'Debanjan and Gargi — Gateway of Love')">
-        <img src="DSC00183.jpg" alt="Debanjan and Gargi at Gateway" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80'">
-        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
-          #DebGigs
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Gateway of Love</span>
-          <span class="text-xs text-champagne/80">#DebGigs Registry</span>
-        </div>
-      </div>
+    <!-- Hidden Audio Tag -->
+    <audio id="bgSong" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-wedding-116345.mp3" type="audio/mpeg">
+    </audio>
 
-      <!-- Photo 2 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('image_c8f596.jpg', 'Sea Breeze & Smiles — Debanjan and Gargi')">
-        <img src="image_c8f596.jpg" alt="Debanjan and Gargi at Promenade" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80'">
-        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
-          #DebGigs
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Sea Breeze & Smiles</span>
-          <span class="text-xs text-champagne/80">Counting down to Sunday</span>
-        </div>
-      </div>
+    <script>
+        // 1. COUNTDOWN TIMER (Target: Sunday, November 15, 2026, 1:30 PM IST)
+        const targetDate = new Date("November 15, 2026 13:30:00").getTime();
 
-      <!-- Photo 3 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('image_c8f557.jpg', 'Modern Romance — Debanjan and Gargi')">
-        <img src="image_c8f557.jpg" alt="Debanjan and Gargi Classic Pose" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80'">
-        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
-          #DebGigs
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Classic Elegance</span>
-          <span class="text-xs text-champagne/80">The Vow to a Lifetime Together</span>
-        </div>
-      </div>
-    </div>
-  </section>
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
 
-  <!-- LIGHTBOX MODAL -->
-  <div id="lightbox" class="fixed inset-0 bg-burgundy/90 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
-    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-warmGold transition">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <img id="lightbox-img" src="" alt="Enlarged Photo" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-warmGold/40 object-contain">
-    <p id="lightbox-caption" class="text-champagne font-serif text-lg mt-4 text-center"></p>
-  </div>
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  <!-- MUSIC PLAYER WIDGET (Bottom Right) -->
-  <div class="fixed bottom-6 right-6 z-40">
-    <div class="glass-dark text-white p-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 border border-warmGold/40 max-w-xs">
-      <!-- Play/Pause Button -->
-      <button id="music-toggle-btn" onclick="toggleMusic()" class="w-10 h-10 rounded-full bg-warmGold text-burgundy font-bold flex items-center justify-center shadow-md hover:scale-105 transition">
-        <i id="music-icon" class="fa-solid fa-play"></i>
-      </button>
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById("countdown").innerHTML = `
+                    <div class="p-6 bg-roseGold text-white rounded-3xl text-center font-serif text-2xl shadow-xl">
+                        💍 Today is the Day! Debanjan & Gargi Vow Forever! 🥂
+                    </div>
+                `;
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-      <!-- Track Info & Visualizer -->
-      <div class="flex-1 overflow-hidden">
-        <div class="text-xs font-semibold text-champagne truncate">Destiny</div>
-        <div class="text-[10px] text-champagne/70 truncate">Jim Brickman ft. Jordan Hill & Billy Porter</div>
-        <!-- Audio Spectrum Bars -->
-        <div class="flex items-end space-x-1 h-3 mt-1" id="audio-wave">
-          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
-          <span class="w-1 bg-warmGold/70 rounded-full bar h-2"></span>
-          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
-          <span class="w-1 bg-warmGold/70 rounded-full bar h-3"></span>
-          <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
-        </div>
-      </div>
-    </div>
-  </div>
+        // 2. MULTI-PAGE MEMORY JOURNAL
+        const defaultPages = [
+            { title: "Chapter 1: How We Met", text: "It all began with a simple hello that changed everything. Across the room, amidst the noise of the everyday world, our eyes met, and instantly there was a sense of quiet familiarity—as if we had known each other forever." },
+            { title: "Chapter 2: First Coffee & Late Night Talks", text: "One hour turned into four. Over hot coffee and endless smiles, we talked about everything—from childhood dreams and secret ambitions to our shared love for long walks by the coast." },
+            { title: "Chapter 3: Unforgettable Trips & Shared Smiles", text: "From quiet sunrises by the sea to walking hand in hand along historical pathways, every journey took us closer. We learned that home isn't a place, but a person." },
+            { title: "Chapter 4: The Proposal & Forever Yes", text: "Under the golden light of sunset, with the gentle sea breeze whispering promises, the question was asked. The answer was an instant, heartfelt 'Yes' filled with happy tears." },
+            { title: "Chapter 5: Counting Down to Sunday", text: "And now, here we stand at the threshold of a lifetime of togetherness. With our loved ones by our side, we cannot wait to say 'I do' and begin our happily ever after as #DebGigs." }
+        ];
 
-  <!-- FOOTER -->
-  <footer class="py-8 bg-burgundy text-champagne text-center text-xs border-t border-roseGold/30 relative z-10">
-    <p class="font-cursive text-2xl text-warmGold mb-1">Debanjan & Gargi</p>
-    <p class="opacity-80">Made with ❤️ for #DebGigs Registry &bull; Sunday 1:30 PM</p>
-  </footer>
+        let journalPages = JSON.parse(localStorage.getItem('debgigs_journal')) || defaultPages;
+        let currentPageIndex = 0;
 
-  <!-- JAVASCRIPT LOGIC -->
-  <script>
-    // -------------------------------------------------------------
-    // 0. MULTI-PAGE STORY & JOURNAL MANAGEMENT
-    // -------------------------------------------------------------
-    let defaultJournalPages = [
-      {
-        page: 1,
-        title: "Chapter 1: How We Met",
-        date: "The First Spark",
-        subtitle: "A Simple Hello That Changed Everything",
-        text: "It all started with a simple hello that blossomed into endless conversations. From the very first moment Debanjan and Gargi connected, there was an unmistakable spark. We spent hours talking about our favorite music, food cravings, and little everyday stories, completely losing track of time.",
-        image: "DSC00183.jpg"
-      },
-      {
-        page: 2,
-        title: "Chapter 2: First Date & Late Night Talks",
-        date: "Coffee & Long Walks",
-        subtitle: "Laughter Over Warm Cups",
-        text: "Our first official meeting felt like reuniting with a lifelong friend. We ordered coffee, shared desserts, and walked through quiet avenues as hours melted away. Late-night phone calls became our favorite routine, sharing secrets, dreams, and endless laughs under the midnight sky.",
-        image: "image_c8f596.jpg"
-      },
-      {
-        page: 3,
-        title: "Chapter 3: Unforgettable Trips",
-        date: "Shared Adventures",
-        subtitle: "Making Memories Across Miles",
-        text: "From weekend getaways to exploring hidden cafes in the city, every journey together added a golden page to our book. Gargi's infectious laughter and Debanjan's thoughtful care turned even the simplest moments into unforgettable adventures.",
-        image: "image_c8f557.jpg"
-      },
-      {
-        page: 4,
-        title: "Chapter 4: The Proposal & Forever Yes",
-        date: "A Promise of Lifetime",
-        subtitle: "Two Hearts, One Rhythm",
-        text: "With hearts full of love and eyes shining with happiness, we made the choice to hold hands for a lifetime. Surrounded by warm smiles and blessings, saying 'Yes' was the easiest and most beautiful decision we ever made.",
-        image: "DSC00183.jpg"
-      },
-      {
-        page: 5,
-        title: "Chapter 5: Counting Down to Forever",
-        date: "This Sunday at 1:30 PM",
-        subtitle: "#DebGigs Marriage Registry",
-        text: "Now, here we are! Counting down every second until Sunday at 1:30 PM, when we officially sign our registry and begin our new chapter as husband and wife. Thank you for being a part of our magical journey!",
-        image: "image_c8f596.jpg"
-      }
-    ];
+        const journalTitle = document.getElementById('journalTitle');
+        const journalText = document.getElementById('journalText');
+        const journalPageIndicator = document.getElementById('journalPageIndicator');
+        const prevPageBtn = document.getElementById('prevPageBtn');
+        const nextPageBtn = document.getElementById('nextPageBtn');
+        const pageDots = document.getElementById('pageDots').children;
 
-    // Load from localStorage if available
-    let journalPages = JSON.parse(localStorage.getItem("debGigs_journalPages")) || defaultJournalPages;
-    let currentJournalPageIndex = 0;
-    let activeEditingPageIndex = 0;
+        function renderJournalPage() {
+            const page = journalPages[currentPageIndex];
+            journalTitle.innerText = page.title;
+            journalText.innerText = `"${page.text}"`;
+            journalPageIndicator.innerText = `Page ${currentPageIndex + 1} of ${journalPages.length}`;
 
-    function renderJournalPage() {
-      const pageData = journalPages[currentJournalPageIndex];
-      document.getElementById("book-chapter-title").innerText = pageData.title;
-      document.getElementById("current-page-num").innerText = pageData.page;
-      document.getElementById("book-page-date").innerText = pageData.date;
-      document.getElementById("book-page-subtitle").innerText = pageData.subtitle;
-      document.getElementById("book-page-text").innerText = pageData.text;
-      document.getElementById("book-page-img").src = pageData.image;
+            prevPageBtn.disabled = currentPageIndex === 0;
+            nextPageBtn.disabled = currentPageIndex === journalPages.length - 1;
 
-      // Update Buttons
-      document.getElementById("prev-page-btn").disabled = currentJournalPageIndex === 0;
-      document.getElementById("next-page-btn").disabled = currentJournalPageIndex === journalPages.length - 1;
+            Array.from(pageDots).forEach((dot, idx) => {
+                dot.className = (idx === currentPageIndex) ? "w-2.5 h-2.5 rounded-full bg-roseGold transition-all scale-125" : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
+            });
+        }
 
-      // Render Dots
-      const dotsContainer = document.getElementById("page-dots");
-      dotsContainer.innerHTML = "";
-      journalPages.forEach((_, idx) => {
-        const dot = document.createElement("span");
-        dot.className = `w-2.5 h-2.5 rounded-full cursor-pointer transition ${idx === currentJournalPageIndex ? 'bg-burgundy scale-125' : 'bg-roseGold/40 hover:bg-roseGold'}`;
-        dot.onclick = () => {
-          currentJournalPageIndex = idx;
-          renderJournalPage();
-        };
-        dotsContainer.appendChild(dot);
-      });
-    }
+        prevPageBtn.addEventListener('click', () => { if (currentPageIndex > 0) { currentPageIndex--; renderJournalPage(); } });
+        nextPageBtn.addEventListener('click', () => { if (currentPageIndex < journalPages.length - 1) { currentPageIndex++; renderJournalPage(); } });
 
-    function changeJournalPage(direction) {
-      const newIndex = currentJournalPageIndex + direction;
-      if (newIndex >= 0 && newIndex < journalPages.length) {
-        currentJournalPageIndex = newIndex;
+        // Modal Editing System
+        const journalModal = document.getElementById('journalModal');
+        const editJournalBtn = document.getElementById('editJournalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelModalBtn = document.getElementById('cancelModalBtn');
+        const saveModalBtn = document.getElementById('saveModalBtn');
+
+        editJournalBtn.addEventListener('click', () => {
+            document.getElementById('modalPageNum').innerText = currentPageIndex + 1;
+            document.getElementById('modalChapterTitle').value = journalPages[currentPageIndex].title;
+            document.getElementById('modalChapterText').value = journalPages[currentPageIndex].text;
+            journalModal.classList.remove('hidden');
+        });
+
+        function hideModal() { journalModal.classList.add('hidden'); }
+        closeModalBtn.addEventListener('click', hideModal);
+        cancelModalBtn.addEventListener('click', hideModal);
+
+        saveModalBtn.addEventListener('click', () => {
+            journalPages[currentPageIndex].title = document.getElementById('modalChapterTitle').value;
+            journalPages[currentPageIndex].text = document.getElementById('modalChapterText').value;
+            localStorage.setItem('debgigs_journal', JSON.stringify(journalPages));
+            renderJournalPage();
+            hideModal();
+        });
+
         renderJournalPage();
-      }
-    }
 
-    // Modal & Editor Logic
-    function openStoryEditorModal() {
-      activeEditingPageIndex = currentJournalPageIndex;
-      renderEditorTabs();
-      loadPageIntoEditor(activeEditingPageIndex);
-      document.getElementById("story-editor-modal").classList.remove("hidden");
-    }
+        // 3. VIDEO UPLOAD HANDLERS
+        function handleVideoUpload(inputId, videoId) {
+            document.getElementById(inputId).addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const videoURL = URL.createObjectURL(file);
+                    const videoPlayer = document.getElementById(videoId);
+                    videoPlayer.src = videoURL;
+                    videoPlayer.play();
+                }
+            });
+        }
+        handleVideoUpload('videoFileInput1', 'videoPlayer1');
+        handleVideoUpload('videoFileInput2', 'videoPlayer2');
 
-    function closeStoryEditorModal() {
-      document.getElementById("story-editor-modal").classList.add("hidden");
-    }
+        // 4. MUSIC PLAYER LOGIC
+        const bgSong = document.getElementById('bgSong');
+        const playAudioBtn = document.getElementById('playAudioBtn');
+        const playIcon = document.getElementById('playIcon');
+        const visualizer = document.getElementById('visualizer');
+        let isPlaying = false;
 
-    function renderEditorTabs() {
-      const container = document.getElementById("editor-page-tabs");
-      container.innerHTML = "";
-      journalPages.forEach((p, idx) => {
-        const tab = document.createElement("button");
-        tab.type = "button";
-        tab.className = `px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${idx === activeEditingPageIndex ? 'bg-burgundy text-champagne' : 'bg-blush text-burgundy border border-roseGold/30 hover:bg-roseGold/20'}`;
-        tab.innerText = `Page ${p.page}`;
-        tab.onclick = () => {
-          activeEditingPageIndex = idx;
-          renderEditorTabs();
-          loadPageIntoEditor(idx);
-        };
-        container.appendChild(tab);
-      });
-    }
-
-    function loadPageIntoEditor(index) {
-      const page = journalPages[index];
-      document.getElementById("edit-title").value = page.title;
-      document.getElementById("edit-date").value = page.date;
-      document.getElementById("edit-subtitle").value = page.subtitle;
-      document.getElementById("edit-text").value = page.text;
-      document.getElementById("edit-photo-url").value = page.image;
-    }
-
-    function handleEditorPhotoUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById("edit-photo-url").value = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function saveJournalPage(event) {
-      event.preventDefault();
-      const updatedPage = {
-        page: activeEditingPageIndex + 1,
-        title: document.getElementById("edit-title").value,
-        date: document.getElementById("edit-date").value,
-        subtitle: document.getElementById("edit-subtitle").value,
-        text: document.getElementById("edit-text").value,
-        image: document.getElementById("edit-photo-url").value || "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
-      };
-
-      journalPages[activeEditingPageIndex] = updatedPage;
-      localStorage.setItem("debGigs_journalPages", JSON.stringify(journalPages));
-      currentJournalPageIndex = activeEditingPageIndex;
-      renderJournalPage();
-      closeStoryEditorModal();
-    }
-
-    function exportStoryAsText() {
-      let fullStoryText = "=========================================\n";
-      fullStoryText += "   DEBANJAN & GARGI (#DebGigs) MEMORY BOOK\n";
-      fullStoryText += "=========================================\n\n";
-
-      journalPages.forEach(p => {
-        fullStoryText += `PAGE ${p.page}: ${p.title.toUpperCase()}\n`;
-        fullStoryText += `Date/Tagline: ${p.date}\n`;
-        fullStoryText += `Subtitle: ${p.subtitle}\n`;
-        fullStoryText += `-----------------------------------------\n`;
-        fullStoryText += `${p.text}\n\n\n`;
-      });
-
-      const blob = new Blob([fullStoryText], { type: "text/plain;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "DebGigs_Love_Story_Book.txt";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    // Initialize Journal on Load
-    renderJournalPage();
-
-    // -------------------------------------------------------------
-    // VIDEO PLAYER UPLOAD & URL CONTROLS
-    // -------------------------------------------------------------
-    function handleVideoUpload(event, videoNum) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const videoElement = document.getElementById(`video-element-${videoNum}`);
-      const videoSource = document.getElementById(`video-source-${videoNum}`);
-      const fileUrl = URL.createObjectURL(file);
-
-      videoSource.src = fileUrl;
-      videoElement.load();
-    }
-
-    function updateVideoFromUrl(videoNum) {
-      const urlInput = document.getElementById(`video-url-${videoNum}`).value.trim();
-      if (!urlInput) return;
-
-      const videoElement = document.getElementById(`video-element-${videoNum}`);
-      const videoSource = document.getElementById(`video-source-${videoNum}`);
-
-      videoSource.src = urlInput;
-      videoElement.load();
-    }
-
-    // -------------------------------------------------------------
-    // 1. COUNTDOWN TIMER LOGIC
-    // Target: Sunday, November 15, 2026 at 1:30 PM (13:30 IST)
-    // -------------------------------------------------------------
-    const targetDate = new Date("November 15, 2026 13:30:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerText = String(days).padStart(2, '0');
-      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // -------------------------------------------------------------
-    // 2. AI & FALLBACK LOVE STORY GENERATOR
-    // -------------------------------------------------------------
-    let storyChapterCount = 1;
-    const fallbackStories = [
-      {
-        title: "The Cosmic Spark",
-        text: "Once upon a time, amidst shared laughter and endless conversations, two hearts found their rhythm. Debanjan's warmth matched Gargi's radiant smile, weaving a story destined for forever. Today, as their registry approaches, #DebGigs marks the sweet beginning of their greatest adventure."
-      },
-      {
-        title: "The Melodic Promise",
-        text: "Like a song composed by fate, Debanjan and Gargi found harmony in every quiet moment and grand dream. From starry late-night talks to plans for the future, every note played led them right to this upcoming Sunday at 1:30 PM — the official registration of their eternal melody."
-      },
-      {
-        title: "A Tapestry of Dreams",
-        text: "Every grand romance has a magical turning point. For Debanjan and Gargi, it was realizing that home wasn't a place, but a person. Hand in hand, with laughter in their eyes and love in their souls, they step forward into #DebGigs with hearts full of promise."
-      },
-      {
-        title: "The Forever Chapter",
-        text: "With signatures and smiles, Sunday at 1:30 PM becomes a date etched in golden light. Gargi brings the sparkle, Debanjan brings the steady strength, and together they create a warmth that lights up every room. Here’s to a life of endless love!"
-      }
-    ];
-
-    async function generateLoveStory() {
-      const btn = document.getElementById("generate-story-btn");
-      const textContainer = document.getElementById("story-text");
-      const authorContainer = document.getElementById("story-chapter-num");
-      const icon = document.getElementById("story-icon");
-
-      // UI Loading state
-      btn.disabled = true;
-      btn.classList.add("opacity-75");
-      icon.className = "fa-solid fa-spinner text-4xl text-roseGold mb-4 animate-spin";
-      textContainer.innerText = "Consulting the stars and writing a beautiful new chapter for Debanjan & Gargi...";
-
-      const prompt = "Write a very short, ultra-romantic, poetic 3-sentence love story snippet about Debanjan and Gargi getting registered this Sunday at 1:30 PM. Include the hashtag #DebGigs and emphasize warmth, eternal togetherness, and joy.";
-      const apiKey = ""; // Canvas runtime environment automatically provides key
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-          })
+        playAudioBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgSong.pause();
+                playIcon.className = "fa-solid fa-play text-sm ml-0.5";
+                visualizer.classList.add('paused');
+                isPlaying = false;
+            } else {
+                bgSong.play().then(() => {
+                    playIcon.className = "fa-solid fa-pause text-sm";
+                    visualizer.classList.remove('paused');
+                    isPlaying = true;
+                }).catch(err => { console.log("Click interaction needed:", err); });
+            }
         });
 
-        const result = await response.json();
-        const candidate = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-        storyChapterCount++;
-        if (candidate) {
-          textContainer.innerText = `"${candidate.trim()}"`;
-          document.getElementById("story-author").innerHTML = `— Chapter ${storyChapterCount}: Generated with AI —`;
-        } else {
-          useFallbackStory();
-        }
-      } catch (err) {
-        useFallbackStory();
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove("opacity-75");
-        icon.className = "fa-solid fa-feather-pointed text-4xl text-roseGold mb-4 animate-bounce";
-      }
-    }
-
-    function useFallbackStory() {
-      storyChapterCount++;
-      const storyIndex = (storyChapterCount - 1) % fallbackStories.length;
-      const story = fallbackStories[storyIndex];
-      document.getElementById("story-text").innerText = `"${story.text}"`;
-      document.getElementById("story-author").innerHTML = `— Chapter ${storyChapterCount}: ${story.title} —`;
-    }
-
-    // -------------------------------------------------------------
-    // 3. PHOTO GALLERY & LIGHTBOX
-    // -------------------------------------------------------------
-    function openLightbox(src, caption) {
-      document.getElementById("lightbox-img").src = src;
-      document.getElementById("lightbox-caption").innerText = caption;
-      document.getElementById("lightbox").classList.remove("hidden");
-    }
-
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.add("hidden");
-    }
-
-    function handlePhotoUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const grid = document.getElementById("gallery-grid");
-        const newCard = document.createElement("div");
-        newCard.className = "group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer";
-        newCard.onclick = () => openLightbox(e.target.result, "Special Moment — Debanjan & Gargi");
-        newCard.innerHTML = `
-          <img src="${e.target.result}" alt="Uploaded Photo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-            <span class="font-serif text-lg font-semibold">User Uploaded Memory</span>
-            <span class="text-xs text-champagne/80">#DebGigs</span>
-          </div>
-        `;
-        grid.prepend(newCard);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // -------------------------------------------------------------
-    // 4. ROMANTIC AUDIO SYNTHESIZER (Web Audio API)
-    // -------------------------------------------------------------
-    let audioCtx = null;
-    let isPlaying = false;
-    let waveInterval = null;
-
-    function toggleMusic() {
-      const btnIcon = document.getElementById("music-icon");
-      
-      if (!isPlaying) {
-        startPianoMelody();
-        btnIcon.className = "fa-solid fa-pause";
-        startWaveVisualizer();
-        isPlaying = true;
-      } else {
-        stopPianoMelody();
-        btnIcon.className = "fa-solid fa-play";
-        stopWaveVisualizer();
-        isPlaying = false;
-      }
-    }
-
-    let melodyInterval = null;
-    function startPianoMelody() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      // Soft romantic pentatonic notes
-      const notes = [261.63, 329.63, 392.00, 493.88, 523.25, 659.25]; // C4, E4, G4, B4, C5, E5
-      let step = 0;
-
-      melodyInterval = setInterval(() => {
-        if (!isPlaying) return;
-        const note = notes[Math.floor(Math.random() * notes.length)];
-        playTone(note, 1.2);
-        step++;
-      }, 700);
-    }
-
-    function playTone(freq, duration) {
-      if (!audioCtx) return;
-      try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        
-        // Soft envelope
-        gain.gain.setValueAtTime(0, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.1);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      } catch (e) {}
-    }
-
-    function stopPianoMelody() {
-      if (melodyInterval) clearInterval(melodyInterval);
-    }
-
-    function startWaveVisualizer() {
-      const bars = document.querySelectorAll("#audio-wave .bar");
-      waveInterval = setInterval(() => {
-        bars.forEach(bar => {
-          const h = Math.floor(Math.random() * 12) + 4;
-          bar.style.height = `${h}px`;
+        document.getElementById('songFileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const audioURL = URL.createObjectURL(file);
+                bgSong.src = audioURL;
+                bgSong.play();
+                playIcon.className = "fa-solid fa-pause text-sm";
+                visualizer.classList.remove('paused');
+                isPlaying = true;
+            }
         });
-      }, 150);
-    }
 
-    function stopWaveVisualizer() {
-      if (waveInterval) clearInterval(waveInterval);
-      const bars = document.querySelectorAll("#audio-wave .bar");
-      bars.forEach(bar => bar.style.height = '4px');
-    }
+        // 5. FLOATING SPARKLE & HEART PARTICLES
+        const canvas = document.getElementById('sparkleCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-    // -------------------------------------------------------------
-    // 5. FLOATING PARTICLES & HEARTS CANVAS
-    // -------------------------------------------------------------
-    const canvas = document.getElementById("particles-canvas");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height + Math.random() * 100;
-        this.size = Math.random() * 14 + 8;
-        this.speedY = Math.random() * 1 + 0.5;
-        this.speedX = Math.sin(Math.random() * Math.PI) * 0.5;
-        this.opacity = Math.random() * 0.5 + 0.2;
-        this.type = Math.random() > 0.4 ? 'heart' : 'sparkle';
-      }
-      update() {
-        this.y -= this.speedY;
-        this.x += this.speedX;
-        if (this.y < -20) this.reset();
-      }
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.opacity;
-        if (this.type === 'heart') {
-          ctx.fillStyle = '#B76E79';
-          ctx.font = `${this.size}px serif`;
-          ctx.fillText('♥', this.x, this.y);
-        } else {
-          ctx.fillStyle = '#D4AF37';
-          ctx.font = `${this.size * 0.7}px serif`;
-          ctx.fillText('✨', this.x, this.y);
+        const particles = [];
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 0.7 + 0.3;
+                this.speedX = Math.sin(Math.random() * Math.PI) * 0.4;
+                this.opacity = Math.random() * 0.25 + 0.1;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -20) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#B76E79';
+                ctx.font = `${this.size}px serif`;
+                ctx.fillText('♥', this.x, this.y);
+                ctx.restore();
+            }
         }
-        ctx.restore();
-      }
-    }
 
-    for (let i = 0; i < 35; i++) {
-      particles.push(new Particle());
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-  </script>
+        for (let i = 0; i < 20; i++) particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
 </body>
 </html>
