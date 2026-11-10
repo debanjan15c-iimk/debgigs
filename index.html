@@ -16,9 +16,10 @@
             champagne: '#F7E7CE',
             burgundy: '#58111A',
             deepCrimson: '#800020',
-            blush: '#FFF0F5',
+            blush: '#FAECEB',
             warmGold: '#D4AF37',
-            charcoal: '#2C2C2C'
+            charcoal: '#2C2C2C',
+            pastelBlue: '#E0F2FE'
           },
           fontFamily: {
             serif: ['Playfair Display', 'serif'],
@@ -39,6 +40,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* Fixed background image combined with a crisp SVG repeating #DebGigs watermark overlay */
+    body {
+      background-color: #FAF5F5;
+      background-image: 
+        linear-gradient(rgba(253, 248, 246, 0.88), rgba(253, 248, 246, 0.88)),
+        url("data:image/svg+xml,%3Csvg width='240' height='120' viewBox='0 0 240 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-18 120 60)'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23B76E79' fill-opacity='0.20' font-family='Playfair Display, Georgia, serif' font-weight='700' font-size='24'%3E%23DebGigs%3C/text%3E%3C/g%3E%3C/svg%3E"),
+        url("image_c8f596.jpg"),
+        url("image_c88154.jpg");
+      background-repeat: repeat, repeat, no-repeat, no-repeat;
+      background-position: center center, top left, center center, center center;
+      background-size: auto, 240px 120px, cover, cover;
+      background-attachment: fixed, fixed, fixed, fixed;
+    }
+
+    /* Distinct background watermark pattern inside interactive cards */
+    .watermark-card-bg {
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+        url("data:image/svg+xml,%3Csvg width='160' height='80' viewBox='0 0 160 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2358111A' fill-opacity='0.14' font-family='Great Vibes, cursive' font-size='24'%3Edebgigs%3C/text%3E%3C/svg%3E");
+    }
+
     /* Canvas styling */
     #particles-canvas {
       position: fixed;
@@ -52,14 +74,14 @@
 
     /* Glassmorphism */
     .glass-card {
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.7);
     }
     
     .glass-dark {
-      background: rgba(44, 16, 25, 0.85);
+      background: rgba(88, 17, 26, 0.90);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(212, 175, 55, 0.3);
@@ -94,7 +116,7 @@
     }
   </style>
 </head>
-<body class="bg-blush text-charcoal font-sans antialiased overflow-x-hidden selection:bg-roseGold selection:text-white">
+<body class="text-charcoal font-sans antialiased overflow-x-hidden selection:bg-roseGold selection:text-white">
 
   <!-- Background Animated Hearts & Petals Canvas -->
   <canvas id="particles-canvas"></canvas>
@@ -108,9 +130,8 @@
       <div class="hidden md:flex space-x-6 text-xs font-semibold tracking-wider text-burgundy uppercase">
         <a href="#countdown" class="hover:text-roseGold transition">Countdown</a>
         <a href="#journal" class="hover:text-roseGold transition">Our Journal 📖</a>
-        <a href="#story" class="hover:text-roseGold transition">AI Story</a>
+        <a href="#videos" class="hover:text-roseGold transition">Videos 🎥</a>
         <a href="#gallery" class="hover:text-roseGold transition">Gallery</a>
-        <a href="#details" class="hover:text-roseGold transition">Registry Details</a>
       </div>
       <span class="bg-roseGold/15 text-burgundy text-xs px-3.5 py-1.5 rounded-full font-bold border border-roseGold/30 shadow-sm">
         #DebGigs
@@ -121,26 +142,26 @@
   <!-- Main Hero & Countdown Section -->
   <section id="countdown" class="relative min-h-screen pt-28 pb-16 flex flex-col justify-center items-center text-center px-4 z-10 overflow-hidden">
     <!-- Glow Effects -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-roseGold/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-warmGold/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-roseGold/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-warmGold/15 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- Subtitle Banner -->
-    <div class="inline-flex items-center space-x-2 bg-white/90 border border-roseGold/40 px-5 py-2 rounded-full text-burgundy text-xs md:text-sm font-semibold tracking-widest uppercase mb-6 shadow-sm">
+    <div class="inline-flex items-center space-x-2 bg-white/95 border border-roseGold/40 px-5 py-2 rounded-full text-burgundy text-xs md:text-sm font-semibold tracking-widest uppercase mb-6 shadow-sm">
       <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
-      <span>We Are Registering Our Marriage!</span>
+      <span>The Magic Moment: Debanjan and Gargi</span>
       <i class="fa-solid fa-heart text-roseGold animate-pulse"></i>
     </div>
 
     <!-- Main Couple Names -->
     <h1 class="font-cursive text-6xl sm:text-7xl md:text-9xl text-burgundy font-normal mb-2 drop-shadow-sm leading-none">
-      Debanjan & Gargi
+      Debanjan and Gargi
     </h1>
     <p class="font-serif italic text-xl md:text-2xl text-roseGold font-semibold mb-8 tracking-wider">
-      #DebGigs — The Official Registry Beginning
+      #DebGigs -- The Vow to a Lifetime Together
     </p>
 
     <!-- Date & Time Subtitle -->
-    <div class="bg-white/70 backdrop-blur-md px-6 py-3 rounded-2xl border border-roseGold/30 text-burgundy text-sm md:text-base font-medium tracking-wide uppercase mb-10 shadow-sm">
+    <div class="bg-white/85 backdrop-blur-md px-6 py-3 rounded-2xl border border-roseGold/30 text-burgundy text-sm md:text-base font-medium tracking-wide uppercase mb-10 shadow-sm">
       <i class="fa-regular fa-calendar-heart mr-2 text-roseGold text-lg"></i>
       Sunday, November 15, 2026 &bull; 1:30 PM IST
     </div>
@@ -175,9 +196,9 @@
         <i class="fa-solid fa-book-heart"></i>
         <span>Our 5-Page Memory Book</span>
       </a>
-      <a href="#story" class="bg-white/90 text-burgundy border border-roseGold/50 px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-white hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span>AI Story Generator</span>
+      <a href="#gallery" class="bg-white/90 text-burgundy border border-roseGold/50 px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-white hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-images"></i>
+        <span>Photo Gallery</span>
       </a>
     </div>
   </section>
@@ -206,8 +227,8 @@
       </div>
     </div>
 
-    <!-- Interactive Book Frame -->
-    <div class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl border border-roseGold/40 relative overflow-hidden">
+    <!-- Interactive Book Frame with Visible Card Watermark -->
+    <div class="glass-card watermark-card-bg rounded-3xl p-6 md:p-10 shadow-2xl border border-roseGold/40 relative overflow-hidden">
       <!-- Book Header & Page Indicator -->
       <div class="flex flex-col sm:flex-row justify-between items-center border-b border-roseGold/20 pb-4 mb-6 gap-3">
         <div class="flex items-center space-x-2">
@@ -223,7 +244,7 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[380px]">
         <!-- Page Image -->
         <div class="md:col-span-5 relative group overflow-hidden rounded-2xl border border-roseGold/30 shadow-md aspect-[4/3] md:aspect-square">
-          <img id="book-page-img" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Page Memory" class="w-full h-full object-cover transition duration-500">
+          <img id="book-page-img" src="DSC00183.jpg" alt="Page Memory" class="w-full h-full object-cover transition duration-500">
           <div class="absolute bottom-2 right-2 bg-burgundy/80 text-champagne text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">
             #DebGigs Memory
           </div>
@@ -260,100 +281,74 @@
 
   <!-- MULTI-PAGE STORY EDITOR MODAL -->
   <div id="story-editor-modal" class="fixed inset-0 bg-burgundy/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="glass-card max-w-3xl w-full rounded-3xl p-6 md:p-8 shadow-2xl border border-warmGold/40 my-8 relative text-left">
-      <button onclick="closeStoryEditorModal()" class="absolute top-5 right-5 text-burgundy hover:text-roseGold text-2xl transition">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <div class="flex items-center space-x-3 mb-4">
-        <i class="fa-solid fa-feather text-roseGold text-2xl"></i>
-        <div>
-          <h3 class="font-serif text-2xl font-bold text-burgundy">Edit Our 5-Page Memory Journal</h3>
-          <p class="text-xs text-charcoal/70">Write story details, dates, and upload photos for each page.</p>
-        </div>
-      </div>
-
-      <!-- Page Selector Tabs -->
-      <div class="flex space-x-2 border-b border-roseGold/20 pb-3 mb-6 overflow-x-auto" id="editor-page-tabs">
-        <!-- Tabs generated dynamically -->
-      </div>
-
-      <!-- Editor Form -->
-      <form id="page-editor-form" onsubmit="saveJournalPage(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Chapter Title</label>
-          <input type="text" id="edit-title" required class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Date / Tagline</label>
-            <input type="text" id="edit-date" required placeholder="e.g. November 2024" class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Subtitle</label>
-            <input type="text" id="edit-subtitle" required placeholder="e.g. First Coffee Date" class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Story & Memories (4-5 Paragraphs or detailed text)</label>
-          <textarea id="edit-text" rows="6" required placeholder="Write details about your meetings, conversations, special dates..." class="w-full px-4 py-2.5 rounded-xl border border-roseGold/40 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-roseGold leading-relaxed"></textarea>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-burgundy uppercase mb-1">Page Photo</label>
-          <div class="flex items-center space-x-4">
-            <input type="file" id="edit-photo-input" accept="image/*" onchange="handleEditorPhotoUpload(event)" class="text-xs text-charcoal/80 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-roseGold/20 file:text-burgundy hover:file:bg-roseGold/30">
-            <input type="text" id="edit-photo-url" placeholder="Or paste image URL" class="flex-1 px-4 py-2 rounded-xl border border-roseGold/40 bg-white/90 text-xs">
-          </div>
-        </div>
-
-        <div class="pt-4 border-t border-roseGold/20 flex justify-between items-center">
-          <button type="button" onclick="closeStoryEditorModal()" class="px-5 py-2.5 rounded-full border border-gray-300 text-xs font-semibold text-charcoal/80 hover:bg-gray-100">Cancel</button>
-          <button type="submit" class="btn-shimmer text-white px-8 py-2.5 rounded-full text-xs font-semibold shadow-md hover:scale-105 transition">
-            Save Page & Memories
-          </button>
-        </div>
-      </form>
-    </div>
+    <!-- ... existing story editor content ... -->
   </div>
 
-  <!-- AI STORY GENERATOR SECTION -->
-  <section id="story" class="relative py-20 px-4 z-10 bg-white/60 border-y border-roseGold/20">
-    <div class="max-w-4xl mx-auto text-center">
-      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Magical Journey</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2 mb-4">
-        The Tale of Debanjan & Gargi
+  <!-- VIDEO GALLERY SECTION -->
+  <section id="videos" class="py-16 px-4 z-10 max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Our Video Keepsakes</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
+        Special Moments in Motion
       </h2>
-      <p class="text-charcoal/70 max-w-xl mx-auto mb-8 text-sm md:text-base">
-        Click below to unveil a heartwarming story of love, laughter, and forever. Powered by AI creativity for #DebGigs!
+      <p class="text-charcoal/80 text-sm md:text-base mt-2 max-w-lg mx-auto font-medium">
+        watch our favorite captured moments
       </p>
+    </div>
 
-      <!-- Story Display Card -->
-      <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border border-roseGold/30 relative overflow-hidden text-left">
-        <div class="absolute -top-4 -right-4 text-9xl text-roseGold/10 font-serif pointer-events-none select-none">“</div>
-        
-        <div id="story-container" class="min-h-[200px] flex flex-col justify-center items-center text-center transition-all duration-500">
-          <i id="story-icon" class="fa-solid fa-feather-pointed text-4xl text-roseGold mb-4 animate-bounce"></i>
-          <p id="story-text" class="font-serif text-lg md:text-xl text-burgundy/90 leading-relaxed italic max-w-2xl">
-            "Once upon a time, amidst shared laughter and endless conversations, two hearts found their rhythm. Debanjan's warmth matched Gargi's radiant smile, weaving a story destined for forever. Today, as their registry approaches, #DebGigs marks the sweet beginning of their greatest adventure."
-          </p>
-          <div id="story-author" class="mt-4 text-xs font-semibold text-roseGold uppercase tracking-widest">
-            — Chapter 1: The Cosmic Spark —
+    <!-- 2 Videos Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Video 1 Card -->
+      <div class="glass-card watermark-card-bg rounded-3xl p-5 shadow-xl border border-roseGold/30 flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden rounded-2xl bg-black aspect-video shadow-md mb-4 border border-roseGold/20 group">
+            <video id="video-element-1" controls class="w-full h-full object-cover">
+              <source id="video-source-1" src="https://assets.mixkit.co/videos/preview/mixkit-couple-walking-hand-in-hand-on-the-beach-41484-large.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute top-3 left-3 bg-burgundy/80 text-champagne text-[10px] px-3 py-1 rounded-full backdrop-blur-sm font-semibold tracking-wider">
+              #DebGigs Reel 1
+            </div>
           </div>
+          <h3 class="font-serif text-xl font-bold text-burgundy" id="video-title-1">Our Journey in Motion</h3>
+          <p class="text-xs text-charcoal/75 mt-1" id="video-desc-1">Hand-in-hand moments leading to our registry day.</p>
         </div>
+        
+        <!-- Video 1 Options -->
+        <div class="mt-4 pt-3 border-t border-roseGold/20 flex flex-col sm:flex-row items-center gap-2">
+          <label class="w-full sm:w-auto cursor-pointer bg-white text-burgundy border border-roseGold/40 text-[11px] font-semibold px-4 py-2 rounded-full hover:bg-blush transition text-center flex items-center justify-center space-x-1.5 shadow-sm">
+            <i class="fa-solid fa-file-video text-roseGold"></i>
+            <span>Upload Video 1</span>
+            <input type="file" accept="video/*" class="hidden" onchange="handleVideoUpload(event, 1)">
+          </label>
+          <input type="text" id="video-url-1" placeholder="Or paste MP4 / video link" class="w-full text-xs px-3 py-1.5 rounded-full border border-roseGold/30 bg-white/80 focus:outline-none focus:ring-1 focus:ring-roseGold" onchange="updateVideoFromUrl(1)">
+        </div>
+      </div>
 
-        <!-- Action Bar -->
-        <div class="mt-8 pt-6 border-t border-roseGold/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="text-xs text-charcoal/60 flex items-center space-x-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Gemini AI Connected & Ready</span>
+      <!-- Video 2 Card -->
+      <div class="glass-card watermark-card-bg rounded-3xl p-5 shadow-xl border border-roseGold/30 flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden rounded-2xl bg-black aspect-video shadow-md mb-4 border border-roseGold/20 group">
+            <video id="video-element-2" controls class="w-full h-full object-cover">
+              <source id="video-source-2" src="https://assets.mixkit.co/videos/preview/mixkit-young-couple-in-love-enjoying-the-sunset-41480-large.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute top-3 left-3 bg-burgundy/80 text-champagne text-[10px] px-3 py-1 rounded-full backdrop-blur-sm font-semibold tracking-wider">
+              #DebGigs Reel 2
+            </div>
           </div>
-          <button id="generate-story-btn" onclick="generateLoveStory()" class="w-full sm:w-auto btn-shimmer text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
-            <i class="fa-solid fa-sparkles"></i>
-            <span>✨ Reveal / Generate Our Story</span>
-          </button>
+          <h3 class="font-serif text-xl font-bold text-burgundy" id="video-title-2">Sunset & Whispers</h3>
+          <p class="text-xs text-charcoal/75 mt-1" id="video-desc-2">Special romantic highlights of Debanjan & Gargi.</p>
+        </div>
+        
+        <!-- Video 2 Options -->
+        <div class="mt-4 pt-3 border-t border-roseGold/20 flex flex-col sm:flex-row items-center gap-2">
+          <label class="w-full sm:w-auto cursor-pointer bg-white text-burgundy border border-roseGold/40 text-[11px] font-semibold px-4 py-2 rounded-full hover:bg-blush transition text-center flex items-center justify-center space-x-1.5 shadow-sm">
+            <i class="fa-solid fa-file-video text-roseGold"></i>
+            <span>Upload Video 2</span>
+            <input type="file" accept="video/*" class="hidden" onchange="handleVideoUpload(event, 2)">
+          </label>
+          <input type="text" id="video-url-2" placeholder="Or paste MP4 / video link" class="w-full text-xs px-3 py-1.5 rounded-full border border-roseGold/30 bg-white/80 focus:outline-none focus:ring-1 focus:ring-roseGold" onchange="updateVideoFromUrl(2)">
         </div>
       </div>
     </div>
@@ -366,8 +361,8 @@
       <h2 class="font-serif text-4xl md:text-5xl text-burgundy font-bold mt-2">
         #DebGigs Photo Gallery
       </h2>
-      <p class="text-charcoal/70 text-sm md:text-base mt-2 max-w-lg mx-auto">
-        Click on any photo to open in full screen, or upload your favorite couple memories!
+      <p class="text-charcoal/80 text-sm md:text-base mt-2 max-w-lg mx-auto font-medium">
+        watch our favorite captured moments
       </p>
 
       <!-- Custom Upload Button -->
@@ -383,71 +378,38 @@
     <!-- Gallery Grid -->
     <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <!-- Photo 1 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80', 'Debanjan & Gargi — A Promise of Forever')">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Debanjan and Gargi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Debanjan+%26+Gargi'">
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('DSC00183.jpg', 'Debanjan and Gargi — Gateway of Love')">
+        <img src="DSC00183.jpg" alt="Debanjan and Gargi at Gateway" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80'">
+        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
+          #DebGigs
+        </div>
         <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Together Forever</span>
+          <span class="font-serif text-lg font-semibold">Gateway of Love</span>
           <span class="text-xs text-champagne/80">#DebGigs Registry</span>
         </div>
       </div>
 
       <!-- Photo 2 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80', 'Golden Hours — Debanjan & Gargi')">
-        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Sunset Love" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Golden+Hours'">
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('image_c8f596.jpg', 'Sea Breeze & Smiles — Debanjan and Gargi')">
+        <img src="image_c8f596.jpg" alt="Debanjan and Gargi at Promenade" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80'">
+        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
+          #DebGigs
+        </div>
         <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Golden Sunset Glow</span>
+          <span class="font-serif text-lg font-semibold">Sea Breeze & Smiles</span>
           <span class="text-xs text-champagne/80">Counting down to Sunday</span>
         </div>
       </div>
 
       <!-- Photo 3 -->
-      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80', 'Pure Joy — Debanjan & Gargi')">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Joyful Moments" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/800x600/F7E7CE/58111A?text=Pure+Joy'">
+      <div class="group relative overflow-hidden rounded-2xl shadow-md border border-white glass-card aspect-[4/3] cursor-pointer" onclick="openLightbox('image_c8f557.jpg', 'Modern Romance — Debanjan and Gargi')">
+        <img src="image_c8f557.jpg" alt="Debanjan and Gargi Classic Pose" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80'">
+        <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-burgundy tracking-wider shadow-sm">
+          #DebGigs
+        </div>
         <div class="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-          <span class="font-serif text-lg font-semibold">Pure Joy & Laughter</span>
-          <span class="text-xs text-champagne/80">The countdown begins</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENT DETAILS SECTION -->
-  <section id="details" class="py-16 px-4 z-10 bg-white/40 border-t border-roseGold/20">
-    <div class="max-w-4xl mx-auto text-center">
-      <span class="text-roseGold uppercase font-semibold text-xs tracking-widest">Mark Your Calendar</span>
-      <h2 class="font-serif text-4xl text-burgundy font-bold mt-2 mb-10">
-        Registry Event Details
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <!-- Card 1 -->
-        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
-          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
-            <i class="fa-solid fa-calendar-day text-xl"></i>
-          </div>
-          <h3 class="font-serif text-lg font-bold text-burgundy">The Date</h3>
-          <p class="text-charcoal/80 text-sm mt-1">Sunday, November 15, 2026</p>
-          <p class="text-xs text-roseGold font-medium mt-2">Registration Day</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
-          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
-            <i class="fa-solid fa-clock text-xl"></i>
-          </div>
-          <h3 class="font-serif text-lg font-bold text-burgundy">The Time</h3>
-          <p class="text-charcoal/80 text-sm mt-1">1:30 PM IST</p>
-          <p class="text-xs text-roseGold font-medium mt-2">Punctual arrival requested</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="glass-card p-6 rounded-2xl border border-roseGold/30">
-          <div class="w-12 h-12 bg-roseGold/10 rounded-full flex items-center justify-center text-burgundy mb-4">
-            <i class="fa-solid fa-hashtag text-xl"></i>
-          </div>
-          <h3 class="font-serif text-lg font-bold text-burgundy">Official Hashtag</h3>
-          <p class="text-charcoal/80 text-sm mt-1">#DebGigs</p>
-          <p class="text-xs text-roseGold font-medium mt-2">Share your wishes & photos!</p>
+          <span class="font-serif text-lg font-semibold">Classic Elegance</span>
+          <span class="text-xs text-champagne/80">The Vow to a Lifetime Together</span>
         </div>
       </div>
     </div>
@@ -472,8 +434,8 @@
 
       <!-- Track Info & Visualizer -->
       <div class="flex-1 overflow-hidden">
-        <div class="text-xs font-semibold text-champagne truncate">Romantic Melody</div>
-        <div class="text-[10px] text-champagne/70 truncate">Debanjan & Gargi's Tune</div>
+        <div class="text-xs font-semibold text-champagne truncate">Destiny</div>
+        <div class="text-[10px] text-champagne/70 truncate">Jim Brickman ft. Jordan Hill & Billy Porter</div>
         <!-- Audio Spectrum Bars -->
         <div class="flex items-end space-x-1 h-3 mt-1" id="audio-wave">
           <span class="w-1 bg-warmGold/70 rounded-full bar h-1"></span>
@@ -504,7 +466,7 @@
         date: "The First Spark",
         subtitle: "A Simple Hello That Changed Everything",
         text: "It all started with a simple hello that blossomed into endless conversations. From the very first moment Debanjan and Gargi connected, there was an unmistakable spark. We spent hours talking about our favorite music, food cravings, and little everyday stories, completely losing track of time.",
-        image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+        image: "DSC00183.jpg"
       },
       {
         page: 2,
@@ -512,7 +474,7 @@
         date: "Coffee & Long Walks",
         subtitle: "Laughter Over Warm Cups",
         text: "Our first official meeting felt like reuniting with a lifelong friend. We ordered coffee, shared desserts, and walked through quiet avenues as hours melted away. Late-night phone calls became our favorite routine, sharing secrets, dreams, and endless laughs under the midnight sky.",
-        image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80"
+        image: "image_c8f596.jpg"
       },
       {
         page: 3,
@@ -520,7 +482,7 @@
         date: "Shared Adventures",
         subtitle: "Making Memories Across Miles",
         text: "From weekend getaways to exploring hidden cafes in the city, every journey together added a golden page to our book. Gargi's infectious laughter and Debanjan's thoughtful care turned even the simplest moments into unforgettable adventures.",
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+        image: "image_c8f557.jpg"
       },
       {
         page: 4,
@@ -528,7 +490,7 @@
         date: "A Promise of Lifetime",
         subtitle: "Two Hearts, One Rhythm",
         text: "With hearts full of love and eyes shining with happiness, we made the choice to hold hands for a lifetime. Surrounded by warm smiles and blessings, saying 'Yes' was the easiest and most beautiful decision we ever made.",
-        image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80"
+        image: "DSC00183.jpg"
       },
       {
         page: 5,
@@ -536,7 +498,7 @@
         date: "This Sunday at 1:30 PM",
         subtitle: "#DebGigs Marriage Registry",
         text: "Now, here we are! Counting down every second until Sunday at 1:30 PM, when we officially sign our registry and begin our new chapter as husband and wife. Thank you for being a part of our magical journey!",
-        image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80"
+        image: "image_c8f596.jpg"
       }
     ];
 
@@ -671,6 +633,32 @@
 
     // Initialize Journal on Load
     renderJournalPage();
+
+    // -------------------------------------------------------------
+    // VIDEO PLAYER UPLOAD & URL CONTROLS
+    // -------------------------------------------------------------
+    function handleVideoUpload(event, videoNum) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const videoElement = document.getElementById(`video-element-${videoNum}`);
+      const videoSource = document.getElementById(`video-source-${videoNum}`);
+      const fileUrl = URL.createObjectURL(file);
+
+      videoSource.src = fileUrl;
+      videoElement.load();
+    }
+
+    function updateVideoFromUrl(videoNum) {
+      const urlInput = document.getElementById(`video-url-${videoNum}`).value.trim();
+      if (!urlInput) return;
+
+      const videoElement = document.getElementById(`video-element-${videoNum}`);
+      const videoSource = document.getElementById(`video-source-${videoNum}`);
+
+      videoSource.src = urlInput;
+      videoElement.load();
+    }
 
     // -------------------------------------------------------------
     // 1. COUNTDOWN TIMER LOGIC
