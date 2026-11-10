@@ -191,10 +191,10 @@
                 </div>
             </div>
 
-            <!-- Hero Buttons -->
+            <!-- Hero Action Buttons -->
             <div class="pt-8 flex flex-wrap gap-4 justify-center">
                 <a href="#journal" class="px-8 py-3.5 rounded-full bg-roseGold text-white font-medium hover:bg-roseGold/90 transition-all shadow-lg shadow-roseGold/20 flex items-center gap-2 text-sm">
-                    <span>Read Our Love Story</span>
+                    <span>Read Our Story</span>
                     <i class="fa-solid fa-book-heart"></i>
                 </a>
                 <a href="#gallery" class="px-8 py-3.5 rounded-full bg-white/90 text-gray-700 font-medium hover:bg-white transition-all border border-gray-200 flex items-center gap-2 text-sm shadow-sm">
@@ -204,18 +204,23 @@
             </div>
         </section>
 
-        <!-- Our Story Memory Journal (Updated with How We Met Story) -->
+        <!-- Our Story Memory Journal Section -->
         <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
             <div class="text-center space-y-3 mb-10">
-                <span class="font-cursive text-3xl text-roseGold">How We Met ❤️</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The Beginning of My Favourite Forever</h2>
+                <span class="font-cursive text-4xl text-roseGold">Our Story ❤️</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">From a Little Hello to Forever</h2>
+                <p class="text-gray-500 font-serif italic text-base">The beginning of my favourite forever.</p>
             </div>
 
             <div class="glass-card rounded-3xl p-6 md:p-12 shadow-xl relative border border-white space-y-6">
                 
-                <div class="border-b border-gray-200/80 pb-4 flex justify-between items-center">
+                <div class="border-b border-gray-200/80 pb-4 flex flex-wrap justify-between items-center gap-2">
+                    <div>
+                        <span id="journalDateBadge" class="inline-block px-3 py-1 rounded-full bg-roseGold/10 text-roseGold text-xs font-semibold uppercase tracking-wider mb-1">20th April – 3rd May</span>
+                        <h3 id="journalTitle" class="text-xl md:text-2xl font-serif font-bold text-gray-800">Chapter 1 – The Message That Changed Everything</h3>
+                        <p id="journalSubtitle" class="text-xs text-seaBlue font-medium italic mt-0.5">How Jeevansathi brought two strangers together, that first message, and our first meeting at Oyester.</p>
+                    </div>
                     <span id="journalPageIndicator" class="text-xs uppercase tracking-widest text-roseGold font-semibold">Chapter 1 of 5</span>
-                    <span class="text-xs text-gray-400 italic">#DebGigs Love Story</span>
                 </div>
 
                 <!-- Story Paragraphs Container -->
@@ -416,51 +421,65 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. LOVE STORY CHAPTERS ("HOW WE MET")
+        // 2. COMPLETE STORY CHAPTERS ("OUR STORY - FROM A LITTLE HELLO TO FOREVER")
         const storyPages = [
             {
-                title: "Chapter 1: The First Message",
+                date: "20th April – 3rd May",
+                title: "Chapter 1 – The Message That Changed Everything",
+                subtitle: "How Jeevansathi brought two strangers together, that first message, and our first meeting at Oyester.",
                 text: [
                     "Gigs, sometimes I wonder how two people, who were complete strangers one day, can slowly become such an inseparable part of each other's lives. How someone who was once just a name and a phone number can become the first person you want to talk to in the morning, the last person you want to speak to at night, and the person you miss even when you've just said goodbye.",
                     "If I had known that a simple message on Jeevansathi would bring me you, I would have looked forward to 20th April even more than I do now.",
-                    "It all started with a simple message from me: \"Hi, Debanjan here. Got your number from our parents.\" Nothing fancy, nothing extraordinary. Just two people who were about to get to know each other. But today, when I look back, I realise that was probably one of the most beautiful messages I've ever sent."
+                    "It all started with a simple message from me: \"Hi, Debanjan here. Got your number from our parents.\" Nothing fancy, nothing extraordinary. Just two people who were about to get to know each other. But today, when I look back, I realise that was probably one of the most beautiful messages I've ever sent.",
+                    "We met for the first time on 3rd May at Oyester. I still remember how naturally our conversations flowed. There was no awkwardness, no need to pretend to be someone else. It just felt right."
                 ]
             },
             {
-                title: "Chapter 2: Oyester & Meeting Gigs",
+                date: "6th May – 15th May",
+                title: "Chapter 2 – Somewhere Between Hello and I Love You",
+                subtitle: "The birth of Gigs, our Church Street date, the first confession at 12:22, our virtual milkshake date, and her magical reply at 8:56 PM.",
                 text: [
-                    "We met for the first time on 3rd May at Oyester. I still remember how naturally our conversations flowed. There was no awkwardness, no need to pretend to be someone else. It just felt right.",
-                    "On 6th May, I gave her a name that would soon become so close to my heart — Gigs."
-                ]
-            },
-            {
-                title: "Chapter 3: Church Street & The Little YES",
-                text: [
+                    "On 6th May, I gave her a name that would soon become so close to my heart — Gigs.",
                     "On 10th May, during our second date at Church Street, I gathered the courage to tell her, \"I like you. Can we tell our parents about us?\" And she said YES. That little YES meant so much more than she probably realised.",
                     "Then came 14th May. When the clock struck 12:22, I told her, \"I love you.\" We celebrated our little milestone with a virtual milkshake date. Even though we weren't sitting beside each other, it felt incredibly special.",
                     "And then, on 15th May, at exactly 8:56 PM, she said those three words back to me — \"I love you.\" I don't think I can ever explain how happy that moment made me. It was one of those moments I wished I could pause and live in forever."
                 ]
             },
             {
-                title: "Chapter 4: Indiranagar & Weekend Traditions",
+                date: "Our Weekends & Endless Memories",
+                title: "Chapter 3 – Indiranagar Became My Favourite Place",
+                subtitle: "The weekend dates, missing each other, skipping office to meet, and how an entire neighbourhood became special because she was there.",
                 text: [
                     "And then began our favourite little tradition — weekends together! Touchwood, there hasn't been a single weekend when we haven't met, except when we are both in our hometowns. That's how much we have grown used to having each other around.",
                     "There were even days when I supposedly left for office but somehow never made it inside. Instead, I would find my way to meet her. My office colleagues started teasing me, saying, \"Debanjan's favourite place is Indiranagar!\" And honestly, they weren't wrong. Somewhere along the way, Indiranagar stopped being just a place on the map and became my favourite place because she was there."
                 ]
             },
             {
-                title: "Chapter 5: Our Families & Forever",
+                date: "29th June – 2nd July",
+                title: "Chapter 4 – Two Families, One Beautiful YES",
+                subtitle: "Meeting her family, the forgotten photograph, our parents meeting, and the beautiful beginning of our families coming together.",
                 text: [
-                    "On 29th June, we visited her home with my parents. I was so caught up in the moment that I forgot to click even one photograph. Maybe I was too busy living the moment! On 2nd July, her parents visited our hometown, and everything turned into a beautiful YES.",
-                    "Looking back, I realise that I didn't just find someone through Jeevansathi. I found someone whose absence I feel, whose presence makes an ordinary day special, and with whom even a weekend feels incomplete if we don't meet.",
+                    "On 29th June, we visited her home with my parents. I was so caught up in the moment that I forgot to click even one photograph. Maybe I was too busy living the moment!",
+                    "On 2nd July, her parents visited our hometown, and everything turned into a beautiful YES.",
+                    "Looking back, I realise that I didn't just find someone through Jeevansathi. I found someone whose absence I feel, whose presence makes an ordinary day special, and with whom even a weekend feels incomplete if we don't meet."
+                ]
+            },
+            {
+                date: "Our Lifetime Together",
+                title: "Chapter 5 – If I Had to Choose Again, I'd Choose You",
+                subtitle: "Our favourite chapter is still being written.",
+                text: [
                     "Gigs, if I could go back to 20th April, knowing everything I know today, I would still send that same message. Not because I knew what was waiting for me, but because I know now that it was the beginning of the most beautiful decision of my life.",
-                    "And if I had to choose all over again, I'd still choose you. Every single time. ❤️"
+                    "And if I had to choose all over again, I'd still choose you. Every single time. ❤️",
+                    "We started as two strangers, became each other's favourite people, and now, Gigs, I cannot wait to spend the rest of my life making memories with you. The first few pages are behind us. The best chapters are yet to come. ❤️"
                 ]
             }
         ];
 
         let currentStoryIndex = 0;
+        const journalDateBadge = document.getElementById('journalDateBadge');
         const journalTitle = document.getElementById('journalTitle');
+        const journalSubtitle = document.getElementById('journalSubtitle');
         const journalTextContainer = document.getElementById('journalTextContainer');
         const journalPageIndicator = document.getElementById('journalPageIndicator');
         const prevPageBtn = document.getElementById('prevPageBtn');
@@ -469,13 +488,19 @@
 
         function renderStoryPage() {
             const page = storyPages[currentStoryIndex];
+            journalDateBadge.innerText = page.date;
             journalTitle.innerText = page.title;
+            journalSubtitle.innerText = page.subtitle;
             journalPageIndicator.innerText = `Chapter ${currentStoryIndex + 1} of ${storyPages.length}`;
 
             journalTextContainer.innerHTML = '';
-            page.text.forEach(paragraph => {
+            page.text.forEach((paragraph, idx) => {
                 const p = document.createElement('p');
-                p.className = "italic leading-relaxed text-gray-700";
+                if (currentStoryIndex === 4 && idx === page.text.length - 1) {
+                    p.className = "font-serif text-xl md:text-2xl font-semibold text-roseGold italic border-l-4 border-roseGold pl-4 py-2 mt-4 bg-roseGold/5 rounded-r-xl";
+                } else {
+                    p.className = "italic leading-relaxed text-gray-700";
+                }
                 p.innerText = paragraph;
                 journalTextContainer.appendChild(p);
             });
