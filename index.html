@@ -44,7 +44,7 @@
         /* 1. SOFT PHOTO BACKGROUND LAYER */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(rgba(250, 247, 242, 0.80), rgba(250, 247, 242, 0.80)), url('IMG_9363.jpg');
+            background-image: linear-gradient(rgba(250, 247, 242, 0.82), rgba(250, 247, 242, 0.82)), url('IMG_9363.jpg');
             background-size: cover; background-position: center center; background-repeat: no-repeat; z-index: 0; pointer-events: none;
         }
 
@@ -56,15 +56,15 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(183, 110, 121, 0.25);
-            box-shadow: 0 15px 35px rgba(183, 110, 121, 0.12);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(183, 110, 121, 0.3);
+            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.15);
         }
 
         .decorative-border {
-            border: double 3px rgba(183, 110, 121, 0.4);
+            border: double 4px rgba(183, 110, 121, 0.4);
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -88,24 +88,24 @@
     <div class="relative z-20">
 
         <!-- Navigation Header -->
-        <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto border-b border-roseGold/20 mb-6">
+        <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto border-b border-roseGold/25 mb-6">
             <div class="flex items-center space-x-2">
                 <span class="font-cursive text-3xl md:text-4xl text-roseGold tracking-wide">Debanjan & Gargi</span>
-                <span class="text-roseGold/60 font-light text-xs tracking-widest uppercase">| #DebGigs</span>
+                <span class="text-roseGold/70 font-light text-xs tracking-widest uppercase">| #DebGigs</span>
             </div>
             
             <nav class="flex items-center space-x-4 md:space-x-8 text-xs md:text-sm font-medium text-gray-700 uppercase tracking-wider">
-                <a href="#countdown" class="hover:text-roseGold transition-colors">Countdown</a>
-                <a href="#journal" class="hover:text-roseGold transition-colors">Our Story</a>
-                <a href="#videos" class="hover:text-roseGold transition-colors">Videos</a>
-                <a href="#gallery" class="hover:text-roseGold transition-colors">Gallery</a>
+                <a href="#countdown" class="hover:text-roseGold transition-colors font-semibold">Countdown</a>
+                <a href="#journal" class="hover:text-roseGold transition-colors font-semibold">Our Story</a>
+                <a href="#videos" class="hover:text-roseGold transition-colors font-semibold">Videos</a>
+                <a href="#gallery" class="hover:text-roseGold transition-colors font-semibold">Gallery</a>
             </nav>
         </header>
 
         <!-- Hero Section -->
         <section class="max-w-5xl mx-auto px-6 py-8 md:py-12 text-center space-y-6">
-            <div class="inline-block px-6 py-2 rounded-full bg-white/90 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-semibold shadow-md">
-                ✨ Forever & Always: Debanjan & Gargi ✨
+            <div class="inline-block px-6 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-bold shadow-md">
+                ✨ ✦ Forever & Always: Debanjan & Gargi ✦ ✨
             </div>
             
             <h1 class="text-6xl md:text-8xl font-cursive font-normal text-gray-900 leading-tight drop-shadow-sm">
@@ -117,67 +117,69 @@
             </p>
 
             <div class="pt-2">
-                <p class="text-gray-600 uppercase tracking-widest text-xs md:text-sm font-semibold border-y border-roseGold/20 py-2 inline-block px-8">Sunday, November 15, 2026 • 1:30 PM IST</p>
+                <span class="text-roseGold text-sm">✦ ✧ ✦</span>
+                <p class="text-gray-700 uppercase tracking-widest text-xs md:text-sm font-bold border-y border-roseGold/30 py-2.5 inline-block px-10 my-2 bg-white/50 rounded-lg shadow-sm">Sunday, November 15, 2026 • 1:30 PM IST</p>
+                <span class="text-roseGold text-sm">✦ ✧ ✦</span>
             </div>
 
             <!-- Countdown Timer -->
             <div id="countdown" class="pt-6 max-w-xl mx-auto">
                 <div class="grid grid-cols-4 gap-3 md:gap-6 text-center">
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/30 shadow-lg">
-                        <span id="days" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-semibold mt-1 block">Days</span>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
+                        <span id="days" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Days</span>
                     </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/30 shadow-lg">
-                        <span id="hours" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-semibold mt-1 block">Hours</span>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
+                        <span id="hours" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Hours</span>
                     </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/30 shadow-lg">
-                        <span id="minutes" class="block text-3xl md:text-5xl font-serif font-bold text-gray-800">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-semibold mt-1 block">Minutes</span>
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
+                        <span id="minutes" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Minutes</span>
                     </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/30 shadow-lg">
+                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
                         <span id="seconds" class="block text-3xl md:text-5xl font-serif font-bold text-roseGold">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-semibold mt-1 block">Seconds</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Seconds</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- OUR STORY SECTION -->
+        <!-- OUR STORY SECTION (FIXED: NO UNDEFINED) -->
         <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
             <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-5xl text-roseGold">Our Love Story ❤️</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">From a Little Hello to Forever</h2>
-                <div class="flex items-center justify-center space-x-3 text-roseGold/60 pt-2">
-                    <span class="h-px w-16 bg-roseGold/40"></span>
+                <div class="flex items-center justify-center space-x-3 text-roseGold pt-2">
+                    <span class="h-px w-20 bg-roseGold/50"></span>
                     <i class="fa-solid fa-heart text-xs"></i>
-                    <span class="h-px w-16 bg-roseGold/40"></span>
+                    <span class="h-px w-20 bg-roseGold/50"></span>
                 </div>
             </div>
 
             <div class="glass-card rounded-3xl p-6 md:p-12 shadow-2xl relative decorative-border space-y-6">
                 
-                <div class="border-b border-roseGold/20 pb-4 flex flex-wrap justify-between items-center gap-2">
+                <div class="border-b-2 border-roseGold/30 pb-4 flex flex-wrap justify-between items-center gap-2">
                     <div>
                         <h3 id="journalTitle" class="text-2xl md:text-3xl font-serif font-bold text-roseGold">Chapter 1</h3>
                     </div>
-                    <span id="journalPageIndicator" class="text-xs uppercase tracking-widest bg-roseGold/10 px-4 py-1.5 rounded-full text-roseGold font-bold border border-roseGold/30">Chapter 1 of 5</span>
+                    <span id="journalPageIndicator" class="text-xs uppercase tracking-widest bg-roseGold/15 px-4 py-1.5 rounded-full text-roseGold font-bold border border-roseGold/40 shadow-sm">Chapter 1 of 5</span>
                 </div>
 
-                <div class="py-2 min-h-[240px]">
-                    <div id="journalTextContainer" class="text-gray-800 font-serif text-lg md:text-xl leading-relaxed space-y-4 italic">
+                <div class="py-2 min-h-[260px]">
+                    <div id="journalTextContainer" class="text-gray-900 font-serif text-lg md:text-xl leading-relaxed space-y-5 italic">
                         <!-- Content injected via JavaScript -->
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center pt-6 border-t border-roseGold/20">
-                    <button id="prevPageBtn" onclick="changeChapter(-1)" class="px-6 py-2.5 rounded-full border border-roseGold/40 text-roseGold hover:bg-roseGold hover:text-white disabled:opacity-30 transition-all text-sm font-semibold flex items-center gap-2 shadow-sm">
+                <div class="flex justify-between items-center pt-6 border-t-2 border-roseGold/30">
+                    <button id="prevPageBtn" onclick="changeChapter(-1)" class="px-6 py-3 rounded-full border-2 border-roseGold/50 text-roseGold hover:bg-roseGold hover:text-white disabled:opacity-30 transition-all text-sm font-bold flex items-center gap-2 shadow-sm">
                         <i class="fa-solid fa-chevron-left text-xs"></i> Previous Chapter
                     </button>
 
-                    <div id="pageDots" class="flex space-x-2"></div>
+                    <div id="pageDots" class="flex space-x-2.5"></div>
 
-                    <button id="nextPageBtn" onclick="changeChapter(1)" class="px-6 py-2.5 rounded-full bg-roseGold text-white hover:bg-roseGold/90 disabled:opacity-30 transition-all text-sm font-semibold flex items-center gap-2 shadow-md">
+                    <button id="nextPageBtn" onclick="changeChapter(1)" class="px-6 py-3 rounded-full bg-roseGold text-white hover:bg-roseGold/90 disabled:opacity-30 transition-all text-sm font-bold flex items-center gap-2 shadow-md">
                         Next Chapter <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                 </div>
@@ -185,15 +187,19 @@
         </section>
 
         <!-- VIDEOS SECTION -->
-        <section id="videos" class="max-w-6xl mx-auto px-6 py-16 border-t border-roseGold/20">
+        <section id="videos" class="max-w-6xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-12">
                 <span class="font-cursive text-4xl text-roseGold">Special Highlights</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Video Moments</h2>
-                <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">Watch our favorite captured moments together</p>
+                <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
+                    <span class="h-px w-16 bg-roseGold/50"></span>
+                    <i class="fa-solid fa-film text-xs"></i>
+                    <span class="h-px w-16 bg-roseGold/50"></span>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/30">
+                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
                         <video id="videoPlayer1" controls preload="metadata" class="w-full h-full object-cover">
                             <source src="" type="video/mp4">
@@ -202,19 +208,19 @@
                     </div>
                     <div class="pt-4 px-2 space-y-3">
                         <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-gray-800">#DebGigs Highlight Reel 1</h3>
-                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/10 text-roseGold font-semibold">Video 1</span>
+                            <h3 class="font-serif font-bold text-xl text-gray-900">#DebGigs Highlight Reel 1</h3>
+                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/15 text-roseGold font-bold">Video 1</span>
                         </div>
                         <div class="flex gap-2">
                             <input type="file" id="videoFileInput1" accept="video/*" class="hidden" onchange="loadVideo(event, 'videoPlayer1')">
-                            <button onclick="document.getElementById('videoFileInput1').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/30 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
+                            <button onclick="document.getElementById('videoFileInput1').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/40 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
                                 <i class="fa-solid fa-upload"></i> Upload Video
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/30">
+                <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
                         <video id="videoPlayer2" controls preload="metadata" class="w-full h-full object-cover">
                             <source src="" type="video/mp4">
@@ -223,12 +229,12 @@
                     </div>
                     <div class="pt-4 px-2 space-y-3">
                         <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-gray-800">#DebGigs Highlight Reel 2</h3>
-                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/10 text-roseGold font-semibold">Video 2</span>
+                            <h3 class="font-serif font-bold text-xl text-gray-900">#DebGigs Highlight Reel 2</h3>
+                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/15 text-roseGold font-bold">Video 2</span>
                         </div>
                         <div class="flex gap-2">
                             <input type="file" id="videoFileInput2" accept="video/*" class="hidden" onchange="loadVideo(event, 'videoPlayer2')">
-                            <button onclick="document.getElementById('videoFileInput2').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/30 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
+                            <button onclick="document.getElementById('videoFileInput2').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/40 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
                                 <i class="fa-solid fa-upload"></i> Upload Video
                             </button>
                         </div>
@@ -238,58 +244,62 @@
         </section>
 
         <!-- PHOTO SLIDESHOW SECTION -->
-        <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-roseGold/20">
+        <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-4xl text-roseGold">Precious Memories</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Beautiful Memories</h2>
-                <p class="text-gray-500 font-light max-w-lg mx-auto text-sm">A glimpse into our journey together</p>
+                <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
+                    <span class="h-px w-16 bg-roseGold/50"></span>
+                    <i class="fa-solid fa-camera text-xs"></i>
+                    <span class="h-px w-16 bg-roseGold/50"></span>
+                </div>
             </div>
 
-            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl relative border border-roseGold/30 max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl relative border border-roseGold/40 max-w-4xl mx-auto">
                 <div class="relative w-full rounded-2xl overflow-hidden bg-[#181920] flex items-center justify-center p-3 md:p-6 min-h-[380px] md:min-h-[520px] shadow-inner">
                     
                     <img id="slideshowImg" src="PHOTO-2026-10-05-09-42-03" alt="Debanjan & Gargi Memory" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg transition-opacity duration-300 ease-in-out shadow-2xl">
                     
-                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-14 pb-4 px-6 text-white text-center">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-16 pb-5 px-6 text-white text-center">
                         <h3 id="slideshowTitle" class="font-serif text-xl md:text-3xl font-bold tracking-wide">Beautiful Memory</h3>
-                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold font-medium mt-0.5">#DebGigs Moments</p>
+                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold font-semibold mt-0.5">#DebGigs Moments</p>
                     </div>
 
-                    <button onclick="prevSlide()" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-lg z-10">
+                    <button onclick="prevSlide()" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold">
                         <i class="fa-solid fa-chevron-left text-sm"></i>
                     </button>
 
-                    <button onclick="nextSlide()" class="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 text-gray-800 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-lg z-10">
+                    <button onclick="nextSlide()" class="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold">
                         <i class="fa-solid fa-chevron-right text-sm"></i>
                     </button>
                 </div>
 
                 <div class="flex justify-between items-center pt-4 px-2">
-                    <span id="slideCounter" class="text-xs text-roseGold font-bold uppercase tracking-wider">Memory 1 of 39</span>
-                    <span class="text-xs text-gray-600 font-semibold tracking-widest">#DEBGIGS FOREVER</span>
+                    <span id="slideCounter" class="text-xs text-roseGold font-extrabold uppercase tracking-widest">Memory 1 of 39</span>
+                    <span class="text-xs text-gray-700 font-bold tracking-widest">#DEBGIGS FOREVER ❤️</span>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 border-t border-roseGold/20">
-            <p class="font-cursive text-4xl text-roseGold mb-2">Debanjan & Gargi</p>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-4 font-semibold">#DebGigs • The Vow to a Lifetime Together</p>
-            <p class="text-xs text-gray-400">Crafted with endless love & romance.</p>
+        <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-600 border-t border-roseGold/30">
+            <p class="font-cursive text-5xl text-roseGold mb-2">Debanjan & Gargi</p>
+            <p class="text-xs uppercase tracking-widest text-gray-600 mb-3 font-bold">#DebGigs • The Vow to a Lifetime Together</p>
+            <p class="text-roseGold text-sm">✦ ✧ ✦</p>
         </footer>
     </div>
 
     <!-- Floating Music Player -->
     <div class="fixed bottom-6 right-6 z-50">
-        <div class="glass-card p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-roseGold/40 pr-5">
+        <div class="glass-card p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border-2 border-roseGold/50 pr-5">
             <button id="playAudioBtn" onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
                 <i id="playIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
             </button>
             <div class="text-left">
-                <p class="text-xs font-bold text-gray-800 line-clamp-1">Destiny</p>
-                <p class="text-[10px] text-roseGold font-medium line-clamp-1">Jim Brickman ft. Jordan Hill</p>
+                <p class="text-xs font-bold text-gray-900 line-clamp-1">Destiny</p>
+                <p class="text-[10px] text-roseGold font-bold line-clamp-1">Jim Brickman ft. Jordan Hill</p>
                 <input type="file" id="songFileInput" accept="audio/*" class="hidden" onchange="loadLocalSong(event)">
-                <button onclick="document.getElementById('songFileInput').click()" class="text-[9px] text-roseGold underline font-medium mt-0.5 block hover:text-gray-900">Upload "destiny.mp3"</button>
+                <button onclick="document.getElementById('songFileInput').click()" class="text-[9px] text-roseGold underline font-bold mt-0.5 block hover:text-gray-900">Upload "destiny.mp3"</button>
             </div>
             <div id="visualizer" class="flex items-end space-x-1 h-4 ml-2 paused">
                 <div class="bar"></div>
@@ -320,7 +330,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. OUR STORY DATA (CLEANED OF SUBTITLE 'UNDEFINED' ISSUES)
+        // 2. OUR STORY DATA
         const chapters = [
             {
                 title: "Chapter 1 – The Message That Changed Everything",
@@ -376,7 +386,7 @@
             chap.text.forEach((t, i) => {
                 const p = document.createElement('p');
                 if (currentChap === 4 && i === chap.text.length - 1) {
-                    p.className = "font-serif text-xl font-bold text-roseGold border-l-4 border-roseGold pl-4 py-3 mt-4 bg-roseGold/5 rounded-r-xl not-italic shadow-sm";
+                    p.className = "font-serif text-xl font-bold text-roseGold border-l-4 border-roseGold pl-4 py-3.5 mt-4 bg-roseGold/10 rounded-r-xl not-italic shadow-sm";
                 }
                 p.innerText = t;
                 container.appendChild(p);
@@ -389,7 +399,7 @@
             dots.innerHTML = '';
             chapters.forEach((_, idx) => {
                 const d = document.createElement('span');
-                d.className = idx === currentChap ? "w-3 h-3 rounded-full bg-roseGold transition-all scale-110 shadow-sm" : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
+                d.className = idx === currentChap ? "w-3.5 h-3.5 rounded-full bg-roseGold transition-all scale-110 shadow-md" : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
                 dots.appendChild(d);
             });
         }
