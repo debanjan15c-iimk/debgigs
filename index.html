@@ -33,11 +33,11 @@
             position:fixed; inset:0; width:100vw; height:100vh; z-index:0; pointer-events:none;
             background-color:#FAF7F2;
             background-image: radial-gradient(circle at 20% 15%, rgba(232,241,245,.9), transparent 55%), radial-gradient(circle at 85% 85%, rgba(183,110,121,.12), transparent 50%);
-            background-size:cover; background-position:center 80%; background-repeat:no-repeat;
+            background-size:cover; background-position:60% 35%; background-repeat:no-repeat;
         }
         #bgPhoto::after { /* soft cream veil keeps the photo light */
             content:""; position:absolute; inset:0;
-            background:linear-gradient(rgba(250,247,242,.22), rgba(250,247,242,.34));
+            background:linear-gradient(rgba(250,247,242,.10), rgba(250,247,242,.22));
         }
 
         /* 2. REPEATING #DEBGIGS WATERMARK */
@@ -83,7 +83,7 @@
         @keyframes heartDrift { 0%{transform:translateY(0) rotate(-12deg);opacity:0} 15%{opacity:.8} 85%{opacity:.55} 100%{transform:translateY(-105vh) rotate(18deg);opacity:0} }
 
         @media (max-width:640px) {
-            #bgPhoto { background-position:center 70%; }
+            #bgPhoto { background-position:57% center; }
             header { flex-direction:column; gap:14px; padding-top:18px !important; padding-bottom:16px !important; }
             header > div:first-child { justify-content:center; flex-wrap:wrap; }
             header nav { width:100%; justify-content:center; flex-wrap:wrap; gap:10px 16px !important; font-size:10px !important; }
@@ -100,18 +100,32 @@
         @media (prefers-reduced-motion:reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
         }
+
+        #progress { position:fixed; top:0; left:0; height:3px; width:0; z-index:60; background:linear-gradient(90deg,#B76E79,#C59B27,#B76E79); box-shadow:0 0 10px rgba(197,155,39,.6); }
+        .hero-panel { border:1.5px solid rgba(197,155,39,.45); box-shadow:0 30px 70px rgba(183,110,121,.22), inset 0 0 0 6px rgba(255,255,255,.4); background:rgba(255,255,255,.68); }
+        .hero-panel .hero-love-note { margin:0 auto; }
+        @media (min-width:768px) { .hero-panel .hero-love-note { margin:0; } }
+        .reveal { opacity:0; transform:translateY(26px); transition:opacity 1s ease, transform 1s ease; }
+        .reveal.in { opacity:1; transform:none; }
+        .tl-item { position:relative; padding:0 0 28px 44px; }
+        .tl-item:last-child { padding-bottom:0; }
+        .tl-item::before { content:""; position:absolute; left:11px; top:26px; bottom:-2px; width:2px; background:linear-gradient(#B76E79,rgba(197,155,39,.35)); }
+        .tl-item:last-child::before { display:none; }
+        .tl-dot { position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%; background:#fff; border:2px solid #B76E79; color:#B76E79; font-size:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 5px rgba(183,110,121,.12); }
+        .tl-item.big .tl-dot { background:#B76E79; color:#fff; border-color:#C59B27; }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-roseGold selection:text-white">
 
     <div id="bgPhoto" aria-hidden="true"></div>
+    <div id="progress" aria-hidden="true"></div>
     <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
     <span class="floating-heart one" aria-hidden="true">♥</span><span class="floating-heart two" aria-hidden="true">♡</span>
     <div id="petals" aria-hidden="true"></div>
 
     <div class="relative z-20">
 
-        <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto border-b border-roseGold/25 mb-6">
+        <header class="sticky top-0 z-40 bg-white/55 backdrop-blur-md rounded-b-3xl w-full py-4 md:py-5 px-6 md:px-12 flex justify-between items-center max-w-6xl mx-auto border-b border-roseGold/25 mb-6">
             <div class="flex items-center space-x-2">
                 <span class="font-cursive text-3xl md:text-4xl text-roseGold tracking-wide">Debanjan & Gargi</span>
                 <span class="text-roseGold/70 font-light text-xs tracking-widest uppercase">| #DebGigs</span>
@@ -119,6 +133,7 @@
             <nav class="flex items-center space-x-4 md:space-x-8 text-xs md:text-sm font-medium text-gray-700 uppercase tracking-wider">
                 <a href="#countdown" class="hover:text-roseGold transition-colors font-semibold">Countdown</a>
                 <a href="#journal" class="hover:text-roseGold transition-colors font-semibold">Our Story</a>
+                <a href="#milestones" class="hover:text-roseGold transition-colors font-semibold">Milestones</a>
                 <a href="#vows" class="hover:text-roseGold transition-colors font-semibold">My Promises</a>
                 <a href="#videos" class="hover:text-roseGold transition-colors font-semibold">Videos</a>
                 <a href="#gallery" class="hover:text-roseGold transition-colors font-semibold">Gallery</a>
@@ -126,43 +141,23 @@
         </header>
 
         <!-- Hero -->
-        <section class="max-w-5xl mx-auto px-6 py-8 md:py-12 text-center space-y-6">
-            <div class="hero-kicker inline-block px-6 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-bold shadow-md">
-                ✨ ✦ Forever & Always: Debanjan & Gargi ✦ ✨
-            </div>
-
-            <h1 class="shimmer-name text-6xl md:text-8xl font-cursive font-normal leading-tight py-2">Debanjan & Gargi</h1>
-
-            <p class="text-roseGold font-serif italic text-2xl md:text-4xl tracking-wide">#DebGigs — The Vow to a Lifetime Together</p>
-
-            <p class="hero-love-note">Out of all the stories the universe could have written, I'm so grateful it wrote me into yours.</p>
-
-            <div class="pt-2">
-                <span class="text-roseGold text-sm">✦ ✧ ✦</span>
-                <p class="text-gray-700 uppercase tracking-widest text-xs md:text-sm font-bold border-y border-roseGold/30 py-2.5 inline-block px-10 my-2 bg-white/50 rounded-lg shadow-sm">Sunday, November 15, 2026 • 1:30 PM IST</p>
-                <span class="text-roseGold text-sm">✦ ✧ ✦</span>
-            </div>
-
-            <div id="countdown" class="pt-6 max-w-xl mx-auto">
-                <div class="grid grid-cols-4 gap-3 md:gap-6 text-center">
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
-                        <span id="days" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Days</span>
+        <section class="max-w-6xl mx-auto px-5 md:px-8 min-h-[92vh] flex items-end md:items-center pt-[42vh] md:pt-6 pb-10">
+            <div class="hero-panel glass-card rounded-[2rem] p-6 md:p-10 w-full md:max-w-[50%] text-center md:text-left space-y-5">
+                <div class="hero-kicker inline-block px-5 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-[10px] md:text-xs tracking-widest uppercase font-bold shadow-md">✦ Forever & Always ✦</div>
+                <h1 class="shimmer-name text-5xl md:text-7xl font-cursive font-normal leading-tight py-1">Debanjan & Gargi</h1>
+                <p class="text-roseGold font-serif italic text-xl md:text-3xl tracking-wide">#DebGigs — The Vow to a Lifetime Together</p>
+                <p class="hero-love-note">Out of all the stories the universe could have written, I'm so grateful it wrote me into yours.</p>
+                <p class="text-gray-700 uppercase tracking-widest text-[11px] md:text-xs font-bold border-y border-roseGold/30 py-2.5 inline-block px-6 bg-white/50 rounded-lg shadow-sm">Sunday, November 15, 2026 • 1:30 PM IST</p>
+                <div id="countdown" class="max-w-md mx-auto md:mx-0">
+                    <div class="grid grid-cols-4 gap-2 md:gap-3 text-center">
+                        <div class="glass-card p-3 md:p-4 rounded-2xl"><span id="days" class="block text-2xl md:text-4xl font-serif font-bold text-gray-900">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest text-roseGold font-bold mt-1 block">Days</span></div>
+                        <div class="glass-card p-3 md:p-4 rounded-2xl"><span id="hours" class="block text-2xl md:text-4xl font-serif font-bold text-gray-900">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest text-roseGold font-bold mt-1 block">Hours</span></div>
+                        <div class="glass-card p-3 md:p-4 rounded-2xl"><span id="minutes" class="block text-2xl md:text-4xl font-serif font-bold text-gray-900">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest text-roseGold font-bold mt-1 block">Minutes</span></div>
+                        <div class="glass-card p-3 md:p-4 rounded-2xl"><span id="seconds" class="block text-2xl md:text-4xl font-serif font-bold text-roseGold">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest text-roseGold font-bold mt-1 block">Seconds</span></div>
                     </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
-                        <span id="hours" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Hours</span>
-                    </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
-                        <span id="minutes" class="block text-3xl md:text-5xl font-serif font-bold text-gray-900">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Minutes</span>
-                    </div>
-                    <div class="glass-card p-4 md:p-6 rounded-3xl border border-roseGold/40 shadow-xl">
-                        <span id="seconds" class="block text-3xl md:text-5xl font-serif font-bold text-roseGold">00</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-roseGold font-bold mt-1 block">Seconds</span>
-                    </div>
+                    <p id="whisper" class="whisper font-serif italic text-lg md:text-xl text-gray-700 mt-4 min-h-[3rem]">Every second brings me closer to calling you my wife.</p>
                 </div>
-                <p id="whisper" class="whisper font-serif italic text-lg md:text-xl text-gray-700 mt-6 min-h-[2.5rem]">Every second brings me closer to calling you my wife.</p>
+                <a href="#journal" class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-roseGold text-white text-sm font-bold shadow-lg hover:scale-105 transition-transform">Read Our Story <i class="fa-solid fa-heart text-xs"></i></a>
             </div>
         </section>
 
@@ -192,6 +187,16 @@
                     </button>
                 </div>
             </div>
+        </section>
+
+        <!-- MILESTONES -->
+        <section id="milestones" class="max-w-3xl mx-auto px-6 py-16 border-t border-roseGold/30">
+            <div class="text-center space-y-3 mb-10">
+                <span class="font-cursive text-5xl text-roseGold">Our Milestones</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The dates my heart will never forget</h2>
+                <div class="ornament pt-2"><i class="fa-solid fa-heart text-xs"></i></div>
+            </div>
+            <div id="timeline" class="glass-card rounded-3xl p-6 md:p-10"></div>
         </section>
 
         <!-- MY PROMISES (new) -->
@@ -314,8 +319,9 @@
         (function () {
             const bg = document.getElementById('bgPhoto');
             const candidates = [
-                './IMG_9363.jpg', './IMG_9363.JPG', './IMG_9363.jpeg', './IMG_9363.png',
-                'https://raw.githubusercontent.com/debanjan15c-iimk/debgigs/main/IMG_9363.jpg'
+                './DSC00061.jpg', './DSC00061.JPG', './DSC00061.jpeg',
+                'https://raw.githubusercontent.com/debanjan15c-iimk/debgigs/main/DSC00061.jpg',
+                './IMG_9363.jpg'
             ];
             (function tryNext(i) {
                 if (i >= candidates.length) return;
@@ -581,6 +587,39 @@
                 s.style.animationDelay = (-Math.random() * 20) + 's';
                 box.appendChild(s);
             }
+        }
+
+        // 8. MILESTONES TIMELINE
+        const milestones = [
+            ["20 April", "The message", "\"Hi, Debanjan here.\" The simplest hello became the beginning of everything."],
+            ["3 May", "We met", "Our first meeting at Oyester, where conversation flowed as if we had always known each other."],
+            ["6 May", "Gigs", "I gave you the name that lives closest to my heart."],
+            ["10 May", "You said YES", "Church Street, a nervous heart, and the sweetest yes."],
+            ["14 & 15 May", "I love you", "Said at 12:22, returned at 8:56 PM. Two moments I would relive forever."],
+            ["29 June & 2 July", "Two families, one YES", "Our parents met, and our story became theirs too."],
+            ["15 November", "Forever begins", "The day I promise to choose you, every single day."]
+        ];
+        const tl = document.getElementById('timeline');
+        milestones.forEach((m, i) => {
+            const big = i === milestones.length - 1;
+            const d = document.createElement('div');
+            d.className = 'tl-item' + (big ? ' big' : '');
+            d.innerHTML = `<span class="tl-dot"><i class="fa-solid fa-heart"></i></span>
+                <p class="text-[11px] uppercase tracking-widest text-roseGold font-bold">${m[0]}</p>
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-900">${m[1]}</h3>
+                <p class="font-serif italic text-lg text-gray-700 leading-snug">${m[2]}</p>`;
+            tl.appendChild(d);
+        });
+
+        // 9. SCROLL PROGRESS + SECTION REVEAL
+        const prog = document.getElementById('progress');
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+        }, { passive: true });
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+            document.querySelectorAll('#journal, #milestones, #vows, #videos, #gallery, section:last-of-type, footer').forEach(el => { el.classList.add('reveal'); io.observe(el); });
         }
     </script>
 </body>
