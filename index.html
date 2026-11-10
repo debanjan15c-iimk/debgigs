@@ -43,11 +43,11 @@
         html { scroll-behavior: smooth; }
         body { background-color: #FAF7F2; color: #2B2D42; min-height: 100vh; position: relative; overflow-x: hidden; }
 
-        /* 1. SOFT PHOTO BACKGROUND LAYER */
+        /* 1. SOFT PHOTO BACKGROUND LAYER (Positioned higher up) */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(rgba(250, 247, 242, 0.68), rgba(250, 247, 242, 0.78)), url('./IMG_9363.jpg');
-            background-size: cover; background-position: center 38%; background-repeat: no-repeat; z-index: 0; pointer-events: none;
+            background-image: linear-gradient(rgba(250, 247, 242, 0.72), rgba(250, 247, 242, 0.82)), url('IMG_9363.jpg');
+            background-size: cover; background-position: center 20%; background-repeat: no-repeat; z-index: 0; pointer-events: none;
         }
 
         /* 2. REPEATING #DEBGIGS WATERMARK PATTERN LAYER */
@@ -99,7 +99,7 @@
         .soft-glow { text-shadow:0 2px 18px rgba(183,110,121,.18); }
         button, a { touch-action: manipulation; }
         @media (max-width: 640px) {
-            body::before { background-position:center; }
+            body::before { background-position:center 15%; }
             header { flex-direction:column; gap:14px; padding-top:18px !important; padding-bottom:16px !important; }
             header > div:first-child { justify-content:center; flex-wrap:wrap; }
             header nav { width:100%; justify-content:center; flex-wrap:wrap; gap:10px 16px !important; font-size:10px !important; }
@@ -117,9 +117,6 @@
         /* Romantic finishing touches */
         .hero-kicker { letter-spacing:.22em; box-shadow:0 8px 24px rgba(183,110,121,.12); }
         .hero-love-note { max-width:720px; margin:0 auto; color:#5f5960; font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; line-height:1.5; }
-        .heart-rule { display:flex; align-items:center; justify-content:center; gap:13px; color:#B76E79; }
-        .heart-rule::before,.heart-rule::after { content:""; width:clamp(35px,10vw,90px); height:1px; background:linear-gradient(90deg,transparent,rgba(183,110,121,.7)); }
-        .heart-rule::after { transform:scaleX(-1); }
         .photo-frame { border:1px solid rgba(183,110,121,.32); box-shadow:0 18px 55px rgba(95,72,76,.16), inset 0 0 0 7px rgba(255,255,255,.45); }
         .photo-caption { background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,250,247,.96) 32%); color:#443b42; text-shadow:none; }
         .photo-caption h3 { color:#9f5967; }
@@ -129,19 +126,16 @@
         .floating-heart.one { left:4%; bottom:-30px; font-size:18px; }
         .floating-heart.two { right:6%; bottom:-30px; font-size:13px; animation-delay:5s; }
         @keyframes heartDrift { 0%{transform:translateY(0) rotate(-12deg);opacity:0} 15%{opacity:.8} 85%{opacity:.55} 100%{transform:translateY(-105vh) rotate(18deg);opacity:0} }
-        .love-quote { background:rgba(255,255,255,.62); border-left:3px solid #B76E79; border-radius:0 14px 14px 0; padding:13px 18px; color:#80515d; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; }
-        .footer-signoff { font-family:'Great Vibes',cursive; color:#B76E79; font-size:clamp(2.5rem,6vw,4rem); }
-        @media (max-width:640px) { .photo-stage { min-height:320px; } .photo-caption { padding-bottom:12px; } }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
         }
-
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-roseGold selection:text-white">
 
-    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>\n    <span class="floating-heart one" aria-hidden="true">♥</span><span class="floating-heart two" aria-hidden="true">♡</span>
+    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+    <span class="floating-heart one" aria-hidden="true">♥</span><span class="floating-heart two" aria-hidden="true">♡</span>
 
     <div class="relative z-20">
 
@@ -244,7 +238,7 @@
             </div>
         </section>
 
-        <!-- VIDEOS SECTION -->
+        <!-- VIDEOS SECTION (GitHub Connected & Cleaned up) -->
         <section id="videos" class="max-w-6xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-12">
                 <span class="font-cursive text-4xl text-roseGold">Special Highlights</span>
@@ -260,55 +254,37 @@
                 <!-- Video 1 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
-                        <video id="videoPlayer1" controls preload="metadata" class="w-full h-full object-cover">
-                            <source src="" type="video/mp4">
+                        <video controls preload="metadata" class="w-full h-full object-cover">
+                            <source src="Debanjan & Gargi Reel 1 (1) (1) (1) (1) (1) (1).mp4" type="video/mp4">
                             Your browser does not support video.
                         </video>
                     </div>
-                    <div class="pt-4 px-2 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-gray-900">Where Time Stands Still With You ✨</h3>
-                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/15 text-roseGold font-bold">Video 1</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <input type="file" id="videoFileInput1" accept="video/*" class="hidden" onchange="loadVideo(event, 'videoPlayer1')">
-                            <button onclick="document.getElementById('videoFileInput1').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/40 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
-                                <i class="fa-solid fa-upload"></i> Upload Video
-                            </button>
-                        </div>
+                    <div class="pt-4 px-2 space-y-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-900">Where Time Stands Still With You ✨</h3>
                     </div>
                 </div>
 
                 <!-- Video 2 -->
                 <div class="glass-card rounded-3xl overflow-hidden p-4 shadow-xl border border-roseGold/40">
                     <div class="relative bg-black rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-inner">
-                        <video id="videoPlayer2" controls preload="metadata" class="w-full h-full object-cover">
-                            <source src="" type="video/mp4">
+                        <video controls preload="metadata" class="w-full h-full object-cover">
+                            <source src="Reel 2 changes (1) (1) (1) (1).mp4" type="video/mp4">
                             Your browser does not support video.
                         </video>
                     </div>
-                    <div class="pt-4 px-2 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-gray-900">Every Frame, a Favorite Page 📖</h3>
-                            <span class="text-xs px-3 py-1 rounded-full bg-roseGold/15 text-roseGold font-bold">Video 2</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <input type="file" id="videoFileInput2" accept="video/*" class="hidden" onchange="loadVideo(event, 'videoPlayer2')">
-                            <button onclick="document.getElementById('videoFileInput2').click()" class="px-4 py-2 bg-white hover:bg-roseGold hover:text-white text-roseGold border border-roseGold/40 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
-                                <i class="fa-solid fa-upload"></i> Upload Video
-                            </button>
-                        </div>
+                    <div class="pt-4 px-2 space-y-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-900">Every Frame, a Favorite Page 📖</h3>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- PHOTO SLIDESHOW SECTION -->
-        <!-- PHOTO SLIDESHOW SECTION -->
         <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-10">
                 <span class="font-cursive text-5xl text-roseGold">A Little Forever, Captured</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Every Picture Holds a Piece of Us</h2>\n                <p class="font-serif italic text-lg md:text-xl text-gray-600">“I could look at you a thousand times and still find a new reason to fall in love.”</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Every Picture Holds a Piece of Us</h2>
+                <p class="font-serif italic text-lg md:text-xl text-gray-600">“I could look at you a thousand times and still find a new reason to fall in love.”</p>
                 <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
                     <span class="h-px w-16 bg-roseGold/50"></span>
                     <i class="fa-solid fa-camera text-xs"></i>
@@ -342,8 +318,6 @@
             </div>
         </section>
 
-        <!-- Slideshow logic is initialized once in the main script below. -->
-
         <section class="max-w-3xl mx-auto px-6 pb-12 text-center">
             <div class="glass-card rounded-3xl px-6 py-8 md:px-12 md:py-10">
                 <div class="font-cursive text-4xl md:text-5xl text-roseGold mb-3">To my favourite person</div>
@@ -356,11 +330,12 @@
         <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-600 border-t border-roseGold/30">
             <p class="font-cursive text-5xl text-roseGold mb-2">Debanjan & Gargi</p>
             <p class="text-xs uppercase tracking-widest text-gray-600 mb-3 font-bold">#DebGigs • The Vow to a Lifetime Together</p>
-            <p class="text-roseGold text-sm">✦ ✧ ✦</p>\n            <p class="font-serif italic text-lg text-gray-600 mt-3">Two souls, one beautiful story. And this is only the beginning. ♡</p>
+            <p class="text-roseGold text-sm">✦ ✧ ✦</p>
+            <p class="font-serif italic text-lg text-gray-600 mt-3">Two souls, one beautiful story. And this is only the beginning. ♡</p>
         </footer>
     </div>
 
-    <!-- Floating Music Player -->
+    <!-- Floating Music Player (Upload Button Removed) -->
     <div class="music-player-mobile fixed bottom-6 right-6 z-50">
         <div class="glass-card p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border-2 border-roseGold/50 pr-5">
             <button id="playAudioBtn" onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
@@ -369,7 +344,6 @@
             <div class="text-left">
                 <p class="text-xs font-bold text-gray-900 line-clamp-1">Destiny</p>
                 <p class="text-[10px] text-roseGold font-bold line-clamp-1">Jim Brickman ft. Jordan Hill</p>
-                <input type="file" id="songFileInput" accept="audio/*" class="hidden" onchange="loadLocalSong(event)">
             </div>
             <div id="visualizer" class="flex items-end space-x-1 h-4 ml-2 paused">
                 <div class="bar"></div>
@@ -479,17 +453,7 @@
         }
         renderChapter();
 
-        // 3. VIDEO MANUAL LOAD HANDLER
-        function loadVideo(event, videoPlayerId) {
-            const file = event.target.files[0];
-            if (file) {
-                const videoElement = document.getElementById(videoPlayerId);
-                videoElement.src = URL.createObjectURL(file);
-                videoElement.load();
-            }
-        }
-
-        // 4. PHOTO SLIDESHOW — load one photo at a time and keep only nearby photos warm.
+        // 4. PHOTO SLIDESHOW
         const photoNames = [
             "PHOTO-2026-10-05-09-42-03", "PHOTO-2026-10-04-09-50-00", "PHOTO-2026-10-02-20-25-07",
             "PHOTO-2026-10-02-20-25-05", "PHOTO-2026-10-02-20-24-26", "PHOTO-2026-10-02-20-24-16",
@@ -524,7 +488,6 @@
             image.src = path;
             imageCache.set(path, image);
             image.onload = () => {
-                // Keep the cache small on phones; the browser may retain its own disk cache.
                 while (imageCache.size > 3) {
                     const oldestKey = imageCache.keys().next().value;
                     if (oldestKey === path) break;
@@ -577,7 +540,6 @@
                 candidate.onerror = () => {
                     if (requestId === slideRequest) {
                         img.classList.remove('is-loading');
-                        img.alt = 'This memory could not be loaded. Please check that the photo file is in the same folder as this page.';
                     }
                 };
             }
@@ -620,7 +582,6 @@
             else startSlideshow();
         });
 
-        // Initial photo only; the next photo is prefetched after the current one loads.
         updateSlide();
 
         // 5. MUSIC PLAYER LOGIC
@@ -638,22 +599,12 @@
                     document.getElementById('visualizer').classList.remove('paused');
                     playing = true;
                 }).catch(() => {
-                    alert("Please upload destiny.mp3 or click Select File to play audio.");
+                    alert("Audio playback was blocked or audio file not found.");
                 });
             }
         }
-        function loadLocalSong(e) {
-            const file = e.target.files[0];
-            if (file) {
-                audio.src = URL.createObjectURL(file);
-                audio.play();
-                document.getElementById('playIcon').className = "fa-solid fa-pause text-sm";
-                document.getElementById('visualizer').classList.remove('paused');
-                playing = true;
-            }
-        }
 
-        // 6. LIGHTWEIGHT SPARKLE ANIMATION — fewer particles on phones, paused off-screen.
+        // 6. SPARKLE ANIMATION
         const canvas = document.getElementById('sparkleCanvas');
         const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
