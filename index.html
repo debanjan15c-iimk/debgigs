@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#FAF7F2">
+    <meta name="description" content="The love story of Debanjan and Gargi — #DebGigs.">
     <title>Debanjan and Gargi — The Magic Moment</title>
     
     <!-- Fonts -->
@@ -44,8 +46,8 @@
         /* 1. SOFT PHOTO BACKGROUND LAYER */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(rgba(250, 247, 242, 0.82), rgba(250, 247, 242, 0.82)), url('IMG_9363.jpg');
-            background-size: cover; background-position: center center; background-repeat: no-repeat; z-index: 0; pointer-events: none;
+            background-image: linear-gradient(rgba(250, 247, 242, 0.68), rgba(250, 247, 242, 0.78)), url('./IMG_9363.jpg');
+            background-size: cover; background-position: center 38%; background-repeat: no-repeat; z-index: 0; pointer-events: none;
         }
 
         /* 2. REPEATING #DEBGIGS WATERMARK PATTERN LAYER */
@@ -79,11 +81,67 @@
 
         @keyframes bounce { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
         .paused .bar { animation-play-state: paused !important; transform: scaleY(0.2) !important; }
+
+        /* Refined details + mobile performance */
+        * { -webkit-tap-highlight-color: transparent; }
+        img { max-width: 100%; }
+        .glass-card { will-change: auto; }
+        .romantic-divider { display:flex; align-items:center; justify-content:center; gap:12px; color:#B76E79; }
+        .romantic-divider::before, .romantic-divider::after { content:""; width:clamp(28px,8vw,72px); height:1px; background:linear-gradient(90deg, transparent, rgba(183,110,121,.65)); }
+        .romantic-divider::after { transform:scaleX(-1); }
+        .chapter-frame { position:relative; }
+        .chapter-frame::before, .chapter-frame::after { content:"✦"; position:absolute; color:rgba(183,110,121,.65); font-size:18px; pointer-events:none; }
+        .chapter-frame::before { top:13px; left:15px; }
+        .chapter-frame::after { bottom:13px; right:15px; }
+        #slideshowImg { opacity:1; transition:opacity .28s ease; transform:translateZ(0); }
+        #slideshowImg.is-loading { opacity:.22; }
+        .photo-stage { background:linear-gradient(145deg, rgba(232,241,245,.96), rgba(250,247,242,.98) 55%, rgba(245,225,226,.92)); }
+        .soft-glow { text-shadow:0 2px 18px rgba(183,110,121,.18); }
+        button, a { touch-action: manipulation; }
+        @media (max-width: 640px) {
+            body::before { background-position:center; }
+            header { flex-direction:column; gap:14px; padding-top:18px !important; padding-bottom:16px !important; }
+            header > div:first-child { justify-content:center; flex-wrap:wrap; }
+            header nav { width:100%; justify-content:center; flex-wrap:wrap; gap:10px 16px !important; font-size:10px !important; }
+            .glass-card { backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+            #gallery .photo-stage { min-height:300px; padding:8px; }
+            #slideshowImg { max-height:54vh; }
+            #prevPageBtn, #nextPageBtn { padding:10px 12px; font-size:11px; }
+            #pageDots { gap:5px; }
+            #pageDots span { flex-shrink:0; }
+            .music-player-mobile { right:10px !important; bottom:10px !important; transform:scale(.88); transform-origin:bottom right; }
+            #journal { padding-top:42px; padding-bottom:42px; }
+            #videos, #gallery { padding-top:44px; padding-bottom:44px; }
+        }
+
+        /* Romantic finishing touches */
+        .hero-kicker { letter-spacing:.22em; box-shadow:0 8px 24px rgba(183,110,121,.12); }
+        .hero-love-note { max-width:720px; margin:0 auto; color:#5f5960; font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; line-height:1.5; }
+        .heart-rule { display:flex; align-items:center; justify-content:center; gap:13px; color:#B76E79; }
+        .heart-rule::before,.heart-rule::after { content:""; width:clamp(35px,10vw,90px); height:1px; background:linear-gradient(90deg,transparent,rgba(183,110,121,.7)); }
+        .heart-rule::after { transform:scaleX(-1); }
+        .photo-frame { border:1px solid rgba(183,110,121,.32); box-shadow:0 18px 55px rgba(95,72,76,.16), inset 0 0 0 7px rgba(255,255,255,.45); }
+        .photo-caption { background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,250,247,.96) 32%); color:#443b42; text-shadow:none; }
+        .photo-caption h3 { color:#9f5967; }
+        .photo-stage { min-height:420px; }
+        .photo-stage img { filter:drop-shadow(0 10px 22px rgba(65,48,52,.18)); }
+        .floating-heart { position:fixed; z-index:11; pointer-events:none; color:rgba(183,110,121,.38); animation:heartDrift 13s linear infinite; }
+        .floating-heart.one { left:4%; bottom:-30px; font-size:18px; }
+        .floating-heart.two { right:6%; bottom:-30px; font-size:13px; animation-delay:5s; }
+        @keyframes heartDrift { 0%{transform:translateY(0) rotate(-12deg);opacity:0} 15%{opacity:.8} 85%{opacity:.55} 100%{transform:translateY(-105vh) rotate(18deg);opacity:0} }
+        .love-quote { background:rgba(255,255,255,.62); border-left:3px solid #B76E79; border-radius:0 14px 14px 0; padding:13px 18px; color:#80515d; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; }
+        .footer-signoff { font-family:'Great Vibes',cursive; color:#B76E79; font-size:clamp(2.5rem,6vw,4rem); }
+        @media (max-width:640px) { .photo-stage { min-height:320px; } .photo-caption { padding-bottom:12px; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+        }
+
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-roseGold selection:text-white">
 
-    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>\n    <span class="floating-heart one" aria-hidden="true">♥</span><span class="floating-heart two" aria-hidden="true">♡</span>
 
     <div class="relative z-20">
 
@@ -104,7 +162,7 @@
 
         <!-- Hero Section -->
         <section class="max-w-5xl mx-auto px-6 py-8 md:py-12 text-center space-y-6">
-            <div class="inline-block px-6 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-bold shadow-md">
+            <div class="hero-kicker inline-block px-6 py-2 rounded-full bg-white/95 border border-roseGold/40 text-roseGold text-xs md:text-sm tracking-widest uppercase font-bold shadow-md">
                 ✨ ✦ Forever & Always: Debanjan & Gargi ✦ ✨
             </div>
             
@@ -148,7 +206,7 @@
         <!-- OUR STORY SECTION -->
         <section id="journal" class="max-w-4xl mx-auto px-6 py-16">
             <div class="text-center space-y-3 mb-10">
-                <span class="font-cursive text-5xl text-roseGold">Our Love Story ❤️</span>
+                <span class="font-cursive text-5xl text-roseGold soft-glow">Our Love Story ❤️</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">From a Little Hello to Forever</h2>
                 <div class="flex items-center justify-center space-x-3 text-roseGold pt-2">
                     <span class="h-px w-20 bg-roseGold/50"></span>
@@ -157,7 +215,7 @@
                 </div>
             </div>
 
-            <div class="glass-card rounded-3xl p-6 md:p-12 shadow-2xl relative decorative-border space-y-6">
+            <div class="glass-card chapter-frame rounded-3xl p-6 md:p-12 shadow-2xl relative decorative-border space-y-6">
                 
                 <div class="border-b-2 border-roseGold/30 pb-4 flex flex-wrap justify-between items-center gap-2">
                     <div>
@@ -249,8 +307,8 @@
         <!-- PHOTO SLIDESHOW SECTION -->
         <section id="gallery" class="max-w-5xl mx-auto px-6 py-16 border-t border-roseGold/30">
             <div class="text-center space-y-3 mb-10">
-                <span class="font-cursive text-4xl text-roseGold">Precious Memories</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Beautiful Memories</h2>
+                <span class="font-cursive text-5xl text-roseGold">A Little Forever, Captured</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Every Picture Holds a Piece of Us</h2>\n                <p class="font-serif italic text-lg md:text-xl text-gray-600">“I could look at you a thousand times and still find a new reason to fall in love.”</p>
                 <div class="flex items-center justify-center space-x-3 text-roseGold pt-1">
                     <span class="h-px w-16 bg-roseGold/50"></span>
                     <i class="fa-solid fa-camera text-xs"></i>
@@ -258,14 +316,14 @@
                 </div>
             </div>
 
-            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl relative border border-roseGold/40 max-w-4xl mx-auto">
-                <div class="relative w-full rounded-2xl overflow-hidden bg-neutral-900 flex items-center justify-center p-2 md:p-4 min-h-[380px] md:min-h-[520px] shadow-inner select-none">
+            <div class="glass-card photo-frame rounded-3xl p-4 md:p-6 shadow-2xl relative max-w-4xl mx-auto">
+                <div class="photo-stage relative w-full rounded-2xl overflow-hidden flex items-center justify-center p-2 md:p-4 min-h-[380px] md:min-h-[520px] shadow-inner select-none">
                     
-                    <img id="slideshowImg" src="" alt="Debanjan & Gargi Memory" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-lg">
+                    <img id="slideshowImg" src="" alt="Debanjan & Gargi memory" decoding="async" fetchpriority="high" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-lg">
                     
-                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-12 pb-4 px-6 text-white text-center pointer-events-none">
-                        <h3 id="slideshowTitle" class="font-serif text-xl md:text-2xl font-bold tracking-wide">Beautiful Memory</h3>
-                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold font-semibold mt-0.5">#DebGigs Moments</p>
+                    <div class="photo-caption absolute bottom-0 inset-x-0 pt-14 pb-5 px-6 text-center pointer-events-none">
+                        <h3 id="slideshowTitle" class="font-serif text-xl md:text-2xl font-bold tracking-wide">A thousand little reasons to smile</h3>
+                        <p id="slideshowSubtitle" class="text-xs md:text-sm text-roseGold font-semibold mt-0.5">A memory with you is always my favourite</p>
                     </div>
 
                     <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 text-gray-900 flex items-center justify-center hover:bg-roseGold hover:text-white transition-all shadow-xl z-10 font-bold active:scale-95 touch-manipulation">
@@ -284,75 +342,26 @@
             </div>
         </section>
 
-        <script>
-            // Optimized Photo Slideshow Script with Preloading and Zero Lag
-            const photoNames = [
-                "PHOTO-2026-10-05-09-42-03", "PHOTO-2026-10-04-09-50-00", "PHOTO-2026-10-02-20-25-07",
-                "PHOTO-2026-10-02-20-25-05", "PHOTO-2026-10-02-20-24-26", "PHOTO-2026-10-02-20-24-16",
-                "PHOTO-2026-09-22-23-38-34", "PHOTO-2026-09-21-07-06-22", "PHOTO-2026-09-21-07-06-21",
-                "PHOTO-2026-09-13-17-08-46_2", "PHOTO-2026-09-13-17-08-46_1", "PHOTO-2026-10-06-13-48-15",
-                "PHOTO-2026-10-31-22-56-36", "PHOTO-2026-10-31-22-56-34", "PHOTO-2026-10-18-23-31-08",
-                "PHOTO-2026-10-11-09-43-05", "PHOTO-2026-10-10-19-03-29", "PHOTO-2026-10-10-09-09-52",
-                "PHOTO-2026-10-10-09-09-32", "PHOTO-2026-11-01-16-15-34", "PHOTO-2026-05-16-22-31-05",
-                "PHOTO-2026-05-31-17-53-35", "PHOTO-2026-06-02-22-38-30", "PHOTO-2026-06-08-07-25-04",
-                "PHOTO-2026-06-08-07-25-04_1", "PHOTO-2026-06-14-13-32-15", "PHOTO-2026-06-14-13-32-16",
-                "PHOTO-2026-06-20-12-30-14", "PHOTO-2026-07-13-07-24-38", "PHOTO-2026-07-13-07-34-15",
-                "PHOTO-2026-07-20-18-44-29", "PHOTO-2026-07-22-22-38-40", "PHOTO-2026-07-25-15-07-05",
-                "PHOTO-2026-07-26-11-28-51", "PHOTO-2026-07-29-18-28-01", "PHOTO-2026-07-29-18-28-15",
-                "PHOTO-2026-08-17-15-37-21", "PHOTO-2026-09-04-12-53-31", "PHOTO-2026-09-13-17-08-46"
-            ];
+        <!-- Slideshow logic is initialized once in the main script below. -->
 
-            let slideIdx = 0;
-            const preloadedImages = [];
-
-            // Preload all images into memory instantly to remove mobile lag
-            photoNames.forEach((name, i) => {
-                const imgObj = new Image();
-                imgObj.src = name.includes('.') ? name : name + '.jpg';
-                preloadedImages[i] = imgObj;
-            });
-
-            function updateSlide() {
-                const img = document.getElementById('slideshowImg');
-                img.src = preloadedImages[slideIdx].src;
-                document.getElementById('slideCounter').innerText = `Memory ${slideIdx + 1} of ${photoNames.length}`;
-            }
-
-            function nextSlide() { 
-                slideIdx = (slideIdx + 1) % photoNames.length; 
-                updateSlide(); 
-            }
-
-            function prevSlide() { 
-                slideIdx = (slideIdx - 1 + photoNames.length) % photoNames.length; 
-                updateSlide(); 
-            }
-
-            // Initialize first slide immediately
-            updateSlide();
-
-            // Auto-advance slideshow smoothly every 4 seconds
-            let slideInterval = setInterval(nextSlide, 4000);
-
-            // Pause auto-advance when user interacts with the gallery
-            const galleryEl = document.getElementById('gallery');
-            if (galleryEl) {
-                galleryEl.addEventListener('pointerdown', () => {
-                    clearInterval(slideInterval);
-                }, { once: true });
-            }
-        </script>
+        <section class="max-w-3xl mx-auto px-6 pb-12 text-center">
+            <div class="glass-card rounded-3xl px-6 py-8 md:px-12 md:py-10">
+                <div class="font-cursive text-4xl md:text-5xl text-roseGold mb-3">To my favourite person</div>
+                <p class="font-serif italic text-xl md:text-2xl leading-relaxed text-gray-700">“If life gives me a thousand lifetimes, I hope every one of them begins with finding you.”</p>
+                <p class="text-xs uppercase tracking-[.25em] text-roseGold font-semibold mt-5">Always yours · Debanjan</p>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-600 border-t border-roseGold/30">
             <p class="font-cursive text-5xl text-roseGold mb-2">Debanjan & Gargi</p>
             <p class="text-xs uppercase tracking-widest text-gray-600 mb-3 font-bold">#DebGigs • The Vow to a Lifetime Together</p>
-            <p class="text-roseGold text-sm">✦ ✧ ✦</p>
+            <p class="text-roseGold text-sm">✦ ✧ ✦</p>\n            <p class="font-serif italic text-lg text-gray-600 mt-3">Two souls, one beautiful story. And this is only the beginning. ♡</p>
         </footer>
     </div>
 
     <!-- Floating Music Player -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <div class="music-player-mobile fixed bottom-6 right-6 z-50">
         <div class="glass-card p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border-2 border-roseGold/50 pr-5">
             <button id="playAudioBtn" onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-roseGold text-white flex items-center justify-center hover:scale-105 transition-transform shadow-md">
                 <i id="playIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
@@ -481,7 +490,7 @@
             }
         }
 
-        // 4. PHOTO SLIDESHOW
+        // 4. PHOTO SLIDESHOW — load one photo at a time and keep only nearby photos warm.
         const photoNames = [
             "PHOTO-2026-10-05-09-42-03", "PHOTO-2026-10-04-09-50-00", "PHOTO-2026-10-02-20-25-07",
             "PHOTO-2026-10-02-20-25-05", "PHOTO-2026-10-02-20-24-26", "PHOTO-2026-10-02-20-24-16",
@@ -499,18 +508,120 @@
         ];
 
         let slideIdx = 0;
+        let slideTimer = null;
+        let galleryVisible = false;
+        let slideRequest = 0;
+        const imageCache = new Map();
+        const photoPath = (index) => {
+            const name = photoNames[(index + photoNames.length) % photoNames.length];
+            return name.startsWith('./') ? name : `./${/\.(jpg|jpeg|png|webp)$/i.test(name) ? name : `${name}.jpg`}`;
+        };
+
+        function warmPhoto(index) {
+            const path = photoPath(index);
+            if (imageCache.has(path)) return imageCache.get(path);
+            const image = new Image();
+            image.decoding = 'async';
+            image.src = path;
+            imageCache.set(path, image);
+            image.onload = () => {
+                // Keep the cache small on phones; the browser may retain its own disk cache.
+                while (imageCache.size > 3) {
+                    const oldestKey = imageCache.keys().next().value;
+                    if (oldestKey === path) break;
+                    imageCache.delete(oldestKey);
+                }
+            };
+            image.onerror = () => imageCache.delete(path);
+            return image;
+        }
+
         function updateSlide() {
             const img = document.getElementById('slideshowImg');
-            img.style.opacity = '0.3';
-            const currentFile = photoNames[slideIdx];
-            img.src = currentFile;
-            img.onerror = () => { img.src = currentFile + ".jpg"; };
-            img.onload = () => { img.style.opacity = '1'; };
-            document.getElementById('slideCounter').innerText = `Memory ${slideIdx + 1} of ${photoNames.length}`;
+            const counter = document.getElementById('slideCounter');
+            const requestId = ++slideRequest;
+            const path = photoPath(slideIdx);
+            counter.innerText = `Memory ${slideIdx + 1} of ${photoNames.length}`;
+            const captions = [
+                ["My favourite view will always be you", "In every crowd, my eyes will find you."],
+                ["A little moment, a lifetime of love", "The simplest days become special with you."],
+                ["You make ordinary feel magical", "Every memory is better when it has you in it."],
+                ["My today, my tomorrow, my always", "Here's to all the beautiful days still waiting for us."],
+                ["Home is wherever you are", "No matter where we go, my heart knows its way to you."],
+                ["One smile. A thousand butterflies.", "I still get that same happy feeling looking at you."],
+                ["The beginning of forever", "And I would choose this story, every single time."]
+            ];
+            const caption = captions[slideIdx % captions.length];
+            document.getElementById('slideshowTitle').textContent = caption[0];
+            document.getElementById('slideshowSubtitle').textContent = caption[1];
+            img.classList.add('is-loading');
+
+            const candidate = warmPhoto(slideIdx);
+            const showImage = () => {
+                if (requestId !== slideRequest) return;
+                img.src = path;
+                img.classList.remove('is-loading');
+                warmPhoto(slideIdx + 1);
+            };
+
+            if (candidate.complete && candidate.naturalWidth > 0) {
+                if (candidate.decode) {
+                    candidate.decode().catch(() => {}).then(showImage);
+                } else {
+                    showImage();
+                }
+            } else {
+                candidate.onload = () => {
+                    if (candidate.decode) candidate.decode().catch(() => {}).then(showImage);
+                    else showImage();
+                };
+                candidate.onerror = () => {
+                    if (requestId === slideRequest) {
+                        img.classList.remove('is-loading');
+                        img.alt = 'This memory could not be loaded. Please check that the photo file is in the same folder as this page.';
+                    }
+                };
+            }
         }
-        function nextSlide() { slideIdx = (slideIdx + 1) % photoNames.length; updateSlide(); }
-        function prevSlide() { slideIdx = (slideIdx - 1 + photoNames.length) % photoNames.length; updateSlide(); }
-        setInterval(nextSlide, 4000);
+
+        function nextSlide() {
+            slideIdx = (slideIdx + 1) % photoNames.length;
+            updateSlide();
+        }
+        function prevSlide() {
+            slideIdx = (slideIdx - 1 + photoNames.length) % photoNames.length;
+            updateSlide();
+        }
+
+        function startSlideshow() {
+            stopSlideshow();
+            if (galleryVisible && !document.hidden) {
+                slideTimer = window.setInterval(nextSlide, 6000);
+            }
+        }
+        function stopSlideshow() {
+            if (slideTimer) window.clearInterval(slideTimer);
+            slideTimer = null;
+        }
+
+        const gallerySection = document.getElementById('gallery');
+        if ('IntersectionObserver' in window) {
+            const galleryObserver = new IntersectionObserver((entries) => {
+                galleryVisible = entries.some(entry => entry.isIntersecting);
+                if (galleryVisible) startSlideshow();
+                else stopSlideshow();
+            }, { threshold: 0.15 });
+            galleryObserver.observe(gallerySection);
+        } else {
+            galleryVisible = true;
+            startSlideshow();
+        }
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopSlideshow();
+            else startSlideshow();
+        });
+
+        // Initial photo only; the next photo is prefetched after the current one loads.
         updateSlide();
 
         // 5. MUSIC PLAYER LOGIC
@@ -543,26 +654,63 @@
             }
         }
 
-        // 6. SPARKLE ANIMATION
+        // 6. LIGHTWEIGHT SPARKLE ANIMATION — fewer particles on phones, paused off-screen.
         const canvas = document.getElementById('sparkleCanvas');
-        const ctx = canvas.getContext('2d');
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
-        const parts = [];
-        for (let i = 0; i < 25; i++) parts.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 10 + 6, speed: Math.random() * 0.6 + 0.2 });
-        function drawParts() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#B76E79';
-            parts.forEach(p => {
+        const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let sparkleFrame = null;
+        let sparkleParts = [];
+        function resizeSparkles() {
+            if (!canvas || !ctx) return;
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+            canvas.width = Math.floor(window.innerWidth * dpr);
+            canvas.height = Math.floor(window.innerHeight * dpr);
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const count = window.innerWidth < 700 ? 7 : 16;
+            sparkleParts = Array.from({ length: count }, () => ({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 7 + 5,
+                speed: Math.random() * 0.35 + 0.12
+            }));
+        }
+        function drawSparkles() {
+            if (!ctx || document.hidden || reduceMotion) {
+                sparkleFrame = null;
+                return;
+            }
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            ctx.fillStyle = 'rgba(183,110,121,.55)';
+            sparkleParts.forEach(p => {
                 p.y -= p.speed;
-                if (p.y < -10) p.y = canvas.height + 10;
+                if (p.y < -10) p.y = window.innerHeight + 10;
                 ctx.font = `${p.size}px serif`;
                 ctx.fillText('♥', p.x, p.y);
             });
-            requestAnimationFrame(drawParts);
+            sparkleFrame = requestAnimationFrame(drawSparkles);
         }
-        drawParts();
+        function startSparkles() {
+            if (!reduceMotion && !document.hidden && sparkleFrame === null) {
+                sparkleFrame = requestAnimationFrame(drawSparkles);
+            }
+        }
+        function stopSparkles() {
+            if (sparkleFrame !== null) cancelAnimationFrame(sparkleFrame);
+            sparkleFrame = null;
+        }
+        if (canvas && ctx && !reduceMotion) {
+            resizeSparkles();
+            window.addEventListener('resize', resizeSparkles, { passive: true });
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopSparkles();
+                else startSparkles();
+            });
+            startSparkles();
+        } else if (canvas) {
+            canvas.style.display = 'none';
+        }
     </script>
 </body>
 </html>
